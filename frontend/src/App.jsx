@@ -1,5 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   const [FinalCocktailTable, setFinalCocktailTable] = useState([]);
@@ -71,11 +73,19 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <button type="button" onClick={getCocktail}>
-        Load Coktails
-      </button>
-    </div>
+    <>
+      <div>
+        <Navbar />
+      </div>
+      <div className="App">
+        <button type="button" onClick={getCocktail}>
+          Load Coktails
+        </button>
+      </div>
+      <div>
+        <Footer />
+      </div>
+    </>
   );
 }
 
