@@ -27,7 +27,7 @@ function App() {
                 ...oldValue /* On part du précédent tableau et on ajoute. Note : la fonction fléché permet de contourner le problème asynchrone. */,
                 {
                   /* on ne push par contre que les éléments qui nous intéressent */
-                  drinkId: response.data.drinks[j].id,
+                  drinkId: response.data.drinks[j].idDrink,
                   drinkName: response.data.drinks[j].strDrink,
                   drinkImage: response.data.drinks[j].strDrinkThumb,
                   drinkFavorite: false,
