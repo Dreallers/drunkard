@@ -1,7 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-
-import "./App.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   const [FinalCocktailTable, setFinalCocktailTable] = useState([]);
@@ -913,12 +913,20 @@ function App() {
   console.info(tableIngredients);
 
   return (
-    <div className="App">
-      <button type="button" onClick={getCocktail}>
-        Load Coktails
-      </button>
-      {/* <componenet setIngredients={setIngredients} Ingredients={Ingredients} /> */}
-    </div>
+    <>
+      <div>
+        <Navbar />
+      </div>
+      <div>
+        <button type="button" onClick={getCocktail}>
+          Load Coktails
+        </button>
+        {/* <componenet setIngredients={setIngredients} Ingredients={Ingredients} /> */}
+      </div>
+      <div>
+        <Footer />
+      </div>
+    </>
   );
 }
 
