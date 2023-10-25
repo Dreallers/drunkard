@@ -1,6 +1,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, NavLink } from "react-router-dom";
+import "./styles/index.scss";
+
 
 import App from "./App";
 import Mybar from "./components/Mybar";
