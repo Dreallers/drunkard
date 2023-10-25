@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, NavLink } from "react-router-dom";
 
 import App from "./App";
 import Mybar from "./components/Mybar";
@@ -10,11 +10,23 @@ import Homepage from "./components/Homepage";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Homepage />,
+    element: (
+      <div>
+        <Homepage />
+        <NavLink to="/home">Accéder au site</NavLink>
+      </div>
+    ),
   },
   {
     path: "/home",
-    element: <App />,
+    element: (
+      <div>
+        <NavLink to="/mybar">My Bar</NavLink>
+        <NavLink to="/home">Home</NavLink>
+        <NavLink to="/quizz">Quizz</NavLink>
+        <App />
+      </div>
+    ),
   },
   {
     path: "/mybar",
