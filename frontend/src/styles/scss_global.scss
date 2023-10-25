@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "munake";
+  src:
+    local("munake"),
+    url("../assets/munake-font/Munake-vm0rE.otf") format("otf");
+}
+
+$drunkgreen: #a1e69a;
+$drunkPink: #fe259b;
+$drunkBlue: #102032;
+$blue-box-shadow:
+  0 0 2px #fff,
+  0 0 4px #fff,
+  0 0 8px $drunkBlue,
+  0 0 16px $drunkBlue,
+  0 0 20px $drunkBlue,
+  0 0 22px $drunkBlue,
+  0 0 24px $drunkBlue,
+  0 0 26px $drunkBlue,
+  0 0 30px $drunkBlue,
+  0 0 32px $drunkBlue,
+  0 0 34px $drunkBlue;
+
+$pink-box-shadow:
+  0 0 2px #fff,
+  0 0 4px #fff,
+  0 0 8px $drunkPink,
+  0 0 16px $drunkPink,
+  0 0 20px $drunkPink,
+  0 0 22px $drunkPink,
+  0 0 24px $drunkPink,
+  0 0 26px $drunkPink,
+  0 0 30px $drunkPink,
+  0 0 32px $drunkPink,
+  0 0 34px $drunkPink;
+
+$green-box-shadow:
+  0 0 2px #fff,
+  0 0 4px #fff,
+  0 0 8px $drunkgreen,
+  0 0 16px $drunkgreen,
+  0 0 20px $drunkgreen,
+  0 0 22px $drunkgreen,
+  0 0 24px $drunkgreen,
+  0 0 26px $drunkgreen,
+  0 0 30px $drunkgreen,
+  0 0 32px $drunkgreen,
+  0 0 34px $drunkgreen;
+
+.test {
+  font-family: munake;
+  padding: 20px;
+  text-shadow: $pink-box-shadow;
+}
+body {
+  background-color: #102032;
+}
