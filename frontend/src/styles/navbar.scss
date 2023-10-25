@@ -1,0 +1,16 @@
+.navbar {
+  a {
+    text-decoration: none;
+  }
+  display: flex;
+  border: solid 1px;
+  border-radius: 100px;
+  justify-content: space-around;
+  height: auto;
+  align-items: center;
+
+  img {
+    width: 70%;
+    height: auto;
+  }
+}

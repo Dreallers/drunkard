@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./styles/navbar.scss";
+import "./styles/footer.scss";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
