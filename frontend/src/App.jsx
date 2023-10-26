@@ -909,7 +909,7 @@ function App() {
   ]);
 
   return (
-    <>
+    <div className="global">
       <div>
         <Navbar />
       </div>
@@ -922,10 +922,10 @@ function App() {
           ingredients={ingredients}
         />
       </div>
-      <div>
+      <div className="footer">
         <Footer />
       </div>
-    </>
+    </div>
   );
 }
 
