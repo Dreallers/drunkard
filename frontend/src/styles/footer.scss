@@ -1,12 +1,28 @@
+@font-face {
+  font-family: "munake";
+  src:
+    local("munake"),
+    url("../assets/munake-font/Munake-vm0rE.otf") format("otf");
+}
+
 .copyright {
   display: flex;
   flex: 1;
   justify-content: flex-start;
+  align-items: center;
+  margin: 2px;
+  border: solid 1px;
+  border-radius: 100px;
+  box-shadow: $blue-box-shadow;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
 
   p {
     padding: 5px;
-    border: solid 1px;
-    border-radius: 100px;
     width: 100%;
+    font-family: "munake";
+    color: $drunkpolice;
   }
 }
