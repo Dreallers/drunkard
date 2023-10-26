@@ -1,10 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import * as React from "react";
+import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, NavLink } from "react-router-dom";
 import "./styles/index.scss";
+
 import App from "./App";
 import Mybar from "./components/Mybar";
-import Quizz from "./components/Quizz";
+import Quiz from "./components/Quiz";
 import Homepage from "./components/Homepage";
 
 const router = createBrowserRouter([
@@ -21,20 +22,21 @@ const router = createBrowserRouter([
     path: "/home",
     element: (
       <div>
-        <NavLink to="/mybar">My Bar</NavLink>
-        <NavLink to="/home">Home</NavLink>
-        <NavLink to="/quizz">Quizz</NavLink>
         <App />
       </div>
     ),
   },
   {
     path: "/mybar",
-    element: <Mybar />,
+    element: (
+      <div>
+        <Mybar />
+      </div>
+    ),
   },
   {
-    path: "/quizz",
-    element: <Quizz />,
+    path: "/quiz",
+    element: <Quiz />,
   },
 ]);
 
