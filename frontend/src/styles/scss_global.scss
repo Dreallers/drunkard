@@ -1,6 +1,8 @@
 * {
   margin: 0;
   padding: 0;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 @font-face {
@@ -10,21 +12,23 @@
     url("../assets/munake-font/Munake-vm0rE.otf") format("otf");
 }
 
+$drunkpolice: #f2ecbe;
 $drunkgreen: #a1e69a;
 $drunkPink: #fe259b;
-$drunkBlue: #102032;
+$drunkBlueLight: #00aaf6;
+$drunkBlueDark: #102032;
 $blue-box-shadow:
-  0 0 2px #fff,
-  0 0 4px #fff,
-  0 0 8px $drunkBlue,
-  0 0 16px $drunkBlue,
-  0 0 20px $drunkBlue,
-  0 0 22px $drunkBlue,
-  0 0 24px $drunkBlue,
-  0 0 26px $drunkBlue,
-  0 0 30px $drunkBlue,
-  0 0 32px $drunkBlue,
-  0 0 34px $drunkBlue;
+  // 0 0 2px #fff,
+  // 0 0 4px #fff,
+  0 0 8px $drunkBlueLight,
+  0 0 16px $drunkBlueLight,
+  0 0 20px $drunkBlueLight,
+  0 0 22px $drunkBlueLight,
+  0 0 24px $drunkBlueLight,
+  0 0 26px $drunkBlueLight;
+//0 0 30px $drunkBlueLight;
+//0 0 32px $drunkBlueLight;
+//0 0 34px $drunkBlueLight;
 
 $pink-box-shadow:
   0 0 2px #fff,
@@ -40,14 +44,23 @@ $pink-box-shadow:
   0 0 34px $drunkPink;
 
 $green-box-shadow:
-  0 0 2px #fff,
-  0 0 4px #fff,
   0 0 8px $drunkgreen,
   0 0 16px $drunkgreen,
   0 0 20px $drunkgreen,
   0 0 22px $drunkgreen,
   0 0 24px $drunkgreen,
-  0 0 26px $drunkgreen,
-  0 0 30px $drunkgreen,
-  0 0 32px $drunkgreen,
-  0 0 34px $drunkgreen;
+  0 0 26px $drunkgreen;
+//0 0 30px $drunkgreen;
+// 0 0 32px $drunkgreen,
+// 0 0 34px $drunkgreen;
+
+.global {
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  height: 100vh;
+  background-color: #102032;
+  position: relative;
+}

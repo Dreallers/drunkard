@@ -1,13 +1,33 @@
+@font-face {
+  font-family: "munake";
+  src:
+    local("munake"),
+    url("../assets/munake-font/Munake-vm0rE.otf") format("otf");
+}
+
 .navbar {
   a {
     text-decoration: none;
+    font-family: "munake";
+    color: $drunkPink;
   }
+
+  a:hover {
+    color: $drunkgreen;
+    text-shadow: $green-box-shadow;
+  }
+
   display: flex;
   border: solid 1px;
   border-radius: 100px;
   justify-content: space-around;
   height: auto;
   align-items: center;
+  margin: 2px;
+  margin-top: 5px;
+  background-color: $drunkBlueDark;
+  background: transparent;
+  box-shadow: $blue-box-shadow;
 
   img {
     width: 70%;
