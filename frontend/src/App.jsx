@@ -909,7 +909,7 @@ function App() {
   ]);
 
   return (
-    <>
+    <div className="global">
       <div>
         <Navbar />
       </div>
@@ -921,11 +921,12 @@ function App() {
           setIngredients={setIngredients}
           Ingredients={Ingredients}
         />
+
       </div>
-      <div>
+      <div className="footer">
         <Footer />
       </div>
-    </>
+    </div>
   );
 }
 

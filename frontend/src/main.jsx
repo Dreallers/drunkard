@@ -21,9 +21,6 @@ const router = createBrowserRouter([
     path: "/home",
     element: (
       <div>
-        <NavLink to="/mybar">My Bar</NavLink>
-        <NavLink to="/home">Home</NavLink>
-        <NavLink to="/quizz">Quizz</NavLink>
         <App />
       </div>
     ),
