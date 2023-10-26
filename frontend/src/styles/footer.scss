@@ -1,0 +1,12 @@
+.copyright {
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+
+  p {
+    padding: 5px;
+    border: solid 1px;
+    border-radius: 100px;
+    width: 100%;
+  }
+}
