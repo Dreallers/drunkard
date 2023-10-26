@@ -72,7 +72,7 @@ function App() {
     }
   }, []); /* les [] à la fin de useEffect permet de ne faire tourner le useEfect qu'une fois au chargement du component. Note : si on y met des state à la places des [] alors useEffect va tourner à nouveau en cas de modif du state, */
   /* Tableau bouteille alcool avec images */
-  const [Ingredients, setIngredients] = useState([
+  const [ingredients, setIngredients] = useState([
     {
       id: 1,
       bottleName: "Light rum",
@@ -919,7 +919,7 @@ function App() {
         </button> */}
         <IngredientCard
           setIngredients={setIngredients}
-          Ingredients={Ingredients}
+          ingredients={ingredients}
         />
       </div>
       <div>

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
-function IngredientCard({ setIngredients, Ingredients }) {
+function IngredientCard({ setIngredients, ingredients }) {
   const [choicedIngredientType, setchoicedIngredientType] =
     useState(
       "liquors"
@@ -9,7 +9,7 @@ function IngredientCard({ setIngredients, Ingredients }) {
 
   function handleClickSelected(ingredientId) {
     const copyIngredient = [
-      ...Ingredients,
+      ...ingredients,
     ]; /* on "deep"copy le tableau state en tableau "classique" pour pouvoir modifier un de ses éléments */
     const temporaryTable = copyIngredient.filter((element) => {
       /* le filter ne laisse passer que les return true dans le tableau temporaire */
@@ -72,28 +72,30 @@ function IngredientCard({ setIngredients, Ingredients }) {
         <div className="neonBar" />
       </div>
       <div className="ingredientListContainer">
-        {Ingredients.filter((ingredient) => {
-          return choicedIngredientType === ingredient.type;
-        }).map((ingredient) => {
-          return (
-            <div className="Ingredientlist" key={ingredient.id}>
-              <div className="bottleImage">
-                <img src={ingredient.image} alt="" />
+        {ingredients
+          .filter((ingredient) => {
+            return choicedIngredientType === ingredient.type;
+          })
+          .map((ingredient) => {
+            return (
+              <div className="Ingredientlist" key={ingredient.id}>
+                <div className="bottleImage">
+                  <img src={ingredient.image} alt="" />
+                </div>
+                <div className="button">
+                  <button
+                    type="button"
+                    onClick={() => handleClickSelected(ingredient.id)}
+                    className={
+                      ingredient.selected === true ? "Selected" : "NotSelected"
+                    }
+                  >
+                    {ingredient.bottleName}
+                  </button>
+                </div>
               </div>
-              <div className="button">
-                <button
-                  type="button"
-                  onClick={() => handleClickSelected(ingredient.id)}
-                  className={
-                    ingredient.selected === true ? "Selected" : "NotSelected"
-                  }
-                >
-                  {ingredient.bottleName}
-                </button>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
       <svg className="arrows">
         <path className="a1" d="M0 0 L30 32 L60 0" />
@@ -106,7 +108,7 @@ function IngredientCard({ setIngredients, Ingredients }) {
 
 IngredientCard.propTypes = {
   setIngredients: PropTypes.func.isRequired,
-  Ingredients: PropTypes.arrayOf(
+  ingredients: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
       bottleName: PropTypes.string,
