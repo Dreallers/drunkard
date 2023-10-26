@@ -73,19 +73,19 @@ function App() {
   }
 
   return (
-    <>
+    <div className="global">
       <div>
         <Navbar />
       </div>
       <div className="App">
         <button type="button" onClick={getCocktail}>
-          Load Coktails
+          Load Cocktails
         </button>
       </div>
-      <div>
+      <div className="footer">
         <Footer />
       </div>
-    </>
+    </div>
   );
 }
 
