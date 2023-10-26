@@ -3,11 +3,10 @@ import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, NavLink } from "react-router-dom";
 import "./styles/index.scss";
 
-
 import App from "./App";
-import Mybar from "./components/Mybar";
+import Mybar from "./components/MyBar";
 import Quizz from "./components/Quizz";
-import Homepage from "./components/Homepage";
+import Homepage from "./components/HomePage";
 
 const router = createBrowserRouter([
   {
