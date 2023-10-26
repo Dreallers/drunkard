@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import IngredientCard from "./components/IngredientArea";
 
 function App() {
   const [FinalCocktailTable, setFinalCocktailTable] = useState([]);
 
-  /* todo : voir useEffect pour virer le bouton */
-  function getCocktail() {
+  useEffect(() => {
     /* Boucle pour lire l'API de a à z: */
     for (let i = 97; i <= 122; i += 1) {
       const activeLetter = String.fromCharCode(i); /* on récupère la lettre */
@@ -19,7 +19,7 @@ function App() {
           const activeLetterTable =
             response.data
               .drinks; /* on récupère le tableau de la lettre (et tous ses objets) */
-          if (activeLetterTable !== undefined) {
+          if (activeLetterTable) {
             /* si l'API a bien des objets coktails pour la lettre regardé */
             for (let j = 0; j < activeLetterTable.length; j += 1) {
               /* alors on récupère avec une boucle chaque objet qu'on push dans le table FullApiTable */
@@ -70,14 +70,12 @@ function App() {
         })
         .catch((err) => console.error(FinalCocktailTable, err));
     }
-  }
-
+  }, []); /* les [] à la fin de useEffect permet de ne faire tourner le useEfect qu'une fois au chargement du component. Note : si on y met des state à la places des [] alors useEffect va tourner à nouveau en cas de modif du state, */
   /* Tableau bouteille alcool avec images */
-  /* const [Ingredients, setIngredients] = useState([ */
-  const tableIngredients = [
+  const [Ingredients, setIngredients] = useState([
     {
       id: 1,
-      name: "Light rum",
+      bottleName: "Light rum",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Light rum.png",
       selected: false,
@@ -85,7 +83,7 @@ function App() {
     },
     {
       id: 2,
-      name: "Applejack",
+      bottleName: "Applejack",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Applejack.png",
       selected: false,
@@ -93,7 +91,7 @@ function App() {
     },
     {
       id: 3,
-      name: "Gin",
+      bottleName: "Gin",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Gin.png",
       selected: false,
@@ -101,7 +99,7 @@ function App() {
     },
     {
       id: 4,
-      name: "Dark rum",
+      bottleName: "Dark rum",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Dark rum.png",
       selected: false,
@@ -109,7 +107,7 @@ function App() {
     },
     {
       id: 5,
-      name: "Sweet Vermouth",
+      bottleName: "Sweet Vermouth",
       type: "liquors",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Sweet Vermouth.png",
@@ -118,7 +116,7 @@ function App() {
     },
     {
       id: 6,
-      name: "Strawberry schnapps",
+      bottleName: "Strawberry schnapps",
       type: "liquors",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Strawberry schnapps.png",
@@ -127,7 +125,7 @@ function App() {
     },
     {
       id: 7,
-      name: "Scotch",
+      bottleName: "Scotch",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Scotch.png",
       selected: false,
@@ -135,7 +133,7 @@ function App() {
     },
     {
       id: 8,
-      name: "Apricot brandy",
+      bottleName: "Apricot brandy",
       type: "liquors",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Apricot brandy.png",
@@ -144,7 +142,7 @@ function App() {
     },
     {
       id: 9,
-      name: "Triple sec",
+      bottleName: "Triple sec",
       type: "liquors",
       image: "https://www.thecocktaildb.com/images/ingredients/Triple sec.png",
       selected: false,
@@ -152,7 +150,7 @@ function App() {
     },
     {
       id: 10,
-      name: "Southern Comfort",
+      bottleName: "Southern Comfort",
       type: "liquors",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Southern Comfort.png",
@@ -161,7 +159,7 @@ function App() {
     },
     {
       id: 11,
-      name: "Orange bitters",
+      bottleName: "Orange bitters",
       type: "spirits",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Orange bitters.png",
@@ -170,7 +168,7 @@ function App() {
     },
     {
       id: 12,
-      name: "Brandy",
+      bottleName: "Brandy",
       type: "liquors",
       image: "https://www.thecocktaildb.com/images/ingredients/Brandy.png",
       selected: false,
@@ -178,7 +176,7 @@ function App() {
     },
     {
       id: 13,
-      name: "Lemon vodka",
+      bottleName: "Lemon vodka",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Lemon vodka.png",
       selected: false,
@@ -186,7 +184,7 @@ function App() {
     },
     {
       id: 14,
-      name: "Blended whiskey",
+      bottleName: "Blended whiskey",
       type: "spirits",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Blended whiskey.png",
@@ -195,7 +193,7 @@ function App() {
     },
     {
       id: 15,
-      name: "Dry Vermouth",
+      bottleName: "Dry Vermouth",
       type: "liquors",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Dry Vermouth.png",
@@ -204,7 +202,7 @@ function App() {
     },
     {
       id: 16,
-      name: "Amaretto",
+      bottleName: "Amaretto",
       type: "liquors",
       image: "https://www.thecocktaildb.com/images/ingredients/Amaretto.png",
       selected: false,
@@ -212,7 +210,7 @@ function App() {
     },
     {
       id: 17,
-      name: "Tea",
+      bottleName: "Tea",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Tea.png",
       selected: false,
@@ -220,7 +218,7 @@ function App() {
     },
     {
       id: 18,
-      name: "Champagne",
+      bottleName: "Champagne",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Champagne.png",
       selected: false,
@@ -228,7 +226,7 @@ function App() {
     },
     {
       id: 19,
-      name: "Coffee liqueur",
+      bottleName: "Coffee liqueur",
       type: "liquors",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Coffee liqueur.png",
@@ -237,7 +235,7 @@ function App() {
     },
     {
       id: 20,
-      name: "Bourbon",
+      bottleName: "Bourbon",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Bourbon.png",
       selected: false,
@@ -245,7 +243,7 @@ function App() {
     },
     {
       id: 21,
-      name: "Tequila",
+      bottleName: "Tequila",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Tequila.png",
       selected: false,
@@ -253,7 +251,7 @@ function App() {
     },
     {
       id: 22,
-      name: "Vodka",
+      bottleName: "Vodka",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Vodka.png",
       selected: false,
@@ -261,7 +259,7 @@ function App() {
     },
     {
       id: 23,
-      name: "Añejo rum",
+      bottleName: "Añejo rum",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Añejo rum.png",
       selected: false,
@@ -269,7 +267,7 @@ function App() {
     },
     {
       id: 24,
-      name: "Bitters",
+      bottleName: "Bitters",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Bitters.png",
       selected: false,
@@ -277,7 +275,7 @@ function App() {
     },
     {
       id: 25,
-      name: "Sugar",
+      bottleName: "Sugar",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Sugar.png",
       selected: false,
@@ -285,7 +283,7 @@ function App() {
     },
     {
       id: 26,
-      name: "Kahlua",
+      bottleName: "Kahlua",
       type: "liquors",
       image: "https://www.thecocktaildb.com/images/ingredients/Kahlua.png",
       selected: false,
@@ -293,7 +291,7 @@ function App() {
     },
     {
       id: 27,
-      name: "demerara Sugar",
+      bottleName: "demerara Sugar",
       type: "soft",
       image:
         "https://www.thecocktaildb.com/images/ingredients/demerara Sugar.png",
@@ -303,7 +301,7 @@ function App() {
     {
       strIngredient1: "Dubonnet Rouge",
       id: 28,
-      name: "Dubonnet Rouge",
+      bottleName: "Dubonnet Rouge",
       type: "liquors",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Dubonnet Rouge.png",
@@ -312,7 +310,7 @@ function App() {
     },
     {
       id: 29,
-      name: "Watermelon",
+      bottleName: "Watermelon",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Watermelon.png",
       selected: false,
@@ -320,7 +318,7 @@ function App() {
     },
     {
       id: 30,
-      name: "Lime juice",
+      bottleName: "Lime juice",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Lime juice.png",
       selected: false,
@@ -328,7 +326,7 @@ function App() {
     },
     {
       id: 31,
-      name: "Irish whiskey",
+      bottleName: "Irish whiskey",
       type: "spirits",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Irish whiskey.png",
@@ -337,7 +335,7 @@ function App() {
     },
     {
       id: 32,
-      name: "Apple brandy",
+      bottleName: "Apple brandy",
       type: "liquors",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Apple brandy.png",
@@ -346,7 +344,7 @@ function App() {
     },
     {
       id: 33,
-      name: "Carbonated water",
+      bottleName: "Carbonated water",
       type: "soft",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Carbonated water.png",
@@ -355,7 +353,7 @@ function App() {
     },
     {
       id: 34,
-      name: "Cherry brandy",
+      bottleName: "Cherry brandy",
       type: "liquors",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Cherry brandy.png",
@@ -364,7 +362,7 @@ function App() {
     },
     {
       id: 35,
-      name: "Creme de Cacao",
+      bottleName: "Creme de Cacao",
       type: "liquors",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Creme de Cacao.png",
@@ -373,7 +371,7 @@ function App() {
     },
     {
       id: 36,
-      name: "Grenadine",
+      bottleName: "Grenadine",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Grenadine.png",
       selected: false,
@@ -381,7 +379,7 @@ function App() {
     },
     {
       id: 37,
-      name: "Port",
+      bottleName: "Port",
       type: "liquors",
       image: "https://www.thecocktaildb.com/images/ingredients/Port.png",
       selected: false,
@@ -389,7 +387,7 @@ function App() {
     },
     {
       id: 38,
-      name: "Coffee brandy",
+      bottleName: "Coffee brandy",
       type: "liquors",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Coffee brandy.png",
@@ -398,7 +396,7 @@ function App() {
     },
     {
       id: 39,
-      name: "Red wine",
+      bottleName: "Red wine",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Red wine.png",
       selected: false,
@@ -406,7 +404,7 @@ function App() {
     },
     {
       id: 40,
-      name: "Rum",
+      bottleName: "Rum",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Rum.png",
       selected: false,
@@ -414,7 +412,7 @@ function App() {
     },
     {
       id: 41,
-      name: "Grapefruit juice",
+      bottleName: "Grapefruit juice",
       type: "soft",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Grapefruit juice.png",
@@ -423,7 +421,7 @@ function App() {
     },
     {
       id: 42,
-      name: "Ricard",
+      bottleName: "Ricard",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Ricard.png",
       selected: false,
@@ -431,7 +429,7 @@ function App() {
     },
     {
       id: 43,
-      name: "Sherry",
+      bottleName: "Sherry",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Sherry.png",
       selected: false,
@@ -439,7 +437,7 @@ function App() {
     },
     {
       id: 44,
-      name: "Cognac",
+      bottleName: "Cognac",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Cognac.png",
       selected: false,
@@ -447,7 +445,7 @@ function App() {
     },
     {
       id: 45,
-      name: "Sloe gin",
+      bottleName: "Sloe gin",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Sloe gin.png",
       selected: false,
@@ -455,7 +453,7 @@ function App() {
     },
     {
       id: 46,
-      name: "Apple juice",
+      bottleName: "Apple juice",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Apple juice.png",
       selected: false,
@@ -463,7 +461,7 @@ function App() {
     },
     {
       id: 47,
-      name: "Pineapple juice",
+      bottleName: "Pineapple juice",
       type: "soft",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Pineapple juice.png",
@@ -472,7 +470,7 @@ function App() {
     },
     {
       id: 48,
-      name: "Sloe gin",
+      bottleName: "Sloe gin",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Sloe gin.png",
       selected: false,
@@ -480,7 +478,7 @@ function App() {
     },
     {
       id: 49,
-      name: "Sugar syrup",
+      bottleName: "Sugar syrup",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Sugar syrup.png",
       selected: false,
@@ -488,7 +486,7 @@ function App() {
     },
     {
       id: 50,
-      name: "Milk",
+      bottleName: "Milk",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Milk.png",
       selected: false,
@@ -496,7 +494,7 @@ function App() {
     },
     {
       id: 51,
-      name: "Strawberries",
+      bottleName: "Strawberries",
       type: "soft",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Strawberries.png",
@@ -505,7 +503,7 @@ function App() {
     },
     {
       id: 52,
-      name: "Chocolate syrup",
+      bottleName: "Chocolate syrup",
       type: "soft",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Chocolate syrup.png",
@@ -514,7 +512,7 @@ function App() {
     },
     {
       id: 53,
-      name: "Yoghurt",
+      bottleName: "Yoghurt",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Yoghurt.png",
       selected: false,
@@ -522,7 +520,7 @@ function App() {
     },
     {
       id: 54,
-      name: "Mango",
+      bottleName: "Mango",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Mango.png",
       selected: false,
@@ -530,7 +528,7 @@ function App() {
     },
     {
       id: 55,
-      name: "Ginger",
+      bottleName: "Ginger",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Ginger.png",
       selected: false,
@@ -538,7 +536,7 @@ function App() {
     },
     {
       id: 56,
-      name: "Lime",
+      bottleName: "Lime",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Lime.png",
       selected: false,
@@ -546,7 +544,7 @@ function App() {
     },
     {
       id: 57,
-      name: "Cantaloupe",
+      bottleName: "Cantaloupe",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Cantaloupe.png",
       selected: false,
@@ -554,7 +552,7 @@ function App() {
     },
     {
       id: 58,
-      name: "Berries",
+      bottleName: "Berries",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Berries.png",
       selected: false,
@@ -562,7 +560,7 @@ function App() {
     },
     {
       id: 59,
-      name: "Grapes",
+      bottleName: "Grapes",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Grapes.png",
       selected: false,
@@ -570,7 +568,7 @@ function App() {
     },
     {
       id: 60,
-      name: "Kiwi",
+      bottleName: "Kiwi",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Kiwi.png",
       selected: false,
@@ -578,7 +576,7 @@ function App() {
     },
     {
       id: 61,
-      name: "Tomato juice",
+      bottleName: "Tomato juice",
       type: "soft",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Tomato juice.png",
@@ -587,7 +585,7 @@ function App() {
     },
     {
       id: 62,
-      name: "Cocoa powder",
+      bottleName: "Cocoa powder",
       type: "soft",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Cocoa powder.png",
@@ -596,7 +594,7 @@ function App() {
     },
     {
       id: 63,
-      name: "Chocolate",
+      bottleName: "Chocolate",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Chocolate.png",
       selected: false,
@@ -604,7 +602,7 @@ function App() {
     },
     {
       id: 64,
-      name: "Heavy cream",
+      bottleName: "Heavy cream",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Heavy cream.png",
       selected: false,
@@ -612,7 +610,7 @@ function App() {
     },
     {
       id: 65,
-      name: "Galliano",
+      bottleName: "Galliano",
       type: "liquors",
       image: "https://www.thecocktaildb.com/images/ingredients/Galliano.png",
       selected: false,
@@ -620,7 +618,7 @@ function App() {
     },
     {
       id: 66,
-      name: "Peach Vodka",
+      bottleName: "Peach Vodka",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Peach Vodka.png",
       selected: false,
@@ -628,7 +626,7 @@ function App() {
     },
     {
       id: 67,
-      name: "Ouzo",
+      bottleName: "Ouzo",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Ouzo.png",
       selected: false,
@@ -636,7 +634,7 @@ function App() {
     },
     {
       id: 68,
-      name: "Coffee",
+      bottleName: "Coffee",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Coffee.png",
       selected: false,
@@ -644,7 +642,7 @@ function App() {
     },
     {
       id: 69,
-      name: "Spiced rum",
+      bottleName: "Spiced rum",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Spiced rum.png",
       selected: false,
@@ -652,7 +650,7 @@ function App() {
     },
     {
       id: 70,
-      name: "Water",
+      bottleName: "Water",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Water.png",
       selected: false,
@@ -660,7 +658,7 @@ function App() {
     },
     {
       id: 71,
-      name: "Espresso",
+      bottleName: "Espresso",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Espresso.png",
       selected: false,
@@ -668,7 +666,7 @@ function App() {
     },
     {
       id: 72,
-      name: "Angelica root",
+      bottleName: "Angelica root",
       type: "soft",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Angelica root.png",
@@ -677,7 +675,7 @@ function App() {
     },
     {
       id: 73,
-      name: "Orange",
+      bottleName: "Orange",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Orange.png",
       selected: false,
@@ -685,7 +683,7 @@ function App() {
     },
     {
       id: 74,
-      name: "Cranberries",
+      bottleName: "Cranberries",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Cranberries.png",
       selected: false,
@@ -693,7 +691,7 @@ function App() {
     },
     {
       id: 75,
-      name: "Johnnie Walker",
+      bottleName: "Johnnie Walker",
       type: "spirits",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Johnnie Walker.png",
@@ -702,7 +700,7 @@ function App() {
     },
     {
       id: 76,
-      name: "Apple cider",
+      bottleName: "Apple cider",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Apple cider.png",
       selected: false,
@@ -710,7 +708,7 @@ function App() {
     },
     {
       id: 77,
-      name: "Everclear",
+      bottleName: "Everclear",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Everclear.png",
       selected: false,
@@ -718,7 +716,7 @@ function App() {
     },
     {
       id: 78,
-      name: "Cranberry juice",
+      bottleName: "Cranberry juice",
       type: "soft",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Cranberry juice.png",
@@ -727,7 +725,7 @@ function App() {
     },
     {
       id: 79,
-      name: "Egg yolk",
+      bottleName: "Egg yolk",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Egg yolk.png",
       selected: false,
@@ -735,7 +733,7 @@ function App() {
     },
     {
       id: 80,
-      name: "Egg",
+      bottleName: "Egg",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Egg.png",
       selected: false,
@@ -743,7 +741,7 @@ function App() {
     },
     {
       id: 81,
-      name: "Grape juice",
+      bottleName: "Grape juice",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Grape juice.png",
       selected: false,
@@ -751,7 +749,7 @@ function App() {
     },
     {
       id: 82,
-      name: "Peach nectar",
+      bottleName: "Peach nectar",
       type: "soft",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Peach nectar.png",
@@ -760,7 +758,7 @@ function App() {
     },
     {
       id: 83,
-      name: "Lemon",
+      bottleName: "Lemon",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Lemon.png",
       selected: false,
@@ -768,7 +766,7 @@ function App() {
     },
     {
       id: 84,
-      name: "Firewater",
+      bottleName: "Firewater",
       type: "liquors",
       image: "https://www.thecocktaildb.com/images/ingredients/Firewater.png",
       selected: false,
@@ -776,7 +774,7 @@ function App() {
     },
     {
       id: 85,
-      name: "Lemonade",
+      bottleName: "Lemonade",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Lemonade.png",
       selected: false,
@@ -784,7 +782,7 @@ function App() {
     },
     {
       id: 86,
-      name: "Lager",
+      bottleName: "Lager",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Lager.png",
       selected: false,
@@ -792,7 +790,7 @@ function App() {
     },
     {
       id: 87,
-      name: "Whiskey",
+      bottleName: "Whiskey",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Whiskey.png",
       selected: false,
@@ -800,7 +798,7 @@ function App() {
     },
     {
       id: 88,
-      name: "Absolut Citron",
+      bottleName: "Absolut Citron",
       type: "spirits",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Absolut Citron.png",
@@ -809,7 +807,7 @@ function App() {
     },
     {
       id: 89,
-      name: "Pisco",
+      bottleName: "Pisco",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Pisco.png",
       selected: false,
@@ -817,7 +815,7 @@ function App() {
     },
     {
       id: 90,
-      name: "Irish cream",
+      bottleName: "Irish cream",
       type: "liquors",
       image: "https://www.thecocktaildb.com/images/ingredients/Irish cream.png",
       selected: false,
@@ -825,7 +823,7 @@ function App() {
     },
     {
       id: 91,
-      name: "Ale",
+      bottleName: "Ale",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Ale.png",
       selected: false,
@@ -833,7 +831,7 @@ function App() {
     },
     {
       id: 92,
-      name: "Chocolate liqueur",
+      bottleName: "Chocolate liqueur",
       type: "liquors",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Chocolate liqueur.png",
@@ -842,7 +840,7 @@ function App() {
     },
     {
       id: 93,
-      name: "Midori melon liqueur",
+      bottleName: "Midori melon liqueur",
       type: "liquors",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Midori melon liqueur.png",
@@ -851,7 +849,7 @@ function App() {
     },
     {
       id: 94,
-      name: "Sambuca",
+      bottleName: "Sambuca",
       type: "liquors",
       image: "https://www.thecocktaildb.com/images/ingredients/Sambuca.png",
       selected: false,
@@ -859,7 +857,7 @@ function App() {
     },
     {
       id: 95,
-      name: "Cider",
+      bottleName: "Cider",
       type: "spirits",
       image: "https://www.thecocktaildb.com/images/ingredients/Cider.png",
       selected: false,
@@ -867,7 +865,7 @@ function App() {
     },
     {
       id: 96,
-      name: "Sprite",
+      bottleName: "Sprite",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/Sprite.png",
       selected: false,
@@ -875,7 +873,7 @@ function App() {
     },
     {
       id: 97,
-      name: "7-Up",
+      bottleName: "7-Up",
       type: "soft",
       image: "https://www.thecocktaildb.com/images/ingredients/7-Up.png",
       selected: false,
@@ -883,7 +881,7 @@ function App() {
     },
     {
       id: 98,
-      name: "Blackberry brandy",
+      bottleName: "Blackberry brandy",
       type: "liquors",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Blackberry brandy.png",
@@ -892,7 +890,7 @@ function App() {
     },
     {
       id: 99,
-      name: "Peppermint schnapps",
+      bottleName: "Peppermint schnapps",
       type: "liquors",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Peppermint schnapps.png",
@@ -901,16 +899,14 @@ function App() {
     },
     {
       id: 100,
-      name: "Creme de Cassis",
+      bottleName: "Creme de Cassis",
       type: "liquors",
       image:
         "https://www.thecocktaildb.com/images/ingredients/Creme de Cassis.png",
       selected: false,
       favorite: false,
     },
-  ];
-
-  console.info(tableIngredients);
+  ]);
 
   return (
     <>
@@ -918,10 +914,13 @@ function App() {
         <Navbar />
       </div>
       <div>
-        <button type="button" onClick={getCocktail}>
+        {/* <button type="button" onClick={getCocktail}>
           Load Coktails
-        </button>
-        {/* <componenet setIngredients={setIngredients} Ingredients={Ingredients} /> */}
+        </button> */}
+        <IngredientCard
+          setIngredients={setIngredients}
+          Ingredients={Ingredients}
+        />
       </div>
       <div>
         <Footer />
