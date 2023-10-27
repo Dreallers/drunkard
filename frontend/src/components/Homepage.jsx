@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 function Homepage() {
   return (
-    <div className="homePageContainer">
+    <div className="homePageContainer global">
       <div className="homePage">
         <div className="welcome">
           <p className="neonMain">
