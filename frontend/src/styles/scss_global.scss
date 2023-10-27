@@ -12,11 +12,13 @@
     url("../assets/munake-font/Munake-vm0rE.otf") format("otf");
 }
 
+$drunkfontsize: 1.3rem;
+
 $drunkpolice: #f2ecbe;
 $drunkgreen: #a1e69a;
 $drunkPink: #fe259b;
 $drunkBlueLight: #00aaf6;
-$drunkBlueDark: #102032;
+$drunkBlueDark: rgba(16, 32, 50, 0.6);
 $blue-box-shadow:
   // 0 0 2px #fff,
   // 0 0 4px #fff,
@@ -61,6 +63,6 @@ $green-box-shadow:
 
 body {
   height: 100vh;
-  background-color: #102032;
+  background-image: url("/background.jpg");
   position: relative;
 }
