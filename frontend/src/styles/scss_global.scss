@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
+
+@font-face {
+  font-family: "munake";
+  src:
+    local("munake"),
+    url("../assets/munake-font/Munake-vm0rE.otf") format("otf");
+}
+
+$drunkfontsize: 1.3rem;
+
+$drunkpolice: #f2ecbe;
+$drunkgreen: #a1e69a;
+$drunkPink: #fe259b;
+$drunkBlueLight: #00aaf6;
+$drunkBlueDark: rgba(16, 32, 50, 0.6);
+$blue-box-shadow:
+  0 0 8px $drunkBlueLight,
+  0 0 16px $drunkBlueLight,
+  0 0 20px $drunkBlueLight,
+  0 0 22px $drunkBlueLight,
+  0 0 24px $drunkBlueLight,
+  0 0 26px $drunkBlueLight,
+  inset 0 0 8px $drunkBlueLight,
+  inset 0 0 16px $drunkBlueLight,
+  inset 0 0 20px $drunkBlueLight,
+  inset 0 0 22px $drunkBlueLight,
+  inset 0 0 24px $drunkBlueLight,
+  inset 0 0 26px $drunkBlueLight;
+
+$pink-box-shadow:
+  0 0 2px #fff,
+  0 0 4px #fff,
+  0 0 8px $drunkPink,
+  0 0 16px $drunkPink,
+  0 0 20px $drunkPink,
+  0 0 22px $drunkPink,
+  0 0 24px $drunkPink,
+  0 0 26px $drunkPink,
+  0 0 30px $drunkPink,
+  0 0 32px $drunkPink,
+  0 0 34px $drunkPink,
+  inset 0 0 8px $drunkPink,
+  inset 0 0 16px $drunkPink,
+  inset 0 0 20px $drunkPink,
+  inset 0 0 22px $drunkPink,
+  inset 0 0 24px $drunkPink,
+  inset 0 0 26px $drunkPink;
+
+$green-box-shadow:
+  0 0 8px $drunkgreen,
+  0 0 16px $drunkgreen,
+  0 0 20px $drunkgreen,
+  0 0 22px $drunkgreen,
+  0 0 24px $drunkgreen,
+  0 0 26px $drunkgreen,
+  inset 0 0 8px $drunkgreen,
+  inset 0 0 16px $drunkgreen;
+// inset 0 0 20px $drunkgreen,
+// inset 0 0 22px $drunkgreen;
+// inset 0 0 24px $drunkgreen,
+// inset 0 0 26px $drunkgreen;
+
+$green-text-shadow:
+  0 0 8px $drunkgreen,
+  0 0 16px $drunkgreen,
+  0 0 20px $drunkgreen,
+  0 0 22px $drunkgreen,
+  0 0 24px $drunkgreen,
+  0 0 26px $drunkgreen;
+
+.global {
+  display: flex;
+  flex-direction: column;
+  background-image: url("/background.jpg");
+  background-repeat: no-repeat;
+  object-fit: cover;
+  background-size: 100%;
+}
+
+body {
+  height: 100vh;
+
+  // position: relative;
+}
