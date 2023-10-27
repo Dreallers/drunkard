@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider, NavLink } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./styles/index.scss";
 
 import App from "./App";
@@ -11,12 +11,7 @@ import Homepage from "./components/Homepage";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <div>
-        <Homepage />
-        <NavLink to="/home">Accéder au site</NavLink>
-      </div>
-    ),
+    element: <Homepage />,
   },
   {
     path: "/home",
