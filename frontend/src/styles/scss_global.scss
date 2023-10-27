@@ -79,10 +79,14 @@ $green-text-shadow:
 .global {
   display: flex;
   flex-direction: column;
+  background-image: url("/background.jpg");
+  background-repeat: no-repeat;
+  object-fit: cover;
+  background-size: 100%;
 }
 
 body {
   height: 100vh;
-  background-image: url("/background.jpg");
-  position: relative;
+
+  // position: relative;
 }
