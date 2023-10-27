@@ -8,8 +8,9 @@
 }
 
 .Selected {
-  text-shadow: $green-box-shadow;
+  text-shadow: $green-text-shadow;
   font-size: $drunkfontsize;
+  color: white;
 }
 
 .neonBarContainer {
@@ -20,6 +21,7 @@
 
 .neonBar {
   box-shadow: $pink-box-shadow;
+  border: solid 2px white;
   width: 20vh;
   height: 0.3vh;
   margin-bottom: 3vh;
@@ -33,12 +35,12 @@
   height: 83vh;
   display: flex;
   flex-direction: column;
-  border: solid 1px;
   border-radius: 100px;
   justify-content: flex-start;
   flex-wrap: nowrap;
   overflow: hidden;
   box-shadow: $blue-box-shadow;
+  border: solid 2px white;
 }
 
 .handleIngredientTypeContainer {
