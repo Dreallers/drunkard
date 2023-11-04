@@ -15,7 +15,7 @@
 
   a:hover {
     color: $drunkgreen;
-    text-shadow: $green-box-shadow;
+    text-shadow: $green-text-shadow;
   }
 
   display: flex;
@@ -36,7 +36,7 @@
 
   .active {
     color: $drunkgreen;
-    text-shadow: $green-box-shadow;
+    text-shadow: $green-text-shadow;
   }
 
   .notActive {

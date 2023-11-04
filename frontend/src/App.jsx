@@ -3,9 +3,10 @@ import axios from "axios";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import IngredientCard from "./components/IngredientArea";
+import Searchbar from "./components/Searchbar";
 
 function App() {
-  const [FinalCocktailTable, setFinalCocktailTable] = useState([]);
+  const [finalCocktailTable, setFinalCocktailTable] = useState([]);
 
   useEffect(() => {
     /* Boucle pour lire l'API de a à z: */
@@ -68,7 +69,7 @@ function App() {
             }
           }
         })
-        .catch((err) => console.error(FinalCocktailTable, err));
+        .catch((err) => console.error(finalCocktailTable, err));
     }
   }, []); /* les [] à la fin de useEffect permet de ne faire tourner le useEfect qu'une fois au chargement du component. Note : si on y met des state à la places des [] alors useEffect va tourner à nouveau en cas de modif du state, */
   /* Tableau bouteille alcool avec images */
@@ -908,10 +909,15 @@ function App() {
     },
   ]);
 
+  // passer les props
+
   return (
     <div className="global">
       <div>
         <Navbar />
+      </div>
+      <div>
+        <Searchbar />
       </div>
       <div>
         {/* <button type="button" onClick={getCocktail}>

@@ -1,0 +1,21 @@
+.searchbar {
+  input {
+    position: absolute;
+    bottom: 75%;
+    right: 50%;
+    transform: translate(50%, 50%);
+    background-color: $drunkBlueDark;
+    box-shadow: $pink-box-shadow;
+    border: solid 2px white;
+    border-radius: 50px;
+    padding: 8px;
+    width: 30%;
+    font-size: 1em;
+    font-family: "munake";
+    color: $drunkpolice;
+    outline: none;
+  }
+  input::placeholder {
+    color: rgb(163, 157, 157);
+  }
+}
