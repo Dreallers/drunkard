@@ -87,11 +87,6 @@ button:hover {
 
 .bottleimagesrc {
   width: 115px;
-
-  img {
-    // width: 100%;
-    // height: 100%;
-  }
 }
 
 .Ingredientlist {
@@ -111,9 +106,6 @@ button {
   outline: inherit;
 }
 
-// box-shadow: $pink-box-shadow;
-// border: solid 2px white;
-
 .arrow,
 .arrow:before {
   position: absolute;
@@ -125,13 +117,11 @@ button {
   height: 40px;
   top: 90%;
   margin: -20px 0 0 -20px;
-  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
   border-left: none;
   border-top: none;
   border-right: 2px $drunkPink solid;
   border-bottom: 2px $drunkPink solid;
-  // box-shadow: $pink-box-shadow;
-  // clip-path: inset(0px -15px 0px 0px);
 }
 
 .arrow:before {
@@ -147,8 +137,6 @@ button {
   animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-name: arrow;
-  // box-shadow: $pink-box-shadow;
-  // clip-path: inset(0px 0px 1px px);
 }
 
 @keyframes arrow {

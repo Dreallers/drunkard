@@ -67,10 +67,6 @@ $green-box-shadow:
   0 0 26px $drunkgreen,
   inset 0 0 8px $drunkgreen,
   inset 0 0 16px $drunkgreen;
-// inset 0 0 20px $drunkgreen,
-// inset 0 0 22px $drunkgreen;
-// inset 0 0 24px $drunkgreen,
-// inset 0 0 26px $drunkgreen;
 
 $green-text-shadow:
   0 0 8px $drunkgreen,
@@ -87,11 +83,7 @@ $green-text-shadow:
   background-repeat: no-repeat;
   object-fit: cover;
   background-size: 100%;
-  // width: 100vw;
-  // height: 100vh;
 }
-
-//pour avoir le footer en bas :
 
 .flexgrow1 {
   flex-grow: 1;
