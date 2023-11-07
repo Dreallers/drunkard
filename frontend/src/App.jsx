@@ -15,6 +15,7 @@ function App() {
       <div>
         <Outlet />
       </div>
+      <div className="flexgrow1" />
       {location.pathname !== "/" && (
         <div className="footer">
           <Footer />

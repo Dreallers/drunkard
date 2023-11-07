@@ -1,12 +1,9 @@
 import React from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
 import Score from "./Score";
 
 function Quiz() {
   return (
     <>
-      <Navbar />
       <div className="quiz">
         <p className="title-quiz">Guess who I am ?</p>
         <ul className="ingredients-quiz">
@@ -17,7 +14,6 @@ function Quiz() {
         </ul>
       </div>
       <Score />
-      <Footer />
     </>
   );
 }
