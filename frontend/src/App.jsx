@@ -922,6 +922,7 @@ function App() {
           ingredients={ingredients}
         />
       </div>
+      <div className="flexgrow1" />
       <div className="footer">
         <Footer />
       </div>

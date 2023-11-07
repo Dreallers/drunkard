@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+body {
+  overflow-y: hidden;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
 
 @font-face {
@@ -83,10 +87,18 @@ $green-text-shadow:
   background-repeat: no-repeat;
   object-fit: cover;
   background-size: 100%;
+  width: 100vw;
+  height: 100vh;
 }
 
 body {
   height: 100vh;
 
   // position: relative;
+}
+
+//pour avoir le footer en bas :
+
+.flexgrow1 {
+  flex-grow: 1;
 }
