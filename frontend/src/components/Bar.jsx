@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import IngredientCard from "./IngredientArea";
+import Card from "./Card";
 
 function Bar() {
   const [ingredients, setIngredients] = useState([
@@ -838,11 +839,16 @@ function Bar() {
   ]);
 
   return (
-    <div className="global">
-      <IngredientCard
-        setIngredients={setIngredients}
-        ingredients={ingredients}
-      />
+    <div className="globalBar">
+      <div className="ingredient">
+        <IngredientCard
+          setIngredients={setIngredients}
+          ingredients={ingredients}
+        />
+      </div>
+      <div className="card">
+        <Card />
+      </div>
     </div>
   );
 }

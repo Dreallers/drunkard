@@ -14,6 +14,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    id: "App",
     loader: async () => {
       const finalCocktailTable = [];
       /* Boucle pour lire l'API de a à z: */
@@ -76,7 +77,6 @@ const router = createBrowserRouter([
 
       return finalCocktailTable;
     },
-    id: "app",
     children: [
       {
         index: true,
@@ -95,7 +95,7 @@ const router = createBrowserRouter([
         element: <Mybar />,
       },
       {
-        path: "quiz",
+        path: "quizz",
         element: <Quiz />,
       },
     ],
