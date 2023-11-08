@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Card from "./components/Card";
 
 function App() {
   const [FinalCocktailTable, setFinalCocktailTable] = useState([]);
@@ -82,6 +83,9 @@ function App() {
           Load Coktails
         </button>
       </div>
+      {FinalCocktailTable.map((cocktail) => {
+        return <Card cocktail={cocktail} key={cocktail.drinkId} />;
+      })}
       <div>
         <Footer />
       </div>
