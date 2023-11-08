@@ -917,7 +917,7 @@ function App() {
         <Navbar />
       </div>
       <div>
-        <Searchbar />
+        <Searchbar ingredients={ingredients} />
       </div>
       <div>
         {/* <button type="button" onClick={getCocktail}>

@@ -1,12 +1,10 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
+// import Card from "./Card";
 
-// y rajouter un useLoaderData?
-// y rajouter un await?
-// y rajouter l'auto-complétion
-
-function Searchbar() {
+function Searchbar({ ingredients }) {
   // passer les props
-  const [searchInput, setSearchInput] = useState("");
+  const [ingredientsInput, setIngredientschInput] = useState("");
 
   return (
     <div className="searchbar">
@@ -14,36 +12,45 @@ function Searchbar() {
         type="text"
         placeholder="What are you looking for?"
         onInput={(event) => {
-          setSearchInput(event.target.value);
-          return { searchInput };
+          setIngredientschInput(event.target.value);
         }}
       />
-      {/* {() => {
-        return (
-          <>
-            {ingredients
-              .filter((ingredient) => {
-                if (
-                  ingredient.bottleName
-                    .toLowerCase()
-                    .includes(searchInput.toLowerCase())
-                ) {
-                  return true;
-                }
-              })
-              .map((ingredient) => {
-                return (
-                  <Card key={ingredient.id} />
-                    
-                    // remplacer par Card et son verso 
-                  
-                );
-              })}
-          </>
-        );
-      }} */}
+      <div>
+        {ingredientsInput.toLowerCase() &&
+          ingredients
+            // eslint-disable-next-line react/prop-types
+            .filter((ingredient) => {
+              return ingredient.bottleName
+                .toLowerCase()
+                .includes(ingredientsInput.toLowerCase());
+            })
+            .map((ingredient) => {
+              return <h1 key={ingredient.id}>{ingredient.bottleName}</h1>; // <Card/>
+            })}
+      </div>
     </div>
   );
 }
 
+Searchbar.propTypes = {
+  ingredients: PropTypes.shape({
+    id: PropTypes.number,
+    bottleName: PropTypes.string,
+    type: PropTypes.string,
+    image: PropTypes.string,
+    selected: PropTypes.bool,
+    favorite: PropTypes.bool,
+  }).isRequired,
+};
+
 export default Searchbar;
+
+// .filter((preIngredient) => {
+//   if (preIngredient.selected === true) {
+//     preIngredient.map((ingredientFiltred) => {
+//       return (
+//         <h1 key={ingredientFiltred.id}>
+//           {ingredientFiltred.bottleName}
+//         </h1>
+//       );
+//     });
