@@ -1,0 +1,25 @@
+.cardArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .card {
+    border: solid white 1px;
+    border-radius: 15px;
+    font-size: 1.3rem;
+    color: white;
+    padding: 10px;
+    background-color: black;
+
+    .cardName {
+      color: pink;
+      font-size: 2rem;
+    }
+
+    .cardIngredient {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

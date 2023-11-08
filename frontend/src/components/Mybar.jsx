@@ -1,10 +1,7 @@
-import Navbar from "./Navbar";
-
 function Mybar() {
   return (
-    <div>
-      <Navbar />
-      <p>My Bar</p>
+    <div className="global">
+      <div className="flexgrow1" />
     </div>
   );
 }
