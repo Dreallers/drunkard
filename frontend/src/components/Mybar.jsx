@@ -1,7 +1,7 @@
 function Mybar() {
   return (
-    <div>
-      <p>My Bar</p>
+    <div className="global">
+      <div className="flexgrow1" />
     </div>
   );
 }

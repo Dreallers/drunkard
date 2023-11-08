@@ -1,0 +1,150 @@
+* {
+  font-family: "munake";
+
+  .NotSelected {
+    color: $drunkpolice;
+    font-size: $drunkfontsize;
+  }
+}
+
+.Selected {
+  text-shadow: $green-text-shadow;
+  font-size: $drunkfontsize;
+  color: white;
+}
+
+.neonBarContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.neonBar {
+  box-shadow: $pink-box-shadow;
+  border: solid 2px white;
+  width: 20vh;
+  height: 0.3vh;
+  margin-bottom: 3vh;
+}
+
+.IngredientArea {
+  position: relative;
+  margin: 2vh;
+  padding-top: 6vh;
+  padding-bottom: 5vh;
+  width: 30vh;
+  height: 79vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 100px;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  box-shadow: $blue-box-shadow;
+  border: solid 2px white;
+  background-color: $drunkBlueDark;
+}
+
+.handleIngredientTypeContainer {
+  width: 100%;
+}
+
+.handleIngredientType {
+  padding: 0vh 4vh 4vh 4vh;
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    justify-content: space-between;
+  }
+}
+
+button:hover {
+  color: $drunkgreen;
+  text-shadow: $green-text-shadow;
+}
+
+.ingredientListContainer {
+  overflow: auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Ingredientlist {
+  width: 100%;
+  padding-bottom: 1vh;
+
+  .bottleImage {
+    padding-right: 1vh;
+  }
+}
+
+.ingredientListContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.bottleimagesrc {
+  width: 115px;
+}
+
+.Ingredientlist {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+button {
+  text-align: left;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.arrow,
+.arrow:before {
+  position: absolute;
+  left: 50%;
+}
+
+.arrow {
+  width: 40px;
+  height: 40px;
+  top: 90%;
+  margin: -20px 0 0 -20px;
+  transform: rotate(45deg);
+  border-left: none;
+  border-top: none;
+  border-right: 2px $drunkPink solid;
+  border-bottom: 2px $drunkPink solid;
+}
+
+.arrow:before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  margin: -10px 0 0 -10px;
+  border-left: none;
+  border-top: none;
+  border-right: 1px $drunkPink solid;
+  border-bottom: 1px $drunkPink solid;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: arrow;
+}
+
+@keyframes arrow {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-10px, -10px);
+  }
+}
