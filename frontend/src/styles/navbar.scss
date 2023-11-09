@@ -10,12 +10,12 @@
     text-decoration: none;
     font-family: "munake";
     color: $drunkPink;
-    font-size: 1.8em;
+    font-size: 1.5em;
   }
 
   a:hover {
     color: $drunkgreen;
-    text-shadow: $green-text-shadow;
+    text-shadow: $green-box-shadow;
   }
 
   display: flex;
@@ -29,18 +29,14 @@
   background-color: $drunkBlueDark;
   box-shadow: $blue-box-shadow;
 
-  .imageContainer {
+  img {
     width: 70%;
-
-    img {
-      width: 100%;
-      height: 100%;
-    }
+    height: auto;
   }
 
   .active {
     color: $drunkgreen;
-    text-shadow: $green-text-shadow;
+    text-shadow: $green-box-shadow;
   }
 
   .notActive {

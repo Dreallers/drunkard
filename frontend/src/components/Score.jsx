@@ -1,11 +1,8 @@
 function Score() {
   return (
-    <>
-      <div className="title-score">
-        <p>Score</p>
-      </div>
-      <div className="score-container" />
-    </>
+    <div>
+      <p>Score</p>
+    </div>
   );
 }
 

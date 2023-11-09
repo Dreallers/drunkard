@@ -1,18 +1,9 @@
-import { useRouteLoaderData } from "react-router-dom";
-import CardTwo from "./CardTwo";
-
 function Card() {
-  const cocktails = useRouteLoaderData("App");
   return (
     <div>
-      {cocktails.map((cocktail) => {
-        return (
-          <div key={cocktail.drinkId}>
-            <CardTwo cocktail={cocktail} />
-          </div>
-        );
-      })}
+      <p>Card</p>
     </div>
   );
 }
+
 export default Card;
