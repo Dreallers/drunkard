@@ -16,15 +16,6 @@ function App() {
       <div>
         <Outlet />
       </div>
-      {/* <div className="App">
-        <button type="button" onClick={getCocktail}>
-          Load Coktails
-        </button>
-      </div>
-      {FinalCocktailTable.map((cocktail) => {
-        return <Card cocktail={cocktail} key={cocktail.drinkId} />;
-      })} */}
-
       <div className="flexgrow1" />
       {location.pathname !== "/" && (
         <div className="footer">
