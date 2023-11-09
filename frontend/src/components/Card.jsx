@@ -1,4 +1,4 @@
-import { useRouteLoaderData } from "react-router-dom";
+import { useRouteLoaderData, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import CardTwo from "./CardTwo";
@@ -11,11 +11,19 @@ function Card({ ingredients }) {
 
   const [cocktailsInput, setCocktailschInput] = useState("");
 
+  const [selector, setSelector] = useState("selected");
+
+  const location = useLocation();
+
+  useEffect(() => {
+    setSelector(location.pathname === "/mybar" ? "favorite" : "selected");
+  }, [location]);
+
   useEffect(() => {
     const ingredientsSelected = ingredients
       // eslint-disable-next-line react/prop-types
       .filter((ingredient) => {
-        return ingredient.selected === true;
+        return ingredient[selector] === true;
       })
       .map((element) => {
         return element.bottleName;
@@ -52,7 +60,7 @@ function Card({ ingredients }) {
     } else {
       setcocktailTableFiltred(cocktailTable);
     }
-  }, [ingredients]);
+  }, [ingredients, selector]);
 
   return (
     <>
