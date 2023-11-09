@@ -63,7 +63,7 @@ function Card({ ingredients }) {
   }, [ingredients, selector]);
 
   return (
-    <>
+    <div className="displayArea">
       <div className="searchbar">
         <input
           type="text"
@@ -73,7 +73,7 @@ function Card({ ingredients }) {
           }}
         />
       </div>
-      <div>
+      <div className="card">
         {cocktailTableFiltred
           .filter((cocktail) => {
             return cocktail.drinkName
@@ -88,7 +88,7 @@ function Card({ ingredients }) {
             );
           })}
       </div>
-    </>
+    </div>
   );
 }
 
