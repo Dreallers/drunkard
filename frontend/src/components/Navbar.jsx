@@ -18,9 +18,7 @@ function Navbar() {
       </button>
       <button type="button">
         <NavLink to="/home">
-          <div className="imageContainer">
-            <img src="/cocktail.png" alt="logo-cocktail-bar" />
-          </div>
+          <img src="/cocktail.png" alt="logo-cocktail-bar" />
         </NavLink>
       </button>
       <button

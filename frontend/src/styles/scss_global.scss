@@ -5,10 +5,6 @@
   box-sizing: border-box;
 }
 
-// body {
-//   overflow-y: hidden;
-// }
-
 @import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
 
 @font-face {
@@ -67,6 +63,10 @@ $green-box-shadow:
   0 0 26px $drunkgreen,
   inset 0 0 8px $drunkgreen,
   inset 0 0 16px $drunkgreen;
+// inset 0 0 20px $drunkgreen,
+// inset 0 0 22px $drunkgreen;
+// inset 0 0 24px $drunkgreen,
+// inset 0 0 26px $drunkgreen;
 
 $green-text-shadow:
   0 0 8px $drunkgreen,
@@ -85,6 +85,8 @@ $green-text-shadow:
   background-size: 100%;
 }
 
-.flexgrow1 {
-  flex-grow: 1;
+body {
+  height: 100vh;
+
+  // position: relative;
 }

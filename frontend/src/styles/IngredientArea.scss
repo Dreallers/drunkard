@@ -31,9 +31,8 @@
   position: relative;
   margin: 2vh;
   padding-top: 6vh;
-  padding-bottom: 5vh;
   width: 30vh;
-  height: 79vh;
+  height: 83vh;
   display: flex;
   flex-direction: column;
   border-radius: 100px;
@@ -59,11 +58,6 @@
   }
 }
 
-button:hover {
-  color: $drunkgreen;
-  text-shadow: $green-text-shadow;
-}
-
 .ingredientListContainer {
   overflow: auto;
   display: flex;
@@ -77,7 +71,7 @@ button:hover {
   padding-bottom: 1vh;
 
   .bottleImage {
-    padding-right: 1vh;
+    padding-right: 3vh;
   }
 }
 
@@ -85,18 +79,22 @@ button:hover {
   display: none;
 }
 
-.bottleimagesrc {
-  width: 115px;
+.bottleImage {
+  height: 10vh;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .Ingredientlist {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
 }
 
 button {
-  text-align: left;
   background: none;
   color: inherit;
   border: none;
@@ -106,45 +104,64 @@ button {
   outline: inherit;
 }
 
-.arrow,
-.arrow:before {
+.arrows {
+  width: 60px;
+  height: 72px;
   position: absolute;
   left: 50%;
+  margin-left: -30px;
+  bottom: 20px;
 }
 
-.arrow {
-  width: 40px;
-  height: 40px;
-  top: 90%;
-  margin: -20px 0 0 -20px;
-  transform: rotate(45deg);
-  border-left: none;
-  border-top: none;
-  border-right: 2px $drunkPink solid;
-  border-bottom: 2px $drunkPink solid;
-}
-
-.arrow:before {
-  content: "";
-  width: 20px;
-  height: 20px;
-  top: 50%;
-  margin: -10px 0 0 -10px;
-  border-left: none;
-  border-top: none;
-  border-right: 1px $drunkPink solid;
-  border-bottom: 1px $drunkPink solid;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-  animation-name: arrow;
+.arrows path {
+  stroke: #2994d1;
+  fill: transparent;
+  stroke-width: 1px;
+  animation: arrow 2s infinite;
+  -webkit-animation: arrow 2s infinite;
 }
 
 @keyframes arrow {
   0% {
+    opacity: 0;
+  }
+  40% {
     opacity: 1;
+  }
+  80% {
+    opacity: 0;
   }
   100% {
     opacity: 0;
-    transform: translate(-10px, -10px);
   }
+}
+
+@-webkit-keyframes arrow /*Safari and Chrome*/ {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.arrows path.a1 {
+  animation-delay: -1s;
+  -webkit-animation-delay: -1s; /* Safari 和 Chrome */
+}
+
+.arrows path.a2 {
+  animation-delay: -0.5s;
+  -webkit-animation-delay: -0.5s; /* Safari 和 Chrome */
+}
+
+.arrows path.a3 {
+  animation-delay: 0s;
+  -webkit-animation-delay: 0s; /* Safari 和 Chrome */
 }
