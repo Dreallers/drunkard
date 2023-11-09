@@ -1,3 +1,8 @@
+.displayArea {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
 .card {
   display: flex;
   flex-direction: row;
@@ -22,13 +27,12 @@
   background-position: center;
   color: $drunkpolice;
   flex-direction: column;
-  padding: 8px;
   align-items: center;
 
   .name {
     display: flex;
     justify-content: center;
-    background-color: $drunkBlueDark;
+    background-color: rgba(16, 32, 50, 0.8);
     border-radius: 50px;
     padding: 5px;
     width: 70%;
@@ -40,69 +44,89 @@
     justify-content: space-between;
     height: 100%;
     margin-top: 20px;
+
+    .instruction {
+      max-height: 70%;
+      overflow-y: scroll;
+      font-size: 1.4rem;
+      background-color: rgba(16, 32, 50, 0.8);
+      border-radius: 10px;
+      width: 47%;
+      padding: 5px;
+    }
+    .recette {
+      display: flex;
+      background-color: rgba(16, 32, 50, 0.8);
+      border-radius: 10px;
+      padding: 5px;
+      font-size: 1.1rem;
+      width: 47%;
+      justify-content: space-between;
+      ul {
+        list-style: none;
+      }
+    }
+  }
+  .heart {
+    position: absolute;
+    z-index: 2;
+    bottom: 15px;
+    right: 30px;
+  }
+}
+
+.instruction::-webkit-scrollbar {
+  display: none;
+}
+
+.recto {
+  border-radius: 25% 5% 25% 5%;
+  padding: 8px;
+}
+
+.verso {
+  border-radius: 5% 25% 5% 25%;
+  .garen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .blur {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      backdrop-filter: blur(3px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .tahmKench {
+        padding: 8px;
+        .lillia {
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
   }
 }
 
 .searchbar {
   input {
-    position: absolute;
-    bottom: 75%;
-    right: 50%;
-    transform: translate(50%, 50%);
     background-color: $drunkBlueDark;
     box-shadow: $pink-box-shadow;
     border: solid 2px white;
     border-radius: 50px;
     padding: 8px;
-    width: 30%;
-    font-size: 1em;
+    font-size: 1.5rem;
     font-family: "munake";
     color: $drunkpolice;
     outline: none;
+    width: 30vw;
+    margin: 0px 0px 20px 35px;
   }
   input::placeholder {
     color: rgb(163, 157, 157);
   }
-}
-.instruction {
-  max-height: 70%;
-  overflow-y: scroll;
-  font-size: 1.4rem;
-  background-color: $drunkBlueDark;
-  border-radius: 10px;
-  width: 50%;
-  top: 60px;
-  left: 5px;
-  padding: 5px;
-}
-.instruction::-webkit-scrollbar {
-  display: none;
-}
-.recette {
-  display: flex;
-  background-color: $drunkBlueDark;
-  border-radius: 10px;
-  top: 60px;
-  right: 5px;
-  padding: 5px;
-  font-size: 1.1rem;
-}
-
-.recto {
-  border-radius: 25% 5% 25% 5%;
-}
-
-.verso {
-  border-radius: 5% 25% 5% 25%;
-}
-
-.heart {
-  position: absolute;
-  z-index: 2;
-  bottom: 5px;
-  right: 10px;
-}
-
-ul {
-  list-style: none;
 }
