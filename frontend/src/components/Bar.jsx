@@ -846,8 +846,8 @@ function Bar() {
           ingredients={ingredients}
         />
       </div>
-      <div className="card">
-        <Card />
+      <div className="cardArea">
+        <Card ingredients={ingredients} />
       </div>
     </div>
   );
