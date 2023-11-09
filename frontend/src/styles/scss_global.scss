@@ -81,6 +81,7 @@ $green-text-shadow:
   flex-direction: column;
   background-image: url("/background.jpg");
   background-repeat: no-repeat;
+  background-attachment: fixed;
   object-fit: cover;
   background-size: 100%;
 }

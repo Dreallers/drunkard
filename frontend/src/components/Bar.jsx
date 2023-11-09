@@ -846,7 +846,7 @@ function Bar() {
           ingredients={ingredients}
         />
       </div>
-      <div className="card">
+      <div>
         <Card />
       </div>
     </div>

@@ -4,7 +4,7 @@ import CardTwo from "./CardTwo";
 function Card() {
   const cocktails = useRouteLoaderData("App");
   return (
-    <div>
+    <div className="card">
       {cocktails.map((cocktail) => {
         return (
           <div key={cocktail.drinkId}>
