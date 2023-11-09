@@ -95,10 +95,4 @@ Card.propTypes = {
   }).isRequired,
 };
 
-// {cocktails.map((cocktail) => {
-//   return (
-//     <div key={cocktail.drinkId}>
-//       <CardTwo cocktail={cocktail} />
-//     </div>
-//   )
 export default Card;
