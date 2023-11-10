@@ -7,8 +7,11 @@ function Quiz() {
 
   const [selectedCocktails, setSelectedCocktails] = useState([]);
   const [correctCocktailIndex, setCorrectCocktailIndex] = useState(0);
+  const [scoreMessage, setScoreMessage] = useState("");
+  const [button, setButton] = useState(0);
 
   useEffect(() => {
+    setScoreMessage("");
     if (loadedCocktails && loadedCocktails.length > 0) {
       const allCocktails = loadedCocktails.map((cocktail) => ({ ...cocktail }));
       const shuffledCocktails = allCocktails
@@ -19,7 +22,15 @@ function Quiz() {
       setCorrectCocktailIndex(randomIndex);
       setSelectedCocktails(shuffledCocktails);
     }
-  }, [loadedCocktails]);
+  }, [loadedCocktails, button]);
+
+  const handleCocktailClick = (index) => {
+    if (index === correctCocktailIndex) {
+      setScoreMessage("Well done! You've guessed the right cocktail!");
+    } else {
+      setScoreMessage("Oops! Wrong guess. Try again!");
+    }
+  };
 
   if (selectedCocktails.length === 0) {
     return <div>Loading...</div>;
@@ -37,22 +48,33 @@ function Quiz() {
     .slice(0, 5)
     .map((ingredient) => <li key={ingredient}>{ingredient}</li>);
 
-  const renderedCocktailCards = selectedCocktails.map((cocktail) => (
+  const renderedCocktailCards = selectedCocktails.map((cocktail, index) => (
     <CocktailCard
       key={cocktail.drinkId}
       cocktail={cocktail}
       startFlipped={false}
+      onClick={() => handleCocktailClick(index)}
     />
   ));
 
   return (
     <>
       <div className="quiz">
-        <p className="title-quiz">Guess who I am?</p>
+        <div className="top">
+          <p className="title-quiz">Guess who I am?</p>
+          <button type="button" onClick={() => setButton(button + 1)}>
+            Refresh
+          </button>
+        </div>
         <ul className="ingredients-quiz">{renderedIngredients}</ul>
       </div>
       <div className="cards">{renderedCocktailCards}</div>
-      <div className="score">Your score:</div>
+      <div className="title-score">
+        <p>Your Result</p>
+      </div>
+      <div className="score-container">
+        <p>{scoreMessage}</p>
+      </div>
     </>
   );
 }
