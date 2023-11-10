@@ -49,12 +49,14 @@ function Quiz() {
     .map((ingredient) => <li key={ingredient}>{ingredient}</li>);
 
   const renderedCocktailCards = selectedCocktails.map((cocktail, index) => (
-    <CocktailCard
-      key={cocktail.drinkId}
-      cocktail={cocktail}
-      startFlipped={false}
-      onClick={() => handleCocktailClick(index)}
-    />
+    <div className="cocktailCard-wrapper">
+      <CocktailCard
+        key={cocktail.drinkId}
+        cocktail={cocktail}
+        startFlipped={false}
+        onClick={() => handleCocktailClick(index)}
+      />
+    </div>
   ));
 
   return (
