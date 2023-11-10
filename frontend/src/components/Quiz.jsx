@@ -1,51 +1,57 @@
 import React, { useState, useEffect } from "react";
 import { useRouteLoaderData } from "react-router-dom";
+import CocktailCard from "./CocktailCard";
 
 function Quiz() {
-  const cocktails = useRouteLoaderData("App");
-  const [selectedCocktails, setSelectedCocktails] = useState([]);
+  const loadedCocktails = useRouteLoaderData("App");
 
-  const getRandomCocktail = () =>
-    cocktails[Math.floor(Math.random() * cocktails.length)];
+  const [selectedCocktails, setSelectedCocktails] = useState([]);
+  const [correctCocktailIndex, setCorrectCocktailIndex] = useState(0);
 
   useEffect(() => {
-    if (cocktails && cocktails.length > 0) {
-      const newSelectedCocktails = Array.from({ length: 6 }, getRandomCocktail);
-      setSelectedCocktails(newSelectedCocktails);
+    if (loadedCocktails && loadedCocktails.length > 0) {
+      const allCocktails = loadedCocktails.map((cocktail) => ({ ...cocktail }));
+      const shuffledCocktails = allCocktails
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 6);
+      const randomIndex = Math.floor(Math.random() * shuffledCocktails.length);
+
+      setCorrectCocktailIndex(randomIndex);
+      setSelectedCocktails(shuffledCocktails);
     }
-  }, [cocktails]);
+  }, [loadedCocktails]);
 
   if (selectedCocktails.length === 0) {
-    return <p>Loading...</p>;
+    return <div>Loading...</div>;
   }
 
-  const [correctCocktail, ...restSelectedCocktails] = selectedCocktails;
-
-  const ingredients = Array.from(
+  const correctCocktail = selectedCocktails[correctCocktailIndex];
+  const correctCocktailIngredients = Array.from(
     { length: 15 },
     (_, i) => correctCocktail[`drinkIngredient${i + 1}`]
   ).filter(Boolean);
+
+  console.info(correctCocktail);
+
+  const renderedIngredients = correctCocktailIngredients
+    .slice(0, 5)
+    .map((ingredient) => <li key={ingredient}>{ingredient}</li>);
+
+  const renderedCocktailCards = selectedCocktails.map((cocktail) => (
+    <CocktailCard
+      key={cocktail.drinkId}
+      cocktail={cocktail}
+      startFlipped={false}
+    />
+  ));
 
   return (
     <>
       <div className="quiz">
         <p className="title-quiz">Guess who I am?</p>
-        <ul className="ingredients-quiz">
-          {ingredients.slice(0, 5).map((ingredient) => (
-            <li key={`${correctCocktail.drinkId}-${ingredient}`}>
-              {ingredient}
-            </li>
-          ))}
-        </ul>
+        <ul className="ingredients-quiz">{renderedIngredients}</ul>
       </div>
-      <div className="cards">
-        {restSelectedCocktails.map((cocktail) => (
-          <div className="card" key={cocktail.drinkId}>
-            <div className="cardName">{cocktail.drinkName}</div>
-            <div className="cardIngredients" />
-          </div>
-        ))}
-      </div>
+      <div className="cards">{renderedCocktailCards}</div>
       <div className="score">Your score:</div>
     </>
   );
