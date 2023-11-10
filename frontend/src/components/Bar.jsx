@@ -858,3 +858,5 @@ function Bar() {
 }
 
 export default Bar;
+
+// mettre dans même div que searchbar
