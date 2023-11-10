@@ -2,9 +2,9 @@
   padding: 0;
   display: flex;
   width: 100%;
-
-  button {
-    padding-left: 24em;
-  }
 }
-//div qui englobe searchbar et button
+
+.random-button {
+  //z-index: 100;
+  padding: 30px;
+}

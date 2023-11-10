@@ -14,7 +14,11 @@ function RandomButton() {
   return (
     <>
       <div className="random">
-        <button type="button" onClick={handleGeneratedCocktail}>
+        <button
+          className="random-button"
+          type="button"
+          onClick={handleGeneratedCocktail}
+        >
           <img src="/dice neon.png" alt=" cocktail random button" />
         </button>
       </div>

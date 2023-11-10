@@ -848,15 +848,15 @@ function Bar() {
         />
       </div>
       <div className="cardArea">
-        <FilterSearchBar ingredients={ingredients} />
-      </div>
-      <div>
-        <RandomButton />
+        <div>
+          <FilterSearchBar ingredients={ingredients} />
+        </div>
+        <div>
+          <RandomButton />
+        </div>
       </div>
     </div>
   );
 }
 
 export default Bar;
-
-// mettre dans même div que searchbar
