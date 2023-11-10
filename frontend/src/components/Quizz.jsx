@@ -1,12 +1,12 @@
 import Navbar from "./Navbar";
 
-function Mybar() {
+function Quizz() {
   return (
     <div>
       <Navbar />
-      <p>My Bar</p>
+      <p>Quizz</p>
     </div>
   );
 }
 
-export default Mybar;
+export default Quizz;

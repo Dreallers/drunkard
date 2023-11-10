@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 
 function Homepage() {
-  // const data = useLoaderData("app");
   return (
     <div className="homePageContainer global">
       <div className="homePage">
