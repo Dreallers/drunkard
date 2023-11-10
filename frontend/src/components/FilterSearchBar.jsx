@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import CardTwo from "./CardTwo";
 
-function Card({ ingredients }) {
+function FilterSearchBar({ ingredients }) {
   const cocktailTable = useRouteLoaderData("App");
 
   const [cocktailTableFiltred, setcocktailTableFiltred] =
@@ -84,7 +84,7 @@ function Card({ ingredients }) {
   );
 }
 
-Card.propTypes = {
+FilterSearchBar.propTypes = {
   ingredients: PropTypes.shape({
     id: PropTypes.number,
     bottleName: PropTypes.string,
@@ -95,4 +95,4 @@ Card.propTypes = {
   }).isRequired,
 };
 
-export default Card;
+export default FilterSearchBar;
