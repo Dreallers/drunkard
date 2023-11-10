@@ -55,17 +55,21 @@ function FilterSearchBar({ ingredients }) {
   }, [ingredients]);
 
   return (
-    <>
+    <div className="displayArea">
       <div className="searchbar">
         <input
           type="text"
+          value={cocktailsInput}
           placeholder="What are you looking for?"
           onInput={(event) => {
             setCocktailschInput(event.target.value);
           }}
         />
+        <button type="button" onClick={() => setCocktailschInput("")}>
+          ✖️
+        </button>
       </div>
-      <div>
+      <div className="card">
         {cocktailTableFiltred
           .filter((cocktail) => {
             return cocktail.drinkName
@@ -80,7 +84,7 @@ function FilterSearchBar({ ingredients }) {
             );
           })}
       </div>
-    </>
+    </div>
   );
 }
 
