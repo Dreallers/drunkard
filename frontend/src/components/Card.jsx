@@ -59,11 +59,15 @@ function Card({ ingredients }) {
       <div className="searchbar">
         <input
           type="text"
+          value={cocktailsInput}
           placeholder="What are you looking for?"
           onInput={(event) => {
             setCocktailschInput(event.target.value);
           }}
         />
+        <button type="button" onClick={() => setCocktailschInput("")}>
+          ✖️
+        </button>
       </div>
       <div className="card">
         {cocktailTableFiltred
