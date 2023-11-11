@@ -12,22 +12,22 @@ function RandomButton() {
   };
 
   return (
-    <>
-      <div className="random">
-        <button
-          className="random-button"
-          type="button"
-          onClick={handleGeneratedCocktail}
-        >
-          <img src="/dice neon.png" alt=" cocktail random button" />
-        </button>
+    <div className="random">
+      <button
+        className="random-button"
+        type="button"
+        onClick={handleGeneratedCocktail}
+      >
+        <img src="/dice neon crop png.png" alt=" cocktail random button" />
+      </button>
+      <div className="cocktail-generated">
+        {randomCocktail && (
+          <div>
+            <CardTwo key={randomCocktail.drinkId} cocktail={randomCocktail} />
+          </div>
+        )}
       </div>
-      {randomCocktail && (
-        <div>
-          <CardTwo key={randomCocktail.drinkId} cocktail={randomCocktail} />
-        </div>
-      )}
-    </>
+    </div>
   );
 }
 

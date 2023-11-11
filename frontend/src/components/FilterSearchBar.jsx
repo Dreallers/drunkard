@@ -2,6 +2,7 @@ import { useRouteLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import CardTwo from "./CardTwo";
+import RandomButton from "./RandomButton";
 
 function FilterSearchBar({ ingredients }) {
   const cocktailTable = useRouteLoaderData("App");
@@ -56,18 +57,21 @@ function FilterSearchBar({ ingredients }) {
 
   return (
     <div className="displayArea">
-      <div className="searchbar">
-        <input
-          type="text"
-          value={cocktailsInput}
-          placeholder="What are you looking for?"
-          onInput={(event) => {
-            setCocktailschInput(event.target.value);
-          }}
-        />
-        <button type="button" onClick={() => setCocktailschInput("")}>
-          ✖️
-        </button>
+      <div className="searchbarArea">
+        <div className="searchbar">
+          <input
+            type="text"
+            value={cocktailsInput}
+            placeholder="What are you looking for?"
+            onInput={(event) => {
+              setCocktailschInput(event.target.value);
+            }}
+          />
+          <button type="button" onClick={() => setCocktailschInput("")}>
+            ✖️
+          </button>
+        </div>
+        <RandomButton />
       </div>
       <div className="card">
         {cocktailTableFiltred

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import IngredientCard from "./IngredientArea";
 import FilterSearchBar from "./FilterSearchBar";
-import RandomButton from "./RandomButton";
 
 function Bar() {
   const [ingredients, setIngredients] = useState([
@@ -850,9 +849,6 @@ function Bar() {
       <div className="cardArea">
         <div>
           <FilterSearchBar ingredients={ingredients} />
-        </div>
-        <div>
-          <RandomButton />
         </div>
       </div>
     </div>
