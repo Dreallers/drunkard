@@ -7,11 +7,26 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  overflow-y: auto;
+  height: 65vh;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
-
+.arrow {
+  width: 40px;
+  height: 40px;
+  top: 90%;
+  margin: -20px 0 0 -20px;
+  transform: rotate(45deg);
+  border-left: none;
+  border-top: none;
+  border-right: 2px $drunkPink solid;
+  border-bottom: 2px $drunkPink solid;
+}
 .carte {
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
   position: relative;
   margin: 20px;
 }
