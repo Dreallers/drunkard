@@ -83,6 +83,7 @@ function Card({ ingredients }) {
               </div>
             );
           })}
+        <div className="arrow" />
       </div>
     </div>
   );

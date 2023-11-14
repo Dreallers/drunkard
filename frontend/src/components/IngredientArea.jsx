@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
-function IngredientCard({ setIngredients, ingredients }) {
+function IngredientCard({ setIngredients, ingredients, table }) {
   const [choicedIngredientType, setchoicedIngredientType] =
     useState(
       "liquors"
@@ -66,6 +66,9 @@ function IngredientCard({ setIngredients, ingredients }) {
           >
             Soft
           </button>
+          <button type="button" onClick={() => setIngredients(table)}>
+            ✖️
+          </button>
         </div>
       </div>
       <div className="neonBarContainer">
@@ -107,6 +110,16 @@ function IngredientCard({ setIngredients, ingredients }) {
 }
 
 IngredientCard.propTypes = {
+  table: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      bottleName: PropTypes.string,
+      type: PropTypes.string,
+      image: PropTypes.string,
+      selected: PropTypes.bool,
+      favorite: PropTypes.bool,
+    })
+  ).isRequired,
   setIngredients: PropTypes.func.isRequired,
   ingredients: PropTypes.arrayOf(
     PropTypes.shape({
