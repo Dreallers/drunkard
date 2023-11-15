@@ -3,7 +3,7 @@ import IngredientCard from "./IngredientArea";
 import Card from "./Card";
 
 function Bar() {
-  const [ingredients, setIngredients] = useState([
+  const table = [
     {
       id: 1,
       bottleName: "Light rum",
@@ -836,14 +836,15 @@ function Bar() {
       selected: false,
       favorite: false,
     },
-  ]);
-
+  ];
+  const [ingredients, setIngredients] = useState(table);
   return (
     <div className="globalBar">
       <div className="ingredient">
         <IngredientCard
           setIngredients={setIngredients}
           ingredients={ingredients}
+          table={table}
         />
       </div>
       <div className="cardArea">

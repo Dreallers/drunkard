@@ -7,11 +7,26 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  overflow-y: auto;
+  height: 65vh;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
-
+.arrow {
+  width: 40px;
+  height: 40px;
+  top: 90%;
+  margin: -20px 0 0 -20px;
+  transform: rotate(45deg);
+  border-left: none;
+  border-top: none;
+  border-right: 2px $drunkPink solid;
+  border-bottom: 2px $drunkPink solid;
+}
 .carte {
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
   position: relative;
   margin: 20px;
 }
@@ -113,20 +128,27 @@
 }
 
 .searchbar {
+  display: flex;
+  background-color: $drunkBlueDark;
+  box-shadow: $pink-box-shadow;
+  border: solid 2px white;
+  border-radius: 50px;
+  padding: 8px;
+  width: 30vw;
+  margin: 0px 0px 20px 35px;
+  justify-content: space-between;
+  align-items: center;
   input {
-    background-color: $drunkBlueDark;
-    box-shadow: $pink-box-shadow;
-    border: solid 2px white;
-    border-radius: 50px;
-    padding: 8px;
     font-size: 1.5rem;
     font-family: "munake";
     color: $drunkpolice;
     outline: none;
-    width: 30vw;
-    margin: 0px 0px 20px 35px;
+    border: none;
+    width: 100%;
+    background: transparent;
   }
   input::placeholder {
-    color: rgb(163, 157, 157);
+    color: rgb(189, 184, 184);
   }
 }
+// comment
