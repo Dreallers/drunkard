@@ -82,7 +82,7 @@ $green-text-shadow:
   background-image: url("/background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  object-fit: cover;
+  background-size: contain;
   background-size: 100%;
   overflow: hidden;
 }
