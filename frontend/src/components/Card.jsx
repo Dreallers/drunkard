@@ -77,11 +77,15 @@ function Card({ ingredients }) {
       <div className="searchbar">
         <input
           type="text"
+          value={cocktailsInput}
           placeholder="What are you looking for?"
           onInput={(event) => {
             setCocktailschInput(event.target.value);
           }}
         />
+        <button type="button" onClick={() => setCocktailschInput("")}>
+          ✖️
+        </button>
       </div>
       {/* On réalise le map pour générer chaque CARD (via composant CardTwo) en utilisant le tableau  ci dessus (cocktailTableFiltred) */}
       <div className="card">
