@@ -151,5 +151,15 @@
     input::placeholder {
       color: rgb(163, 157, 157);
     }
+
+    img {
+      width: 20px;
+      height: 20px;
+      opacity: 0.8;
+      border-radius: 100px;
+    }
+    img:hover {
+      filter: drop-shadow(0 0 0.9rem $drunkgreen) contrast(2);
+    }
   }
 }

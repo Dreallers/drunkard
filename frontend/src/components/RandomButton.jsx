@@ -1,34 +1,41 @@
-import { useRouteLoaderData } from "react-router-dom";
+import PropTypes from "prop-types";
 import { useState } from "react";
-import CardTwo from "./CardTwo";
 
-function RandomButton() {
-  const cocktails = useRouteLoaderData("App");
-  const [randomCocktail, setRandomCocktail] = useState(false);
+function Hovering() {
+  return <div className="is-hovering">Surprise me!</div>;
+}
+function RandomButton({ buttonRandomClickHandler }) {
+  // const cocktails = useRouteLoaderData("App");
+  const [isHovering, setIsHovering] = useState(false);
 
-  const handleGeneratedCocktail = () => {
-    const randomIndex = Math.floor(Math.random() * cocktails.length);
-    setRandomCocktail(cocktails[randomIndex]);
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHovering(false);
   };
 
   return (
-    <div className="random">
+    <div className="random ">
+      {isHovering && <Hovering />}
       <button
         className="random-button"
         type="button"
-        onClick={handleGeneratedCocktail}
+        onClick={() => buttonRandomClickHandler("test")}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
+        onFocus={() => undefined}
+        onBlur={() => undefined}
       >
         <img src="/dice neon crop png.png" alt=" cocktail random button" />
       </button>
-      <div className="cocktail-generated">
-        {randomCocktail && (
-          <div>
-            <CardTwo key={randomCocktail.drinkId} cocktail={randomCocktail} />
-          </div>
-        )}
-      </div>
     </div>
   );
 }
 
 export default RandomButton;
+
+RandomButton.propTypes = {
+  buttonRandomClickHandler: PropTypes.func.isRequired,
+};

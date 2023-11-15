@@ -55,6 +55,20 @@ function FilterSearchBar({ ingredients }) {
     }
   }, [ingredients]);
 
+  // Logique Button Random
+  const [coctailGenerated, setCoctailGenerated] = useState();
+
+  const buttonRandomClickHandler = () => {
+    const filtredArray = cocktailTableFiltred.filter((cocktail) => {
+      return cocktail.drinkName
+        .toLowerCase()
+        .includes(cocktailsInput.toLowerCase());
+    });
+    const randomIndex = Math.floor(Math.random() * cocktailTableFiltred.length);
+
+    setCoctailGenerated(filtredArray[randomIndex]);
+  };
+
   return (
     <div className="displayArea">
       <div className="searchbarArea">
@@ -68,25 +82,40 @@ function FilterSearchBar({ ingredients }) {
             }}
           />
           <button type="button" onClick={() => setCocktailschInput("")}>
-            ✖️
+            <img src="/icone-x-avec-cercle-gris.png" alt="cancel-cross" />
           </button>
         </div>
-        <RandomButton />
+        <RandomButton
+          buttonRandomClickHandler={() => buttonRandomClickHandler()}
+        />
       </div>
       <div className="card">
-        {cocktailTableFiltred
-          .filter((cocktail) => {
-            return cocktail.drinkName
-              .toLowerCase()
-              .includes(cocktailsInput.toLowerCase());
-          })
-          .map((cocktail) => {
-            return (
-              <div key={cocktail.drinkId}>
-                <CardTwo cocktail={cocktail} />
-              </div>
-            );
-          })}
+        {coctailGenerated ? (
+          <div className="cocktail-generated">
+            <CardTwo cocktail={coctailGenerated} />
+            <button
+              className="generated-btn"
+              type="button"
+              onClick={() => setCoctailGenerated(false)}
+            >
+              <img src="/icone-x-avec-cercle-gris.png" alt="cancel-cross" />
+            </button>
+          </div>
+        ) : (
+          cocktailTableFiltred
+            .filter((cocktail) => {
+              return cocktail.drinkName
+                .toLowerCase()
+                .includes(cocktailsInput.toLowerCase());
+            })
+            .map((cocktail) => {
+              return (
+                <div key={cocktail.drinkId}>
+                  <CardTwo cocktail={cocktail} />
+                </div>
+              );
+            })
+        )}
       </div>
     </div>
   );
