@@ -36,12 +36,12 @@
   height: 79vh;
   display: flex;
   flex-direction: column;
-  border-radius: 100px;
+  // border-radius: 100px;
   justify-content: flex-start;
   flex-wrap: nowrap;
   overflow: hidden;
   box-shadow: $blue-box-shadow;
-  border: solid 2px white;
+  border-right: solid 2px white;
   background-color: $drunkBlueDark;
 }
 

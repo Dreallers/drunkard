@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
 
-function CardTwo({ cocktail, startFlipped = true, onClick }) {
+function CardTwo({
+  cocktail,
+  startFlipped = true,
+  onClick,
+  favoriteTable,
+  setfavoriteTable,
+}) {
   const location = useLocation();
 
   const [retourne, setRetourne] = useState(startFlipped || false);
@@ -14,10 +20,57 @@ function CardTwo({ cocktail, startFlipped = true, onClick }) {
     }
   };
 
-  const handleIsFavorite = () => {
+  const handleIsFavorite = (event) => {
+    event.stopPropagation();
+    // on récupère le contenu du state favoriteTable (donné par Card)
+    const tempoFavoriteTable = favoriteTable;
+
+    // si le on trouve notre élément comment déjà présent dans notre tableau de "sauvegarde" des favoris, alors on le cherche (via Index) et on le vire.
+    if (isFavorite) {
+      const index = tempoFavoriteTable.findIndex(
+        (item) =>
+          item.drinkId === cocktail.drinkId &&
+          item.drinkName === cocktail.drinkName
+      );
+      if (index !== -1) {
+        tempoFavoriteTable.splice(index, 1);
+      }
+      // sinon, on le rajoute
+    } else {
+      tempoFavoriteTable.push({
+        drinkId: cocktail.drinkId,
+        drinkName: cocktail.drinkName,
+      });
+    }
+
+    // on met ensuite à jour notre state pour basculer le "on/off". Note : on le fait à la fin pour éviter un comportement asynchrone.
     setisFavorite((current) => !current);
+    setfavoriteTable(tempoFavoriteTable);
+
+    // on met à jour ensuite le localStorage avec notre tableau de favoris à jour
+    localStorage.setItem("favoriteTable", JSON.stringify(tempoFavoriteTable));
   };
 
+  useEffect(() => {
+    // à chaque évolution de "isFavorite", on récupère le local storage pour MAJ notre state table favoris avec. Ce qui va ensuite permettre à Card de re-mapper dessus avec les dernières infos.
+    if (localStorage.getItem("favoriteTable") === null) {
+      setfavoriteTable([]);
+    } else {
+      setfavoriteTable(JSON.parse(localStorage.getItem("favoriteTable")));
+    }
+  }, [isFavorite]);
+
+  useEffect(() => {
+    // Ce useEffect permet qu'à chaque re-render de remettre chaque cocktails en favoris "true", si ils sont présent dans notre localStorage.
+    const tempotable = JSON.parse(localStorage.getItem("favoriteTable"));
+    if (tempotable) {
+      if (tempotable.find((id) => id.drinkId === cocktail.drinkId)) {
+        setisFavorite(true);
+      }
+    }
+  }, []);
+
+  // ici on fait le return de la card "unique" de chaque cocktails :
   return (
     <div
       tabIndex={0}
@@ -217,7 +270,14 @@ CardTwo.propTypes = {
     selected: PropTypes.bool,
     favorite: PropTypes.bool,
   }).isRequired,
+  favoriteTable: PropTypes.shape({
+    drinkId: PropTypes.number,
+    drinkName: PropTypes.string,
+  }).isRequired,
   startFlipped: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
+  // favoriteTable: PropTypes.array.isRequired,
+  setfavoriteTable: PropTypes.func.isRequired,
 };
+
 export default CardTwo;

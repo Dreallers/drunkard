@@ -1,11 +1,20 @@
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 function IngredientCard({ setIngredients, ingredients, table }) {
   const [choicedIngredientType, setchoicedIngredientType] =
     useState(
       "liquors"
-    ); /* permet d'avoir les liquros d'afficher au chargement */
+    ); /* permet d'avoir les liquors d'afficher au chargement */
+
+  const [selector, setSelector] = useState("selected");
+
+  const location = useLocation();
+
+  useEffect(() => {
+    setSelector(location.pathname === "/mybar" ? "favorite" : "selected");
+  }, [location]);
 
   function handleClickSelected(ingredientId) {
     const copyIngredient = [
@@ -15,10 +24,10 @@ function IngredientCard({ setIngredients, ingredients, table }) {
       /* le filter ne laisse passer que les return true dans le tableau temporaire */
       if (ingredientId === element.id) {
         const elementcopy = element;
-        if (element.selected === true) {
-          elementcopy.selected = false;
+        if (element[selector] === true) {
+          elementcopy[selector] = false;
         } else {
-          elementcopy.selected = true;
+          elementcopy[selector] = true;
         }
         console.info(element);
       }
@@ -94,7 +103,7 @@ function IngredientCard({ setIngredients, ingredients, table }) {
                     type="button"
                     onClick={() => handleClickSelected(ingredient.id)}
                     className={
-                      ingredient.selected === true ? "Selected" : "NotSelected"
+                      ingredient[selector] === true ? "Selected" : "NotSelected"
                     }
                   >
                     {ingredient.bottleName}

@@ -1,11 +1,18 @@
+import React, { useState, useMemo } from "react";
 import { useLocation, Outlet } from "react-router-dom";
-import React from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-// import Card from "./components/Card";
+import OutletContext from "./components/OutletContext";
 
 function App() {
   const location = useLocation();
+  const [favoriteTable, setfavoriteTable] = useState([]);
+
+  const contextValue = useMemo(
+    () => ({ favoriteTable, setfavoriteTable }),
+    [favoriteTable, setfavoriteTable]
+  );
+
   return (
     <div className="global">
       {location.pathname !== "/" && (
@@ -13,9 +20,11 @@ function App() {
           <Navbar />
         </div>
       )}
-      <div>
-        <Outlet />
-      </div>
+      <OutletContext.Provider value={contextValue}>
+        <div>
+          <Outlet />
+        </div>
+      </OutletContext.Provider>
       <div className="flexgrow1" />
       {location.pathname !== "/" && (
         <div className="footer">

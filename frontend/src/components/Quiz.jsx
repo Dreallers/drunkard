@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useRouteLoaderData } from "react-router-dom";
 import Confetti from "react-confetti";
+import { useOutletContext } from "./OutletContext";
 import CardTwo from "./CardTwo";
 
 function Quiz() {
+  const { favoriteTable, setfavoriteTable } = useOutletContext();
+
   const loadedCocktails = useRouteLoaderData("App");
 
   const [selectedCocktails, setSelectedCocktails] = useState([]);
@@ -97,6 +100,8 @@ function Quiz() {
         cocktail={cocktail}
         startFlipped={false}
         onClick={() => handleCocktailClick(index)}
+        favoriteTable={favoriteTable}
+        setfavoriteTable={setfavoriteTable}
       />
     </div>
   ));

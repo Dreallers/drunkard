@@ -1,27 +1,42 @@
-import { useRouteLoaderData } from "react-router-dom";
+import { useRouteLoaderData, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import CardTwo from "./CardTwo";
+import { useOutletContext } from "./OutletContext";
 
 function Card({ ingredients }) {
   const cocktailTable = useRouteLoaderData("App");
+  const { favoriteTable, setfavoriteTable } = useOutletContext();
 
   const [cocktailTableFiltred, setcocktailTableFiltred] =
     useState(cocktailTable);
 
   const [cocktailsInput, setCocktailschInput] = useState("");
 
+  const [selector, setSelector] = useState("all");
+
+  const location = useLocation();
+
+  // Permet de modifier le comportement de la ingredient area selon la page :
   useEffect(() => {
+    setSelector(location.pathname === "/mybar" ? "favorite" : "selected");
+  }, [location]);
+
+  useEffect(() => {
+    // on récupère dans un tableau tout les ingrédients sélectionnés (selon le state favorite ou selected en fonction de la page)
     const ingredientsSelected = ingredients
       // eslint-disable-next-line react/prop-types
       .filter((ingredient) => {
-        return ingredient.selected === true;
+        return ingredient[selector] === true;
       })
       .map((element) => {
         return element.bottleName;
       });
 
-    const cocktailTableSelectedFiltred = cocktailTable.filter((cocktail) => {
+    let cocktailTableSelectedFiltred = [];
+    const cocktailTableSelected = cocktailTable;
+    // on récupère les cocktails dont les ingrédients sont présent dans la selection d'ingrédient (menu de gauche)
+    cocktailTableSelectedFiltred = cocktailTableSelected.filter((cocktail) => {
       for (const ing of ingredientsSelected) {
         if (
           cocktail.drinkIngredient1 !== ing &&
@@ -47,14 +62,17 @@ function Card({ ingredients }) {
       return true;
     });
 
+    // si aucun ingrédient n'a été selectionné, on veut afficher tout les cocktails de l'API :
+    // le tableau cocktailTableFiltred va être le tableau sur lequel le MAP va être réalisé
     if (ingredientsSelected.length !== 0) {
       setcocktailTableFiltred(cocktailTableSelectedFiltred);
     } else {
       setcocktailTableFiltred(cocktailTable);
     }
-  }, [ingredients]);
+  }, [ingredients, selector]);
 
   return (
+    // Search bar pour ensuite filtrer le map selon ce qui est tapé.
     <div className="displayArea">
       <div className="searchbar">
         <input
@@ -69,21 +87,51 @@ function Card({ ingredients }) {
           ✖️
         </button>
       </div>
+      {/* On réalise le map pour générer chaque CARD (via composant CardTwo) en utilisant le tableau  ci dessus (cocktailTableFiltred) */}
       <div className="card">
-        {cocktailTableFiltred
-          .filter((cocktail) => {
-            return cocktail.drinkName
-              .toLowerCase()
-              .includes(cocktailsInput.toLowerCase());
-          })
-          .map((cocktail) => {
-            return (
-              <div key={cocktail.drinkId}>
-                <CardTwo cocktail={cocktail} />
-              </div>
-            );
-          })}
-        <div className="arrow" />
+        {/* si l'utilisateur est sur /mybar, on filtre uniquement les cocktails qui ont été mis en favoris (via state isFavorite) et on filtre aussi avec input SEARCHBAR */}
+        {location.pathname === "/mybar"
+          ? cocktailTableFiltred
+              .filter((cocktail) => {
+                if (
+                  cocktail.drinkName
+                    .toLowerCase()
+                    .includes(cocktailsInput.toLowerCase()) &&
+                  favoriteTable.find((id) => id.drinkId === cocktail.drinkId)
+                ) {
+                  return true;
+                }
+                return false;
+              })
+              .map((cocktail) => {
+                return (
+                  <div key={cocktail.drinkId}>
+                    <CardTwo
+                      cocktail={cocktail}
+                      favoriteTable={favoriteTable}
+                      setfavoriteTable={setfavoriteTable}
+                    />
+                  </div>
+                );
+              })
+          : // si l'utilisateur est sur home, on filtre uniquement selon inuput SEARCHBAR
+            cocktailTableFiltred
+              .filter((cocktail) => {
+                return cocktail.drinkName
+                  .toLowerCase()
+                  .includes(cocktailsInput.toLowerCase());
+              })
+              .map((cocktail) => {
+                return (
+                  <div key={cocktail.drinkId}>
+                    <CardTwo
+                      cocktail={cocktail}
+                      favoriteTable={favoriteTable}
+                      setfavoriteTable={setfavoriteTable}
+                    />
+                  </div>
+                );
+              })}
       </div>
     </div>
   );
