@@ -1,7 +1,7 @@
 import { useRouteLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import CocktailCard from "./CocktailCard";
+import CardTwo from "./CardTwo";
 
 function Card({ ingredients }) {
   const cocktailTable = useRouteLoaderData("App");
@@ -79,7 +79,7 @@ function Card({ ingredients }) {
           .map((cocktail) => {
             return (
               <div key={cocktail.drinkId}>
-                <CocktailCard cocktail={cocktail} />
+                <CardTwo cocktail={cocktail} />
               </div>
             );
           })}

@@ -65,7 +65,7 @@
   width: 10%;
   position: relative;
   left: 138vh;
-  bottom: 100vh;
+  bottom: 93vh;
   margin-left: 22vh;
   background: rgba(16, 32, 50, 0.75);
   border: 1px solid transparent;
@@ -79,7 +79,6 @@
   height: 500px;
   border: 1px solid;
   border-radius: 50px;
-  opacity: 0.7;
   background: rgba(16, 32, 50, 0.75);
   box-shadow: 0 0 30px 10px #00aaf6;
   position: absolute;
@@ -95,11 +94,19 @@
   gap: 30px;
 
   .cocktailCard-wrapper {
-    scale: 0.7;
+    scale: 0.6;
     width: 300px;
     height: 300px;
-    margin-top: -25px;
+    margin-top: -45px;
   }
+
+  // .correct {
+  //   box-shadow: 0 0 8px $drunkgreen,
+  //   0 0 16px $drunkgreen,
+  //   0 0 20px $drunkgreen,
+  //   0 0 22px $drunkgreen,
+  //   0 0 24px $drunkgreen,
+  // }
 }
 
 .top {
@@ -107,8 +114,8 @@
   align-items: center;
 
   button {
-    margin-left: 40vh;
-    padding: 16px;
+    margin-left: 60vh;
+    padding: 12px;
     border: 1px solid white;
     border-radius: 50px;
     box-shadow: $blue-box-shadow;

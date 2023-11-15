@@ -1,24 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { useRouteLoaderData } from "react-router-dom";
-import CocktailCard from "./CocktailCard";
+import Confetti from "react-confetti";
+import CardTwo from "./CardTwo";
 
 function Quiz() {
   const loadedCocktails = useRouteLoaderData("App");
 
   const [selectedCocktails, setSelectedCocktails] = useState([]);
   const [correctCocktailIndex, setCorrectCocktailIndex] = useState(0);
-  const [scoreMessage, setScoreMessage] = useState("");
-  const [button, setButton] = useState(0);
-  const [attempts, setAttempts] = useState(0);
   const [score, setScore] = useState(0);
+  const [attempts, setAttempts] = useState(0);
+  const [scoreMessage, setScoreMessage] = useState("");
   const [isCorrect, setIsCorrect] = useState(false);
+  const [quizEnded, setQuizEnded] = useState(false);
+  const [nextButtonClickCount, setNextButtonClickCount] = useState(0);
+  const [restartClicked, setRestartClicked] = useState(false);
 
   useEffect(() => {
     setScoreMessage("");
     setIsCorrect(false);
-    if (loadedCocktails && loadedCocktails.length > 0) {
+
+    if (loadedCocktails?.length > 0 && !restartClicked) {
       const allCocktails = loadedCocktails.map((cocktail) => ({ ...cocktail }));
       const shuffledCocktails = allCocktails
+        .map((cocktail) => ({ ...cocktail }))
         .sort(() => Math.random() - 0.5)
         .slice(0, 6);
       const randomIndex = Math.floor(Math.random() * shuffledCocktails.length);
@@ -26,7 +31,9 @@ function Quiz() {
       setCorrectCocktailIndex(randomIndex);
       setSelectedCocktails(shuffledCocktails);
     }
-  }, [loadedCocktails, button]);
+
+    setRestartClicked(false);
+  }, [loadedCocktails, nextButtonClickCount, restartClicked]);
 
   if (selectedCocktails.length === 0) {
     return <div>Loading...</div>;
@@ -38,33 +45,55 @@ function Quiz() {
     (_, i) => correctCocktail[`drinkIngredient${i + 1}`]
   ).filter(Boolean);
 
-  const handleCocktailClick = (index) => {
+  const handleCocktailClick = (clickedIndex) => {
     setAttempts(attempts + 1);
-    if (index === correctCocktailIndex) {
+
+    if (clickedIndex === correctCocktailIndex) {
       setScore(score + 1);
       setScoreMessage("Well done! You've guessed the right cocktail!");
       setIsCorrect(true);
+
+      setSelectedCocktails((prevCocktails) =>
+        prevCocktails.map((cocktail, i) => ({
+          ...cocktail,
+          isSelected: i === correctCocktailIndex,
+        }))
+      );
     } else {
       setScoreMessage("Oops! Wrong guess. Try again!");
+
       if (attempts === 2) {
         setScoreMessage(
-          `Oops! Wrong guess. The correct cocktail is ${correctCocktail.drinkName}.`
+          `Oops! Wrong guess. The cocktail is ${correctCocktail.drinkName}.`
         );
         setIsCorrect(true);
       }
     }
   };
 
-  console.info(correctCocktail);
+  const handleNextButtonClick = () => {
+    setNextButtonClickCount(nextButtonClickCount + 1);
+    setAttempts(0);
+    setQuizEnded(nextButtonClickCount + 1 === 5);
+  };
+
+  const handleRestartClick = () => {
+    setScore(0);
+    setNextButtonClickCount(0);
+    setQuizEnded(false);
+    setRestartClicked(true);
+  };
 
   const renderedIngredients = correctCocktailIngredients
     .slice(0, 5)
     .map((ingredient) => <li key={ingredient}>{ingredient}</li>);
 
   const renderedCocktailCards = selectedCocktails.map((cocktail, index) => (
-    <div className="cocktailCard-wrapper">
-      <CocktailCard
-        key={cocktail.drinkId}
+    <div
+      className={`cocktailCard-wrapper ${cocktail.isSelected ? "correct" : ""}`}
+      key={cocktail.drinkId}
+    >
+      <CardTwo
         cocktail={cocktail}
         startFlipped={false}
         onClick={() => handleCocktailClick(index)}
@@ -76,10 +105,16 @@ function Quiz() {
     <>
       <div className="quiz">
         <div className="top">
+          {quizEnded && <Confetti />}
           <p className="title-quiz">Guess who I am?</p>
-          {isCorrect && (
-            <button type="button" onClick={() => setButton(button + 1)}>
+          {isCorrect && !quizEnded && (
+            <button type="button" onClick={handleNextButtonClick}>
               Next
+            </button>
+          )}
+          {quizEnded && (
+            <button type="button" onClick={handleRestartClick}>
+              Restart
             </button>
           )}
         </div>
@@ -87,10 +122,12 @@ function Quiz() {
       </div>
       <div className="cards">{renderedCocktailCards}</div>
       <div className="title-score">
-        <p>Your Score</p>
+        <p>Score</p>
       </div>
       <div className="score-container">
-        <p>Your score is {score} out of 5</p>
+        <p>
+          Your score is {score} out of {5}
+        </p>
         <p className="score-message">{scoreMessage}</p>
       </div>
     </>

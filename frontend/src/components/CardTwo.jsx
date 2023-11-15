@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
 
-function CocktailCard({ cocktail, startFlipped = true, onClick }) {
+function CardTwo({ cocktail, startFlipped = true, onClick }) {
   const location = useLocation();
 
   const [retourne, setRetourne] = useState(startFlipped || false);
@@ -177,7 +177,7 @@ function CocktailCard({ cocktail, startFlipped = true, onClick }) {
   );
 }
 
-CocktailCard.propTypes = {
+CardTwo.propTypes = {
   cocktail: PropTypes.shape({
     drinkId: PropTypes.number,
     drinkName: PropTypes.string,
@@ -220,4 +220,4 @@ CocktailCard.propTypes = {
   startFlipped: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
 };
-export default CocktailCard;
+export default CardTwo;
