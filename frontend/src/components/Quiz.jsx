@@ -9,9 +9,13 @@ function Quiz() {
   const [correctCocktailIndex, setCorrectCocktailIndex] = useState(0);
   const [scoreMessage, setScoreMessage] = useState("");
   const [button, setButton] = useState(0);
+  const [attempts, setAttempts] = useState(0);
+  const [score, setScore] = useState(0);
+  const [isCorrect, setIsCorrect] = useState(false);
 
   useEffect(() => {
     setScoreMessage("");
+    setIsCorrect(false);
     if (loadedCocktails && loadedCocktails.length > 0) {
       const allCocktails = loadedCocktails.map((cocktail) => ({ ...cocktail }));
       const shuffledCocktails = allCocktails
@@ -24,14 +28,6 @@ function Quiz() {
     }
   }, [loadedCocktails, button]);
 
-  const handleCocktailClick = (index) => {
-    if (index === correctCocktailIndex) {
-      setScoreMessage("Well done! You've guessed the right cocktail!");
-    } else {
-      setScoreMessage("Oops! Wrong guess. Try again!");
-    }
-  };
-
   if (selectedCocktails.length === 0) {
     return <div>Loading...</div>;
   }
@@ -41,6 +37,23 @@ function Quiz() {
     { length: 15 },
     (_, i) => correctCocktail[`drinkIngredient${i + 1}`]
   ).filter(Boolean);
+
+  const handleCocktailClick = (index) => {
+    setAttempts(attempts + 1);
+    if (index === correctCocktailIndex) {
+      setScore(score + 1);
+      setScoreMessage("Well done! You've guessed the right cocktail!");
+      setIsCorrect(true);
+    } else {
+      setScoreMessage("Oops! Wrong guess. Try again!");
+      if (attempts === 2) {
+        setScoreMessage(
+          `Oops! Wrong guess. The correct cocktail is ${correctCocktail.drinkName}.`
+        );
+        setIsCorrect(true);
+      }
+    }
+  };
 
   console.info(correctCocktail);
 
@@ -64,18 +77,21 @@ function Quiz() {
       <div className="quiz">
         <div className="top">
           <p className="title-quiz">Guess who I am?</p>
-          <button type="button" onClick={() => setButton(button + 1)}>
-            Refresh
-          </button>
+          {isCorrect && (
+            <button type="button" onClick={() => setButton(button + 1)}>
+              Next
+            </button>
+          )}
         </div>
         <ul className="ingredients-quiz">{renderedIngredients}</ul>
       </div>
       <div className="cards">{renderedCocktailCards}</div>
       <div className="title-score">
-        <p>Your Result</p>
+        <p>Your Score</p>
       </div>
       <div className="score-container">
-        <p>{scoreMessage}</p>
+        <p>Your score is {score} out of 5</p>
+        <p className="score-message">{scoreMessage}</p>
       </div>
     </>
   );
