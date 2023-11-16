@@ -1,10 +1,10 @@
 import { useRouteLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import CardTwo from "./CardTwo";
+import CocktailCard from "./CocktailCard";
 import RandomButton from "./RandomButton";
 
-function FilterSearchBar({ ingredients }) {
+function CocktailFilter({ ingredients }) {
   const cocktailTable = useRouteLoaderData("App");
 
   const [cocktailTableFiltred, setcocktailTableFiltred] =
@@ -64,7 +64,7 @@ function FilterSearchBar({ ingredients }) {
         .toLowerCase()
         .includes(cocktailsInput.toLowerCase());
     });
-    const randomIndex = Math.floor(Math.random() * cocktailTableFiltred.length);
+    const randomIndex = Math.floor(Math.random() * filtredArray.length);
 
     setCoctailGenerated(filtredArray[randomIndex]);
   };
@@ -92,7 +92,7 @@ function FilterSearchBar({ ingredients }) {
       <div className="card">
         {coctailGenerated ? (
           <div className="cocktail-generated">
-            <CardTwo cocktail={coctailGenerated} />
+            <CocktailCard cocktail={coctailGenerated} />
             <button
               className="generated-btn"
               type="button"
@@ -111,7 +111,7 @@ function FilterSearchBar({ ingredients }) {
             .map((cocktail) => {
               return (
                 <div key={cocktail.drinkId}>
-                  <CardTwo cocktail={cocktail} />
+                  <CocktailCard cocktail={cocktail} />
                 </div>
               );
             })
@@ -121,7 +121,7 @@ function FilterSearchBar({ ingredients }) {
   );
 }
 
-FilterSearchBar.propTypes = {
+CocktailFilter.propTypes = {
   ingredients: PropTypes.shape({
     id: PropTypes.number,
     bottleName: PropTypes.string,
@@ -132,4 +132,4 @@ FilterSearchBar.propTypes = {
   }).isRequired,
 };
 
-export default FilterSearchBar;
+export default CocktailFilter;

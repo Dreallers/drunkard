@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-function CardTwo({ cocktail }) {
+function CocktailCard({ cocktail }) {
   const [retourne, setRetourne] = useState(true);
   const [isFavorite, setisFavorite] = useState(cocktail.drinkFavorite);
   const retournerCarte = () => {
@@ -167,7 +167,7 @@ function CardTwo({ cocktail }) {
   );
 }
 
-CardTwo.propTypes = {
+CocktailCard.propTypes = {
   cocktail: PropTypes.shape({
     drinkId: PropTypes.number,
     drinkName: PropTypes.string,
@@ -208,4 +208,4 @@ CardTwo.propTypes = {
     favorite: PropTypes.bool,
   }).isRequired,
 };
-export default CardTwo;
+export default CocktailCard;

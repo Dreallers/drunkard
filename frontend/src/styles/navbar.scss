@@ -6,18 +6,6 @@
 }
 
 .navbar {
-  a {
-    text-decoration: none;
-    font-family: "munake";
-    color: $drunkPink;
-    font-size: 1.8em;
-  }
-
-  a:hover {
-    color: $drunkgreen;
-    text-shadow: $green-text-shadow;
-  }
-
   display: flex;
   border: solid 2px white;
   border-radius: 100px;
@@ -29,9 +17,25 @@
   background-color: $drunkBlueDark;
   box-shadow: $blue-box-shadow;
 
+  a {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    font-family: "munake";
+    color: $drunkPink;
+    font-size: 1.8em;
+  }
+
+  a:hover {
+    color: $drunkgreen;
+    text-shadow: $green-text-shadow;
+  }
+
   .imageContainer {
     width: 70%;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
     img {
       width: 100%;
       height: 100%;
@@ -39,8 +43,8 @@
   }
 
   .active {
-    color: $drunkgreen;
     text-shadow: $green-text-shadow;
+    color: white;
   }
 
   .notActive {
