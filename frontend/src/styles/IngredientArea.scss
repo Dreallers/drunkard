@@ -24,24 +24,38 @@
   border: solid 2px white;
   width: 20vh;
   height: 0.3vh;
-  margin-bottom: 3vh;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+.toptoptop {
+  display: flex;
+  .BlueNeon {
+    box-shadow: $blue-box-shadow;
+    border: solid 2px white;
+    width: 0.3vh;
+    height: 87vh;
+    // margin-top: 2vh;
+    z-index: 4;
+  }
 }
 
 .IngredientArea {
   position: relative;
-  margin: 2vh;
-  padding-top: 6vh;
-  padding-bottom: 5vh;
-  width: 30vh;
-  height: 79vh;
+  // margin: 2vh 0 2vh 2vh;
+  padding-top: 5vh;
+  padding-bottom: 3vh;
+
+  // width: 16vw;
+  height: 87vh;
   display: flex;
   flex-direction: column;
-  // border-radius: 100px;
+  // border-radius: 10px 0px 0px 10px;
   justify-content: flex-start;
   flex-wrap: nowrap;
   overflow: hidden;
-  box-shadow: $blue-box-shadow;
-  border-right: solid 2px white;
+  // box-shadow: $blue-box-shadow;
+  // border-right: solid 2px white;
   background-color: $drunkBlueDark;
 }
 
@@ -50,7 +64,9 @@
 }
 
 .handleIngredientType {
-  padding: 0vh 4vh 4vh 4vh;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
 
@@ -96,6 +112,7 @@ button:hover {
 }
 
 button {
+  margin-right: 5px;
   text-align: left;
   background: none;
   color: inherit;
@@ -115,7 +132,7 @@ button {
 .arrow {
   width: 40px;
   height: 40px;
-  top: 90%;
+  top: 95%;
   margin: -20px 0 0 -20px;
   transform: rotate(45deg);
   border-left: none;
@@ -146,5 +163,32 @@ button {
   100% {
     opacity: 0;
     transform: translate(-10px, -10px);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .hide {
+    position: absolute;
+    left: -100vw;
+  }
+  .show {
+    position: absolute;
+    left: 0vw;
+    z-index: 3;
+    // background-color: black;
+    width: 100vw;
+
+    .IngredientArea {
+      height: 100vh;
+
+      .IngredientList {
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  .blurside {
+    filter: blur(3px);
   }
 }
