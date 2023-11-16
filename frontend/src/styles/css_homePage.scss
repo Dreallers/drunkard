@@ -149,3 +149,117 @@ img {
     opacity: 0.4;
   }
 }
+
+@media screen and (min-width: 320px), (max-width: 480px) {
+  .neonMain {
+    width: fit-content;
+    font-size: 2.5rem;
+  }
+  .image {
+    width: fit-content;
+  }
+  .confirmation {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (min-width: 480px), (orientation: landscape) {
+  .neonMain {
+    width: fit-content;
+    font-size: 3rem;
+  }
+  .image {
+    width: fit-content;
+  }
+  .confirmation {
+    font-size: 1.5rem;
+  }
+  .age {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .neonMain {
+    width: fit-content;
+    font-size: 3rem;
+  }
+  .image {
+    width: fit-content;
+  }
+  .confirmation {
+    font-size: 2rem;
+  }
+  .age {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 915px) {
+  .neonMain {
+    width: fit-content;
+    font-size: 5rem;
+  }
+  .image {
+    width: fit-content;
+  }
+  .confirmation {
+    font-size: 2rem;
+  }
+  .age {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 1024px), (orientation: landscape) {
+  .neonMain {
+    width: fit-content;
+    font-size: 6rem;
+  }
+  .image {
+    width: fit-content;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .neonMain {
+    width: fit-content;
+    font-size: 7rem;
+  }
+  .image {
+    width: fit-content;
+  }
+  .confirmation {
+    font-size: 2rem;
+  }
+  .age {
+    font-size: 2rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .neonMain {
+    width: fit-content;
+    font-size: 7rem;
+  }
+  .image {
+    width: fit-content;
+  }
+  .confirmation {
+    font-size: 2rem;
+  }
+  .age {
+    font-size: 2rem;
+    margin-bottom: 25px;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .neonMain {
+    width: fit-content;
+    font-size: 7.5rem;
+  }
+  .image {
+    width: fit-content;
+  }
+  .confirmation {
+    font-size: 2.5rem;
+  }
+  .age {
+    font-size: 2.5rem;
+  }
+}
