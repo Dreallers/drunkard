@@ -31,6 +31,11 @@
   margin: 20px;
 }
 
+.face:hover {
+  box-shadow: $pink-box-shadow;
+  border: solid 2px white;
+}
+
 .face {
   position: absolute;
   width: 100%;
@@ -43,6 +48,10 @@
   color: $drunkpolice;
   flex-direction: column;
   align-items: center;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  box-shadow: $green-box-shadow;
+  border: solid 1px white;
 
   .name {
     display: flex;
@@ -101,6 +110,8 @@
 
 .verso {
   border-radius: 5% 25% 5% 25%;
+  // z-index: 100;
+  // transform: scale(1.3);
   .garen {
     position: relative;
     width: 100%;
@@ -126,29 +137,44 @@
     }
   }
 }
-
-.searchbar {
+.displayArea {
   display: flex;
-  background-color: $drunkBlueDark;
-  box-shadow: $pink-box-shadow;
-  border: solid 2px white;
-  border-radius: 50px;
-  padding: 8px;
-  width: 30vw;
-  margin: 0px 0px 20px 35px;
-  justify-content: space-between;
-  align-items: center;
-  input {
-    font-size: 1.5rem;
-    font-family: "munake";
-    color: $drunkpolice;
-    outline: none;
-    border: none;
-    width: 100%;
-    background: transparent;
-  }
-  input::placeholder {
-    color: rgb(189, 184, 184);
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  .searchbar {
+    display: flex;
+    background-color: $drunkBlueDark;
+    box-shadow: $pink-box-shadow;
+    border: solid 2px white;
+    border-radius: 50px;
+    padding: 8px;
+    width: 30vw;
+    margin: 0px 0px 20px 35px;
+    justify-content: space-between;
+    align-items: center;
+
+    input {
+      font-size: 1.5rem;
+      font-family: "munake";
+      color: $drunkpolice;
+      outline: none;
+      border: none;
+      width: 100%;
+      background: transparent;
+    }
+    input::placeholder {
+      color: rgb(163, 157, 157);
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+      opacity: 0.8;
+      border-radius: 100px;
+    }
+    img:hover {
+      filter: drop-shadow(0 0 0.9rem $drunkgreen) contrast(2);
+    }
   }
 }
-// comment

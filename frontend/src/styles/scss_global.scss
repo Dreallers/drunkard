@@ -82,8 +82,8 @@ $green-text-shadow:
   background-image: url("/background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: contain;
-  background-size: 100%;
+  object-fit: cover;
+  background-size: cover;
 }
 
 .flexgrow1 {
