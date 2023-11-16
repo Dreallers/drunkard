@@ -42,82 +42,88 @@ function IngredientCard({ setIngredients, ingredients, table }) {
     ); /* permet de changer le type d'ingrédient affiché (soft ou spirits ou liquors) apres le click */
   }
   return (
-    <div className="IngredientArea">
-      <div className="handleIngredientTypeContainer">
-        <div className="handleIngredientType">
-          <button
-            type="button"
-            value="liquors"
-            onClick={(e) => handleIngredientType(e)}
-            className={
-              choicedIngredientType === "liquors" ? "Selected" : "NotSelected"
-            }
-          >
-            Liquors
-          </button>
-          <button
-            type="button"
-            value="spirits"
-            onClick={(e) => handleIngredientType(e)}
-            className={
-              choicedIngredientType === "spirits" ? "Selected" : "NotSelected"
-            }
-          >
-            Spirit
-          </button>
-          <button
-            type="button"
-            value="soft"
-            onClick={(e) => handleIngredientType(e)}
-            className={
-              choicedIngredientType === "soft" ? "Selected" : "NotSelected"
-            }
-          >
-            Soft
-          </button>
-          <button
-            className="generated-btn"
-            type="button"
-            onClick={() => setIngredients(table)}
-          >
-            <img src="/icone-x-avec-cercle-gris.png" alt="cancel-cross" />
-          </button>
+    <div className="toptoptop">
+      <div className="IngredientArea">
+        <div className="handleIngredientTypeContainer">
+          <div className="handleIngredientType">
+            <button
+              type="button"
+              value="liquors"
+              onClick={(e) => handleIngredientType(e)}
+              className={
+                choicedIngredientType === "liquors" ? "Selected" : "NotSelected"
+              }
+            >
+              Liquors
+            </button>
+            <button
+              type="button"
+              value="spirits"
+              onClick={(e) => handleIngredientType(e)}
+              className={
+                choicedIngredientType === "spirits" ? "Selected" : "NotSelected"
+              }
+            >
+              Spirit
+            </button>
+            <button
+              type="button"
+              value="soft"
+              onClick={(e) => handleIngredientType(e)}
+              className={
+                choicedIngredientType === "soft" ? "Selected" : "NotSelected"
+              }
+            >
+              Soft
+            </button>
+            <button
+              className="generated-btn"
+              type="button"
+              onClick={() => setIngredients(table)}
+            >
+              <img src="/icone-x-avec-cercle-gris.png" alt="cancel-cross" />
+            </button>
+          </div>
         </div>
-      </div>
-      <div className="neonBarContainer">
-        <div className="neonBar" />
-      </div>
-      <div className="ingredientListContainer">
-        {ingredients
-          .filter((ingredient) => {
-            return choicedIngredientType === ingredient.type;
-          })
-          .map((ingredient) => {
-            return (
-              <div className="Ingredientlist" key={ingredient.id}>
-                <div className="bottleImage">
-                  <img
-                    className="bottleimagesrc"
-                    src={ingredient.image}
-                    alt=""
-                  />
+        <div className="neonBarContainer">
+          <div className="neonBar" />
+        </div>
+        <div className="ingredientListContainer">
+          {ingredients
+            .filter((ingredient) => {
+              return choicedIngredientType === ingredient.type;
+            })
+            .sort((a, b) => (a.bottleName > b.bottleName ? 1 : -1))
+            .map((ingredient) => {
+              return (
+                <div className="Ingredientlist" key={ingredient.id}>
+                  <div className="bottleImage">
+                    <img
+                      className="bottleimagesrc"
+                      src={ingredient.image}
+                      alt=""
+                    />
+                  </div>
+                  <div className="button">
+                    <button
+                      type="button"
+                      onClick={() => handleClickSelected(ingredient.id)}
+                      className={
+                        ingredient[selector] === true
+                          ? "Selected"
+                          : "NotSelected"
+                      }
+                    >
+                      {ingredient.bottleName}
+                    </button>
+                  </div>
                 </div>
-                <div className="button">
-                  <button
-                    type="button"
-                    onClick={() => handleClickSelected(ingredient.id)}
-                    className={
-                      ingredient[selector] === true ? "Selected" : "NotSelected"
-                    }
-                  >
-                    {ingredient.bottleName}
-                  </button>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+        </div>
+        <div className="arrow" />
       </div>
-      <div className="arrow" />
+      <div className="BlueNeon" />
     </div>
   );
 }

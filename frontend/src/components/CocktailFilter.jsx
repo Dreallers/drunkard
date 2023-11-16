@@ -65,7 +65,6 @@ function CocktailFilter({ ingredients }) {
 
     // si aucun ingrédient n'a été selectionné, on veut afficher tout les cocktails de l'API :
     // le tableau cocktailTableFiltred va être le tableau sur lequel le MAP va être réalisé
-
     if (ingredientsSelected.length !== 0) {
       setcocktailTableFiltred(cocktailTableSelectedFiltred);
     } else {
@@ -90,7 +89,7 @@ function CocktailFilter({ ingredients }) {
   return (
     // Search bar pour ensuite filtrer le map selon ce qui est tapé.
     <>
-      <div className="displayArea">
+      <div className="searchArea">
         <div className="searchbar">
           <input
             type="text"
