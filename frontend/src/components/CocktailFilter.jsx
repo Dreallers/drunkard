@@ -1,12 +1,12 @@
 import { useRouteLoaderData, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import CardTwo from "./CardTwo";
+import CocktailCard from "./CocktailCard";
+import { useOutletContext } from "./OutletContext";
 
-function Card({ ingredients }) {
-  const [favoriteTable, setfavoriteTable] = useState([]); // ce state va permettre de faire le lien avec CardTwo pour savoir quels coktails ont été mis en favoris (on l'utilise avec un localStorage pour conserver l'historique même quand on rafraichit la page)
-  // note : on aurait pu positionner ce stage un niveau au dessus (sur APP par ex) pour tout gérer sans localStorage mais on aurait par contre perdu le données en cas de rafraichissement de la page
+function CocktailFilter({ ingredients }) {
   const cocktailTable = useRouteLoaderData("App");
+  const { favoriteTable, setfavoriteTable } = useOutletContext();
 
   const [cocktailTableFiltred, setcocktailTableFiltred] =
     useState(cocktailTable);
@@ -106,7 +106,7 @@ function Card({ ingredients }) {
               .map((cocktail) => {
                 return (
                   <div key={cocktail.drinkId}>
-                    <CardTwo
+                    <CocktailCard
                       cocktail={cocktail}
                       favoriteTable={favoriteTable}
                       setfavoriteTable={setfavoriteTable}
@@ -124,7 +124,7 @@ function Card({ ingredients }) {
               .map((cocktail) => {
                 return (
                   <div key={cocktail.drinkId}>
-                    <CardTwo
+                    <CocktailCard
                       cocktail={cocktail}
                       favoriteTable={favoriteTable}
                       setfavoriteTable={setfavoriteTable}
@@ -137,7 +137,7 @@ function Card({ ingredients }) {
   );
 }
 
-Card.propTypes = {
+CocktailFilter.propTypes = {
   ingredients: PropTypes.shape({
     id: PropTypes.number,
     bottleName: PropTypes.string,
@@ -148,4 +148,4 @@ Card.propTypes = {
   }).isRequired,
 };
 
-export default Card;
+export default CocktailFilter;
