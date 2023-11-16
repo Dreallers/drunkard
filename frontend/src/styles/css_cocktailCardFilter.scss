@@ -1,39 +1,53 @@
-.displayArea {
-  display: flex;
-  flex-direction: column;
-  margin-top: 40px;
-}
+// .displayArea {
+//   display: flex;
+//   flex-direction: column;
+//   margin-top: 40px;
+// }
 .card {
   display: flex;
+  justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
   overflow-y: auto;
-  height: 65vh;
+  height: 73vh;
   &::-webkit-scrollbar {
     display: none;
   }
 }
-.arrow {
-  width: 40px;
-  height: 40px;
-  top: 90%;
-  margin: -20px 0 0 -20px;
-  transform: rotate(45deg);
-  border-left: none;
-  border-top: none;
-  border-right: 2px $drunkPink solid;
-  border-bottom: 2px $drunkPink solid;
-}
-.carte {
-  width: 350px;
-  height: 350px;
+
+// .cardarrow {
+//   width: 40px;
+//   height: 40px;
+//   top: 90%;
+//   margin: -20px 0 0 -20px;
+//   transform: rotate(45deg);
+//   border-left: none;
+//   border-top: none;
+//   border-right: 2px $drunkPink solid;
+//   border-bottom: 2px $drunkPink solid;
+// }
+
+.carteContainer {
+  width: 250px;
+  height: 300px;
+  // background:
+  //   linear-gradient(to right, white 4px, transparent 4px) 0 0,
+  //   linear-gradient(to right, white 4px, transparent 4px) 0 100%,
+  //   linear-gradient(to left, white 4px, transparent 4px) 100% 0,
+  //   linear-gradient(to left, white 4px, transparent 4px) 100% 100%,
+  //   linear-gradient(to bottom, white 4px, transparent 4px) 0 0,
+  //   linear-gradient(to bottom, white 4px, transparent 4px) 100% 0,
+  //   linear-gradient(to top, white 4px, transparent 4px) 0 100%,
+  //   linear-gradient(to top, white 4px, transparent 4px) 100% 100%;
+  // background-repeat: no-repeat;
+  // background-size: 20px 20px;
   position: relative;
   margin: 20px;
 }
 
-.face:hover {
-  box-shadow: $pink-box-shadow;
-  border: solid 2px white;
+.carte {
+  width: 100%;
+  height: 100%;
 }
 
 .face {
@@ -48,10 +62,26 @@
   color: $drunkpolice;
   flex-direction: column;
   align-items: center;
+  // border: solid 2px black;
   object-fit: cover;
   background-repeat: no-repeat;
-  box-shadow: $green-box-shadow;
-  border: solid 1px white;
+  box-shadow: 0 0 6px $drunkBlueLight;
+  // 0 0 12px $drunkBlueLight;
+  //   0 0 8px $drunkgreen,
+  //   0 0 16px $drunkgreen,
+  //   0 0 20px $drunkgreen,
+  //   inset 0 0 8px $drunkgreen,
+  //   inset 0 0 16px $drunkgreen;
+  // border: solid 1px white;
+  &:hover {
+    box-shadow:
+      0 0 4px #fff,
+      0 0 8px $drunkgreen,
+      0 0 16px $drunkgreen,
+      inset 0 0 8px $drunkgreen,
+      inset 0 0 16px $drunkgreen;
+    border: solid 1px white;
+  }
 
   .name {
     display: flex;
@@ -59,59 +89,75 @@
     background-color: rgba(16, 32, 50, 0.8);
     border-radius: 50px;
     padding: 5px;
+    margin-right: 20px;
     width: 70%;
-    font-size: 2.2rem;
+    font-size: 1.6rem;
   }
   .display {
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
+    flex-direction: column;
+    // justify-content: space-between;
     height: 100%;
     margin-top: 20px;
 
     .instruction {
-      max-height: 70%;
+      max-height: 40%;
       overflow-y: scroll;
-      font-size: 1.4rem;
+      font-size: 1.1rem;
       background-color: rgba(16, 32, 50, 0.8);
       border-radius: 10px;
-      width: 47%;
+      width: 100%;
       padding: 5px;
+      margin-bottom: 10px;
     }
     .recette {
       display: flex;
+      flex-direction: column;
       background-color: rgba(16, 32, 50, 0.8);
       border-radius: 10px;
       padding: 5px;
       font-size: 1.1rem;
-      width: 47%;
-      justify-content: space-between;
-      ul {
-        list-style: none;
+      width: 100%;
+      max-height: 35%;
+      overflow-y: scroll;
+
+      .coupleIngMeas {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+
+        p {
+          align-self: center;
+        }
       }
     }
   }
   .heart {
     position: absolute;
     z-index: 2;
-    bottom: 15px;
-    right: 30px;
+    top: 10px;
+    right: 15px;
   }
 }
-
+.tahmKench {
+  max-height: 100%;
+}
 .instruction::-webkit-scrollbar {
   display: none;
 }
 
+.recette::-webkit-scrollbar {
+  display: none;
+}
+
 .recto {
-  border-radius: 25% 5% 25% 5%;
+  border-radius: 10%;
   padding: 8px;
 }
 
 .verso {
-  border-radius: 5% 25% 5% 25%;
-  // z-index: 100;
-  // transform: scale(1.3);
+  border-radius: 10%;
   .garen {
     position: relative;
     width: 100%;
@@ -137,23 +183,24 @@
     }
   }
 }
-.displayArea {
+
+.searchArea {
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   .searchbar {
     display: flex;
     background-color: $drunkBlueDark;
     box-shadow: $pink-box-shadow;
     border: solid 2px white;
-    border-radius: 50px;
+    border-radius: 10px;
     padding: 8px;
     width: 30vw;
     margin: 0px 0px 20px 35px;
     justify-content: space-between;
     align-items: center;
-
     input {
       font-size: 1.5rem;
       font-family: "munake";
@@ -164,17 +211,14 @@
       background: transparent;
     }
     input::placeholder {
-      color: rgb(163, 157, 157);
+      color: rgb(189, 184, 184);
     }
+  }
+}
 
-    img {
-      width: 20px;
-      height: 20px;
-      opacity: 0.8;
-      border-radius: 100px;
-    }
-    img:hover {
-      filter: drop-shadow(0 0 0.9rem $drunkgreen) contrast(2);
-    }
+@media screen and (max-width: 1000px) {
+  .searchbar {
+    width: auto;
+    margin-right: 20px;
   }
 }

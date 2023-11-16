@@ -76,8 +76,12 @@ function IngredientCard({ setIngredients, ingredients, table }) {
             >
               Soft
             </button>
-            <button type="button" onClick={() => setIngredients(table)}>
-              ✖️
+            <button
+              className="generated-btn"
+              type="button"
+              onClick={() => setIngredients(table)}
+            >
+              <img src="/icone-x-avec-cercle-gris.png" alt="cancel-cross" />
             </button>
           </div>
         </div>

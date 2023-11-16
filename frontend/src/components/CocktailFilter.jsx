@@ -89,7 +89,7 @@ function CocktailFilter({ ingredients }) {
   return (
     // Search bar pour ensuite filtrer le map selon ce qui est tapé.
     <>
-      <div className="displayArea">
+      <div className="searchArea">
         <div className="searchbar">
           <input
             type="text"
