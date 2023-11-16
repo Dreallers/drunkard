@@ -5,7 +5,6 @@ function Hovering() {
   return <div className="is-hovering">Surprise me!</div>;
 }
 function RandomButton({ buttonRandomClickHandler }) {
-  // const cocktails = useRouteLoaderData("App");
   const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseOver = () => {

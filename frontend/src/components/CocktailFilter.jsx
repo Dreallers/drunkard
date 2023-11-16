@@ -74,7 +74,7 @@ function CocktailFilter({ ingredients }) {
   }, [ingredients, selector]);
 
   // Logique Button Random
-  const [coctailGenerated, setCoctailGenerated] = useState();
+  const [coctailGenerated, setCoctailGenerated] = useState(false);
 
   const buttonRandomClickHandler = () => {
     const filtredArray = cocktailTableFiltred.filter((cocktail) => {
@@ -113,7 +113,7 @@ function CocktailFilter({ ingredients }) {
         />
       </div>
       <div>
-        {coctailGenerated ? (
+        {coctailGenerated && (
           <div className="cocktail-generated">
             <CocktailCard
               cocktail={coctailGenerated}
@@ -128,72 +128,59 @@ function CocktailFilter({ ingredients }) {
               <img src="/icone-x-avec-cercle-gris.png" alt="cancel-cross" />
             </button>
           </div>
-        ) : (
-          cocktailTableFiltred
-            .filter((cocktail) => {
-              return cocktail.drinkName
-                .toLowerCase()
-                .includes(cocktailsInput.toLowerCase());
-            })
-            .map((cocktail) => {
-              return (
-                <div key={cocktail.drinkId}>
-                  <CocktailCard
-                    cocktail={cocktail}
-                    favoriteTable={favoriteTable}
-                    setfavoriteTable={setfavoriteTable}
-                  />
-                </div>
-              );
-            })
         )}
 
         {/* On réalise le map pour générer chaque CARD (via composant CardTwo) en utilisant le tableau  ci dessus (cocktailTableFiltred) */}
-        <div className="card">
-          {/* si l'utilisateur est sur /mybar, on filtre uniquement les cocktails qui ont été mis en favoris (via state isFavorite) et on filtre aussi avec input SEARCHBAR */}
-          {location.pathname === "/mybar"
-            ? cocktailTableFiltred
-                .filter((cocktail) => {
-                  if (
-                    cocktail.drinkName
+        {!coctailGenerated && (
+          <div className="card">
+            {/* si l'utilisateur est sur /mybar, on filtre uniquement les cocktails qui ont été mis en favoris (via state isFavorite) et on filtre aussi avec input SEARCHBAR */}
+
+            {location.pathname === "/mybar"
+              ? cocktailTableFiltred
+                  .filter((cocktail) => {
+                    if (
+                      cocktail.drinkName
+                        .toLowerCase()
+                        .includes(cocktailsInput.toLowerCase()) &&
+                      favoriteTable.find(
+                        (id) => id.drinkId === cocktail.drinkId
+                      )
+                    ) {
+                      return true;
+                    }
+                    return false;
+                  })
+                  .map((cocktail) => {
+                    return (
+                      <div key={cocktail.drinkId}>
+                        <CocktailCard
+                          cocktail={cocktail}
+                          favoriteTable={favoriteTable}
+                          setfavoriteTable={setfavoriteTable}
+                        />
+                      </div>
+                    );
+                  })
+              : // si l'utilisateur est sur home, on filtre uniquement selon inuput SEARCHBAR
+                cocktailTableFiltred
+                  .filter((cocktail) => {
+                    return cocktail.drinkName
                       .toLowerCase()
-                      .includes(cocktailsInput.toLowerCase()) &&
-                    favoriteTable.find((id) => id.drinkId === cocktail.drinkId)
-                  ) {
-                    return true;
-                  }
-                  return false;
-                })
-                .map((cocktail) => {
-                  return (
-                    <div key={cocktail.drinkId}>
-                      <CocktailCard
-                        cocktail={cocktail}
-                        favoriteTable={favoriteTable}
-                        setfavoriteTable={setfavoriteTable}
-                      />
-                    </div>
-                  );
-                })
-            : // si l'utilisateur est sur home, on filtre uniquement selon inuput SEARCHBAR
-              cocktailTableFiltred
-                .filter((cocktail) => {
-                  return cocktail.drinkName
-                    .toLowerCase()
-                    .includes(cocktailsInput.toLowerCase());
-                })
-                .map((cocktail) => {
-                  return (
-                    <div key={cocktail.drinkId}>
-                      <CocktailCard
-                        cocktail={cocktail}
-                        favoriteTable={favoriteTable}
-                        setfavoriteTable={setfavoriteTable}
-                      />
-                    </div>
-                  );
-                })}
-        </div>
+                      .includes(cocktailsInput.toLowerCase());
+                  })
+                  .map((cocktail) => {
+                    return (
+                      <div key={cocktail.drinkId}>
+                        <CocktailCard
+                          cocktail={cocktail}
+                          favoriteTable={favoriteTable}
+                          setfavoriteTable={setfavoriteTable}
+                        />
+                      </div>
+                    );
+                  })}
+          </div>
+        )}
       </div>
     </>
   );
