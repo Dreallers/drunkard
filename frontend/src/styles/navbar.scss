@@ -36,6 +36,9 @@
     .imageContainer {
       width: 70%;
       // align-self: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       img {
         width: 100%;
@@ -44,8 +47,8 @@
     }
 
     .active {
-      color: $drunkgreen;
       text-shadow: $green-text-shadow;
+      color: white;
     }
 
     .notActive {

@@ -1,0 +1,25 @@
+.random {
+  margin-left: 40px;
+  margin-top: 0;
+}
+.is-hovering {
+  color: $drunkpolice;
+  float: right;
+  position: relative;
+  top: 25px;
+}
+.cocktail-generated {
+  display: flex;
+  align-items: flex-start;
+}
+
+.generated-btn {
+  width: 20px;
+  height: 20px;
+  opacity: 0.8;
+  border-radius: 100px;
+
+  :hover {
+    filter: drop-shadow(0 0 0.9rem $drunkgreen) contrast(2);
+  }
+}
