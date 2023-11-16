@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import IngredientCard from "./IngredientArea";
-import Card from "./Card";
+import CocktailFilter from "./CocktailFilter";
+import { useOutletContext } from "./OutletContext";
 
 function Bar() {
+  const { favoriteTable, setfavoriteTable } = useOutletContext();
   const table = [
     {
       id: 1,
@@ -183,6 +185,7 @@ function Bar() {
     {
       id: 22,
       bottleName: "Vodka",
+      image: "https://www.thecocktaildb.com/images/ingredients/vodka.png",
       type: "spirits",
       selected: false,
       favorite: false,
@@ -838,9 +841,52 @@ function Bar() {
     },
   ];
   const [ingredients, setIngredients] = useState(table);
+  let statusBtn = false;
+
+  function handleShowIng() {
+    const ingredientID = document.getElementById("ingredientID");
+    const cardAreaID = document.getElementById("cardAreaID");
+    const carteContainerID = document.getElementById("carteContainerID");
+    const sideBtn = document.getElementById("sideBtn");
+    statusBtn = !statusBtn;
+
+    if (!statusBtn) {
+      carteContainerID.classList.remove("noblur");
+      carteContainerID.classList.add("blurside");
+
+      cardAreaID.classList.remove("noblur");
+      cardAreaID.classList.add("blurside");
+
+      ingredientID.classList.remove("hide");
+      ingredientID.classList.add("show");
+
+      sideBtn.classList.remove("sideIng");
+      sideBtn.classList.add("middleIng");
+    } else {
+      carteContainerID.classList.remove("blurside");
+      carteContainerID.classList.add("noblur");
+
+      cardAreaID.classList.remove("blurside");
+      cardAreaID.classList.add("noblur");
+
+      ingredientID.classList.remove("show");
+      ingredientID.classList.add("hide");
+
+      sideBtn.classList.remove("middleIng");
+      sideBtn.classList.add("sideIng");
+    }
+  }
+
   return (
     <div className="globalBar">
-      <div className="ingredient">
+      <div
+        id="sideBtn"
+        type="button"
+        role="presentation"
+        className="sideIng"
+        onClick={handleShowIng}
+      />
+      <div id="ingredientID" className="ingredient hide">
         <IngredientCard
           setIngredients={setIngredients}
           ingredients={ingredients}
@@ -848,7 +894,11 @@ function Bar() {
         />
       </div>
       <div className="cardArea">
-        <Card ingredients={ingredients} />
+        <CocktailFilter
+          ingredients={ingredients}
+          favoriteTable={favoriteTable}
+          setfavoriteTable={setfavoriteTable}
+        />
       </div>
     </div>
   );

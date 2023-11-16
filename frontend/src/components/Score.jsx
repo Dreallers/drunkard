@@ -2,7 +2,7 @@ function Score() {
   return (
     <>
       <div className="title-score">
-        <p>Score</p>
+        <p>Your Score</p>
       </div>
       <div className="score-container" />
     </>

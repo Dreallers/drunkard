@@ -5,7 +5,6 @@ import "./styles/index.scss";
 import axios from "axios";
 
 import App from "./App";
-import Mybar from "./components/Mybar";
 import Quiz from "./components/Quiz";
 import Homepage from "./components/Homepage";
 import Bar from "./components/Bar";
@@ -84,15 +83,11 @@ const router = createBrowserRouter([
       },
       {
         path: "home",
-        element: (
-          <div>
-            <Bar />
-          </div>
-        ),
+        element: <Bar />,
       },
       {
         path: "mybar",
-        element: <Mybar />,
+        element: <Bar />,
       },
       {
         path: "quizz",
