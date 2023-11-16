@@ -91,10 +91,10 @@
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 0.1fr);
-  gap: 10px;
+  gap: 17px;
 
   .cocktailCard-wrapper {
-    scale: 0.6;
+    scale: 0.7;
     width: 300px;
     height: 300px;
     margin-top: -70px;
@@ -104,14 +104,14 @@
       transform: scale(1.05);
     }
 
-    &.correct {
-      box-shadow:
-        0 0 8px $drunkgreen,
-        0 0 16px $drunkgreen,
-        0 0 20px $drunkgreen,
-        0 0 22px $drunkgreen,
-        0 0 24px $drunkgreen;
-    }
+    // &.correct {
+    //   box-shadow:
+    //     0 0 8px $drunkgreen,
+    //     0 0 16px $drunkgreen,
+    //     0 0 20px $drunkgreen,
+    //     0 0 22px $drunkgreen,
+    //     0 0 24px $drunkgreen;
+    // }
   }
 }
 

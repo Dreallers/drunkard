@@ -25,7 +25,6 @@ function Quiz() {
     if (loadedCocktails?.length > 0 && !restartClicked) {
       const allCocktails = loadedCocktails.map((cocktail) => ({ ...cocktail }));
       const shuffledCocktails = allCocktails
-        .map((cocktail) => ({ ...cocktail }))
         .sort(() => Math.random() - 0.5)
         .slice(0, 6);
 
@@ -33,6 +32,14 @@ function Quiz() {
 
       setCorrectCocktailIndex(randomIndex);
       setSelectedCocktails(shuffledCocktails);
+
+      setSelectedCocktails((prevCocktails) =>
+        prevCocktails.map((cocktail) => ({
+          ...cocktail,
+          isFlipped: false,
+          isSelected: false,
+        }))
+      );
     }
 
     setRestartClicked(false);
@@ -74,9 +81,17 @@ function Quiz() {
           prevCocktails.map((cocktail, i) => ({
             ...cocktail,
             isSelected: i === correctCocktailIndex || i === clickedIndex,
-            isFlipped: i === clickedIndex,
           }))
         );
+
+        if (attempts === 3) {
+          setSelectedCocktails((prevCocktails) =>
+            prevCocktails.map((cocktail) => ({
+              ...cocktail,
+              isFlipped: true,
+            }))
+          );
+        }
       }
 
       if (attempts === 3) {
@@ -90,6 +105,8 @@ function Quiz() {
       setAttempts(0);
       setNextButtonClickCount(nextButtonClickCount + 1);
       setQuizEnded(false);
+    } else {
+      setQuizEnded(true);
     }
   };
 
@@ -132,7 +149,7 @@ function Quiz() {
           <ul className="ingredients-quiz">{renderedIngredients}</ul>
           {isCorrect && !quizEnded && (
             <button type="button" onClick={handleNextButtonClick}>
-              Next
+              {nextButtonClickCount + 1 < 5 ? "Next" : "Finish"}
             </button>
           )}
           {quizEnded && (
