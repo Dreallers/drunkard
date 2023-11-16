@@ -70,13 +70,22 @@ function Quiz() {
           `Oops! Wrong guess. The cocktail is ${correctCocktail.drinkName}.`
         );
         setIsCorrect(true);
+        setSelectedCocktails((prevCocktails) =>
+          prevCocktails.map((cocktail, i) => ({
+            ...cocktail,
+            isSelected: i === correctCocktailIndex || i === clickedIndex,
+            isFlipped: i === clickedIndex,
+          }))
+        );
       }
     }
   };
 
   const handleNextButtonClick = () => {
-    setNextButtonClickCount(nextButtonClickCount + 1);
-    setAttempts(0);
+    if (nextButtonClickCount + 1 < 5) {
+      setAttempts(0);
+      setNextButtonClickCount(nextButtonClickCount + 1);
+    }
     setQuizEnded(nextButtonClickCount + 1 === 5);
   };
 
@@ -98,7 +107,7 @@ function Quiz() {
     >
       <CocktailCard
         cocktail={cocktail}
-        startFlipped={false}
+        startFlipped={cocktail.isFlipped || false}
         onClick={() => handleCocktailClick(index)}
         favoriteTable={favoriteTable}
         setfavoriteTable={setfavoriteTable}
@@ -111,12 +120,15 @@ function Quiz() {
       <div className="quiz">
         <div className="top">
           {quizEnded && <Confetti />}
-          <p className="title-quiz">{`Guess who I am? (${
-            nextButtonClickCount + 1
-          }/5)`}</p>
+          <p className="title-quiz">{`Guess who I am? (${Math.min(
+            nextButtonClickCount + 1,
+            5
+          )}/5)`}</p>
+
+          <ul className="ingredients-quiz">{renderedIngredients}</ul>
           {isCorrect && !quizEnded && (
             <button type="button" onClick={handleNextButtonClick}>
-              Next
+              {nextButtonClickCount + 1 === 5 ? "Finish" : "Next"}
             </button>
           )}
           {quizEnded && (
@@ -125,7 +137,6 @@ function Quiz() {
             </button>
           )}
         </div>
-        <ul className="ingredients-quiz">{renderedIngredients}</ul>
       </div>
       <div className="cards">{renderedCocktailCards}</div>
       <div className="title-score">

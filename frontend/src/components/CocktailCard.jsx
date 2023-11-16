@@ -73,15 +73,10 @@ function CocktailCard({
   // ici on fait le return de la card "unique" de chaque cocktails :
   return (
     <div
-      tabIndex={0}
-      role="button"
+      type="button"
+      role="presentation"
       className="cocktail-card"
       onClick={onClick}
-      onKeyDown={(e) => {
-        if (e.key === "Enter") {
-          retournerCarte();
-        }
-      }}
     >
       <div
         onClick={retournerCarte}

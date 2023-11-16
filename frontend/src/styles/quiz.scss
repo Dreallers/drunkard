@@ -7,14 +7,13 @@
 
 .quiz {
   display: flex;
-  // margin: 30px 30px 0px 30px;
 
   .title-quiz {
     border: solid white 2px;
-    margin: 30px;
+    margin: 37px;
     border-radius: 20px;
-    width: 10%;
-    margin-left: 16vh;
+    width: 20%;
+    margin-left: 7vh;
     font-family: "munake";
     font-size: 18px;
     color: $drunkpolice;
@@ -32,7 +31,7 @@
   }
 
   .ingredients-quiz {
-    margin: 30px;
+    margin: 15px;
     display: flex;
     justify-content: space-between;
     border-radius: 50px;
@@ -41,7 +40,7 @@
     text-align: center;
     border: solid white 2px;
     box-shadow: $blue-box-shadow;
-    padding: 35px;
+    padding: 20px;
     width: 600px;
     font-size: 18px;
 
@@ -63,9 +62,9 @@
   color: $drunkpolice;
   text-align: center;
   width: 10%;
-  position: relative;
-  left: 138vh;
-  bottom: 93vh;
+  position: absolute;
+  left: 64.9vw;
+  bottom: 34vw;
   margin-left: 22vh;
   background: rgba(16, 32, 50, 0.75);
   border: 1px solid transparent;
@@ -76,28 +75,29 @@
 .score-container {
   padding: 25px;
   width: 300px;
-  height: 500px;
+  height: 120px;
   border: 1px solid;
   border-radius: 50px;
   background: rgba(16, 32, 50, 0.75);
   box-shadow: 0 0 30px 10px #00aaf6;
   position: absolute;
   left: 70vw;
-  bottom: -40px;
+  bottom: 25vw;
   color: $drunkpolice;
   font-size: 20px;
+  text-align: center;
 }
 
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 0.1fr);
-  gap: 30px;
+  gap: 10px;
 
   .cocktailCard-wrapper {
     scale: 0.6;
     width: 300px;
     height: 300px;
-    margin-top: -45px;
+    margin-top: -70px;
     transition: transform 0.3s;
 
     &:hover {
@@ -120,8 +120,8 @@
   align-items: center;
 
   button {
-    margin-left: 60vh;
     padding: 12px;
+    width: auto;
     border: 1px solid white;
     border-radius: 50px;
     box-shadow: $blue-box-shadow;
