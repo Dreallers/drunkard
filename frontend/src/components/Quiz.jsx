@@ -65,7 +65,7 @@ function Quiz() {
     } else {
       setScoreMessage("Oops! Wrong guess. Try again!");
 
-      if (attempts === 2) {
+      if (attempts >= 2) {
         setScoreMessage(
           `Oops! Wrong guess. The cocktail is ${correctCocktail.drinkName}.`
         );
@@ -78,6 +78,10 @@ function Quiz() {
           }))
         );
       }
+
+      if (attempts === 3) {
+        setQuizEnded(true);
+      }
     }
   };
 
@@ -85,8 +89,8 @@ function Quiz() {
     if (nextButtonClickCount + 1 < 5) {
       setAttempts(0);
       setNextButtonClickCount(nextButtonClickCount + 1);
+      setQuizEnded(false);
     }
-    setQuizEnded(nextButtonClickCount + 1 === 5);
   };
 
   const handleRestartClick = () => {
@@ -128,7 +132,7 @@ function Quiz() {
           <ul className="ingredients-quiz">{renderedIngredients}</ul>
           {isCorrect && !quizEnded && (
             <button type="button" onClick={handleNextButtonClick}>
-              {nextButtonClickCount + 1 === 5 ? "Finish" : "Next"}
+              Next
             </button>
           )}
           {quizEnded && (
