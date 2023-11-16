@@ -1,64 +1,127 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { useLocation } from "react-router-dom";
 
-function CocktailCard({ cocktail }) {
-  const [retourne, setRetourne] = useState(true);
+function CocktailCard({
+  cocktail,
+  startFlipped = true,
+  onClick,
+  favoriteTable,
+  setfavoriteTable,
+}) {
+  const location = useLocation();
+
+  const [retourne, setRetourne] = useState(startFlipped || false);
   const [isFavorite, setisFavorite] = useState(cocktail.drinkFavorite);
+
   const retournerCarte = () => {
-    setRetourne(!retourne);
+    if (location.pathname !== "/quizz") {
+      setRetourne(!retourne);
+    }
   };
+
   const handleIsFavorite = (event) => {
     event.stopPropagation();
+    // on récupère le contenu du state favoriteTable (donné par Card)
+    const tempoFavoriteTable = favoriteTable;
+
+    // si le on trouve notre élément comment déjà présent dans notre tableau de "sauvegarde" des favoris, alors on le cherche (via Index) et on le vire.
+    if (isFavorite) {
+      const index = tempoFavoriteTable.findIndex(
+        (item) =>
+          item.drinkId === cocktail.drinkId &&
+          item.drinkName === cocktail.drinkName
+      );
+      if (index !== -1) {
+        tempoFavoriteTable.splice(index, 1);
+      }
+      // sinon, on le rajoute
+    } else {
+      tempoFavoriteTable.push({
+        drinkId: cocktail.drinkId,
+        drinkName: cocktail.drinkName,
+      });
+    }
+
+    // on met ensuite à jour notre state pour basculer le "on/off". Note : on le fait à la fin pour éviter un comportement asynchrone.
     setisFavorite((current) => !current);
+    setfavoriteTable(tempoFavoriteTable);
+
+    // on met à jour ensuite le localStorage avec notre tableau de favoris à jour
+    localStorage.setItem("favoriteTable", JSON.stringify(tempoFavoriteTable));
   };
 
+  useEffect(() => {
+    // à chaque évolution de "isFavorite", on récupère le local storage pour MAJ notre state table favoris avec. Ce qui va ensuite permettre à Card de re-mapper dessus avec les dernières infos.
+    if (localStorage.getItem("favoriteTable") === null) {
+      setfavoriteTable([]);
+    } else {
+      setfavoriteTable(JSON.parse(localStorage.getItem("favoriteTable")));
+    }
+  }, [isFavorite]);
+
+  useEffect(() => {
+    // Ce useEffect permet qu'à chaque re-render de remettre chaque cocktails en favoris "true", si ils sont présent dans notre localStorage.
+    const tempotable = JSON.parse(localStorage.getItem("favoriteTable"));
+    if (tempotable) {
+      if (tempotable.find((id) => id.drinkId === cocktail.drinkId)) {
+        setisFavorite(true);
+      }
+    }
+  }, []);
+
+  // ici on fait le return de la card "unique" de chaque cocktails :
   return (
     <div
-      onClick={retournerCarte}
-      aria-hidden
-      className={`carte ${retourne ? "retourne" : ""}`}
+      tabIndex={0}
+      role="button"
+      className="cocktail-card"
+      onClick={onClick}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          retournerCarte();
+        }
+      }}
     >
-      {retourne ? (
-        <div
-          style={{ backgroundImage: `url("${cocktail.drinkImage}")` }}
-          className="face recto"
-        >
-          <div className="name">
-            <p> {cocktail.drinkName} </p>
+      <div
+        onClick={retournerCarte}
+        aria-hidden
+        className={`carte ${retourne ? "retourne" : ""}`}
+      >
+        {retourne ? (
+          <div
+            style={{ backgroundImage: `url("${cocktail.drinkImage}")` }}
+            className="face recto"
+          >
+            <div className="name">
+              <p> {cocktail.drinkName} </p>
+            </div>
+            <button className="heart" type="button" onClick={handleIsFavorite}>
+              {isFavorite ? (
+                <img src="/coeurPlein.png" alt="coeur plein" />
+              ) : (
+                <img src="/coeurVide.png" alt="coeur vide" />
+              )}
+            </button>
           </div>
-          <button className="heart" type="button" onClick={handleIsFavorite}>
-            {isFavorite ? (
-              <img src="/coeurPlein.png" alt="coeur plein" />
-            ) : (
-              <img src="/coeurVide.png" alt="coeur vide" />
-            )}
-          </button>
-        </div>
-      ) : (
-        <div
-          style={{ backgroundImage: `url("${cocktail.drinkImage}")` }}
-          className="face verso"
-        >
-          <div className="garen">
-            <div className="blur">
-              <div className="tahmKench">
-                <div className="lillia">
-                  <div className="name">
-                    <p> {cocktail.drinkName} </p>
-                  </div>
-                </div>
-                <button
-                  className="heart"
-                  type="button"
-                  onClick={handleIsFavorite}
-                >
-                  {isFavorite ? (
-                    <img src="/coeurPlein.png" alt="coeur plein" />
-                  ) : (
-                    <img src="/coeurVide.png" alt="coeur vide" />
-                  )}
-                </button>
-                <div className="display">
+        ) : (
+          <div
+            style={{ backgroundImage: `url("${cocktail.drinkImage}")` }}
+            className="face verso"
+          >
+            <div className="name">
+              <p> {cocktail.drinkName} </p>
+            </div>
+            <button className="heart" type="button" onClick={handleIsFavorite}>
+              {isFavorite ? (
+                <img src="/coeurPlein.png" alt="coeur plein" />
+              ) : (
+                <img src="/coeurVide.png" alt="coeur vide" />
+              )}
+            </button>
+            <div className="display">
+              {startFlipped && (
+                <>
                   <p className="instruction"> {cocktail.drinkInstruction} </p>
                   <div className="recette">
                     <ul className="ingredient">
@@ -157,12 +220,12 @@ function CocktailCard({ cocktail }) {
                       )}
                     </ul>
                   </div>
-                </div>
-              </div>
+                </>
+              )}
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
@@ -207,5 +270,13 @@ CocktailCard.propTypes = {
     selected: PropTypes.bool,
     favorite: PropTypes.bool,
   }).isRequired,
+  favoriteTable: PropTypes.shape({
+    drinkId: PropTypes.number,
+    drinkName: PropTypes.string,
+  }).isRequired,
+  startFlipped: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
+  // favoriteTable: PropTypes.array.isRequired,
+  setfavoriteTable: PropTypes.func.isRequired,
 };
 export default CocktailCard;
