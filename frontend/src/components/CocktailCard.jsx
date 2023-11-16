@@ -279,4 +279,5 @@ CocktailCard.propTypes = {
   // favoriteTable: PropTypes.array.isRequired,
   setfavoriteTable: PropTypes.func.isRequired,
 };
+
 export default CocktailCard;

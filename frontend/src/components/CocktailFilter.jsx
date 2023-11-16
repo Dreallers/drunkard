@@ -2,8 +2,8 @@ import { useRouteLoaderData, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import CocktailCard from "./CocktailCard";
-import { useOutletContext } from "./OutletContext";
 import RandomButton from "./RandomButton";
+import { useOutletContext } from "./OutletContext";
 
 function CocktailFilter({ ingredients }) {
   const cocktailTable = useRouteLoaderData("App");
@@ -100,7 +100,11 @@ function CocktailFilter({ ingredients }) {
               setCocktailschInput(event.target.value);
             }}
           />
-          <button type="button" onClick={() => setCocktailschInput("")}>
+          <button
+            className="generated-btn"
+            type="button"
+            onClick={() => setCocktailschInput("")}
+          >
             <img src="/icone-x-avec-cercle-gris.png" alt="cancel-cross" />
           </button>
         </div>
@@ -108,10 +112,14 @@ function CocktailFilter({ ingredients }) {
           buttonRandomClickHandler={() => buttonRandomClickHandler()}
         />
       </div>
-      <div className="card">
+      <div>
         {coctailGenerated ? (
           <div className="cocktail-generated">
-            <CocktailCard cocktail={coctailGenerated} />
+            <CocktailCard
+              cocktail={coctailGenerated}
+              favoriteTable={favoriteTable}
+              setfavoriteTable={setfavoriteTable}
+            />
             <button
               className="generated-btn"
               type="button"
@@ -130,7 +138,11 @@ function CocktailFilter({ ingredients }) {
             .map((cocktail) => {
               return (
                 <div key={cocktail.drinkId}>
-                  <CocktailCard cocktail={cocktail} />
+                  <CocktailCard
+                    cocktail={cocktail}
+                    favoriteTable={favoriteTable}
+                    setfavoriteTable={setfavoriteTable}
+                  />
                 </div>
               );
             })
