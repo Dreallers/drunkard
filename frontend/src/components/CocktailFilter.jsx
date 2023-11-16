@@ -1,10 +1,10 @@
 import { useRouteLoaderData, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import CardTwo from "./CardTwo";
+import CocktailCard from "./CocktailCard";
 import { useOutletContext } from "./OutletContext";
 
-function Card({ ingredients }) {
+function CocktailFilter({ ingredients }) {
   const cocktailTable = useRouteLoaderData("App");
   const { favoriteTable, setfavoriteTable } = useOutletContext();
 
@@ -106,7 +106,7 @@ function Card({ ingredients }) {
               .map((cocktail) => {
                 return (
                   <div key={cocktail.drinkId}>
-                    <CardTwo
+                    <CocktailCard
                       cocktail={cocktail}
                       favoriteTable={favoriteTable}
                       setfavoriteTable={setfavoriteTable}
@@ -124,7 +124,7 @@ function Card({ ingredients }) {
               .map((cocktail) => {
                 return (
                   <div key={cocktail.drinkId}>
-                    <CardTwo
+                    <CocktailCard
                       cocktail={cocktail}
                       favoriteTable={favoriteTable}
                       setfavoriteTable={setfavoriteTable}
@@ -137,7 +137,7 @@ function Card({ ingredients }) {
   );
 }
 
-Card.propTypes = {
+CocktailFilter.propTypes = {
   ingredients: PropTypes.shape({
     id: PropTypes.number,
     bottleName: PropTypes.string,
@@ -148,4 +148,4 @@ Card.propTypes = {
   }).isRequired,
 };
 
-export default Card;
+export default CocktailFilter;

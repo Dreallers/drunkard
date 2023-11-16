@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useRouteLoaderData } from "react-router-dom";
 import Confetti from "react-confetti";
 import { useOutletContext } from "./OutletContext";
-import CardTwo from "./CardTwo";
+import CocktailCard from "./CocktailCard";
 
 function Quiz() {
   const { favoriteTable, setfavoriteTable } = useOutletContext();
-
   const loadedCocktails = useRouteLoaderData("App");
 
   const [selectedCocktails, setSelectedCocktails] = useState([]);
@@ -29,6 +28,7 @@ function Quiz() {
         .map((cocktail) => ({ ...cocktail }))
         .sort(() => Math.random() - 0.5)
         .slice(0, 6);
+
       const randomIndex = Math.floor(Math.random() * shuffledCocktails.length);
 
       setCorrectCocktailIndex(randomIndex);
@@ -96,7 +96,7 @@ function Quiz() {
       className={`cocktailCard-wrapper ${cocktail.isSelected ? "correct" : ""}`}
       key={cocktail.drinkId}
     >
-      <CardTwo
+      <CocktailCard
         cocktail={cocktail}
         startFlipped={false}
         onClick={() => handleCocktailClick(index)}
@@ -111,7 +111,9 @@ function Quiz() {
       <div className="quiz">
         <div className="top">
           {quizEnded && <Confetti />}
-          <p className="title-quiz">Guess who I am?</p>
+          <p className="title-quiz">{`Guess who I am? (${
+            nextButtonClickCount + 1
+          }/5)`}</p>
           {isCorrect && !quizEnded && (
             <button type="button" onClick={handleNextButtonClick}>
               Next

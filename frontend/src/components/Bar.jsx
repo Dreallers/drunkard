@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import IngredientCard from "./IngredientArea";
-import Card from "./Card";
+import CocktailFilter from "./CocktailFilter";
 import { useOutletContext } from "./OutletContext";
 
 function Bar() {
@@ -850,7 +850,7 @@ function Bar() {
         />
       </div>
       <div className="cardArea">
-        <Card
+        <CocktailFilter
           ingredients={ingredients}
           favoriteTable={favoriteTable}
           setfavoriteTable={setfavoriteTable}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
 
-function CardTwo({
+function CocktailCard({
   cocktail,
   startFlipped = true,
   onClick,
@@ -230,7 +230,7 @@ function CardTwo({
   );
 }
 
-CardTwo.propTypes = {
+CocktailCard.propTypes = {
   cocktail: PropTypes.shape({
     drinkId: PropTypes.number,
     drinkName: PropTypes.string,
@@ -280,4 +280,4 @@ CardTwo.propTypes = {
   setfavoriteTable: PropTypes.func.isRequired,
 };
 
-export default CardTwo;
+export default CocktailCard;
