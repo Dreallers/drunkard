@@ -107,7 +107,7 @@ function CocktailFilter({ ingredients }) {
           <input
             type="text"
             value={cocktailsInput}
-            placeholder="What are you looking for?"
+            placeholder="Search"
             onInput={(event) => {
               setCocktailschInput(event.target.value);
             }}
@@ -124,7 +124,7 @@ function CocktailFilter({ ingredients }) {
           buttonRandomClickHandler={() => buttonRandomClickHandler()}
         />
       </div>
-      <div>
+      <div className="cocktail-generatedContainer">
         {coctailGenerated && (
           <div className="cocktail-generated">
             <CocktailCard
