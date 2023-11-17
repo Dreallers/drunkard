@@ -1,3 +1,11 @@
 .globalBar {
   display: flex;
+  position: relative;
+}
+
+@media screen and (max-width: 700px) {
+  .globalBar {
+    // overflow: hidden;
+    position: relative;
+  }
 }

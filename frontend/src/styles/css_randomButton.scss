@@ -1,0 +1,15 @@
+.random {
+  margin-left: 40px;
+  margin-top: 0;
+}
+.is-hovering {
+  color: $drunkpolice;
+  float: right;
+  position: relative;
+  top: 25px;
+}
+.cocktail-generated {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}

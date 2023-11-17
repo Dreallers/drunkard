@@ -7,30 +7,35 @@ function Navbar() {
     setActive(e.target.value);
   }
   return (
-    <div className="navbar">
-      <button
-        type="button"
-        value="mybar"
-        onClick={(e) => handleLinkActive(e)}
-        className={isActive === "mybar" ? "active" : "notActive"}
-      >
-        <NavLink to="/mybar">My Bar</NavLink>
-      </button>
-      <button type="button">
-        <NavLink to="/home">
-          <div className="imageContainer">
-            <img src="/cocktail.png" alt="logo-cocktail-bar" />
+    <div className="navBarContainer">
+      <div className="navbar">
+        <button
+          type="button"
+          value="mybar"
+          onClick={(e) => handleLinkActive(e)}
+          className={isActive === "mybar" ? "active" : "notActive"}
+        >
+          <NavLink to="/mybar">Favorite</NavLink>
+        </button>
+        <button type="button">
+          <div>
+            <NavLink to="/home">
+              <div className="imageContainer">
+                <img src="/cocktail.png" alt="logo-cocktail-bar" />
+              </div>
+            </NavLink>
           </div>
-        </NavLink>
-      </button>
-      <button
-        type="button"
-        value="quizz"
-        onClick={(e) => handleLinkActive(e)}
-        className={isActive === "quizz" ? "active" : "notActive"}
-      >
-        <NavLink to="/quizz">Quizz</NavLink>
-      </button>
+        </button>
+        <button
+          type="button"
+          value="quizz"
+          onClick={(e) => handleLinkActive(e)}
+          className={isActive === "quizz" ? "active" : "notActive"}
+        >
+          <NavLink to="/quizz">Quizz</NavLink>
+        </button>
+      </div>
+      <div className="BlueNeon" />
     </div>
   );
 }

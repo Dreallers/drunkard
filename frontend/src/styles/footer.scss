@@ -5,21 +5,30 @@
     url("../assets/munake-font/Munake-vm0rE.otf") format("otf");
 }
 
-.copyright {
+.footerContainer {
   display: flex;
-  flex: 1;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 2px;
-  border: solid 2px white;
-  border-radius: 100px;
-  box-shadow: $blue-box-shadow;
-  background-color: $drunkBlueDark;
+  flex-direction: column;
+  height: 6vh;
+  .copyright {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: $drunkBlueDark;
 
-  p {
-    padding: 5px;
-    width: 100%;
-    font-family: "munake";
-    color: $drunkpolice;
+    p {
+      padding: 2px;
+      width: 100%;
+      font-family: "munake";
+      color: $drunkpolice;
+    }
+  }
+  .BlueNeon {
+    display: flex;
+    z-index: 4;
+    box-shadow: $blue-box-shadow;
+    border: solid 2px white;
+    width: 100vw;
+    height: 0.3;
   }
 }
