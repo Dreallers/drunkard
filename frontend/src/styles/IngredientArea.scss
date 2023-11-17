@@ -28,35 +28,51 @@
   margin-bottom: 2vh;
 }
 
-.toptoptop {
-  display: flex;
-  .BlueNeon {
-    box-shadow: $blue-box-shadow;
-    border: solid 2px white;
-    width: 0.3vh;
-    height: 87vh;
-    // margin-top: 2vh;
-    z-index: 4;
+.ingredient {
+  // position: relative;
+  .toptoptop {
+    position: relative;
+    display: flex;
+
+    .IngredientArea {
+      position: relative;
+      // margin: 2vh 0 2vh 2vh;
+      padding-top: 5vh;
+      padding-bottom: 3vh;
+
+      min-width: 16vw;
+      height: 87vh;
+      display: flex;
+      flex-direction: column;
+      // border-radius: 10px 0px 0px 10px;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      // overflow: hidden;
+      // box-shadow: $blue-box-shadow;
+      // border-right: solid 2px white;
+      background-color: $drunkBlueDark;
+
+      .sideIng {
+        visibility: hidden;
+        position: absolute;
+        display: block;
+        top: 45%;
+        background-color: red;
+        height: 20vh;
+        width: 5vw;
+        z-index: 10;
+      }
+    }
+
+    .BlueNeon {
+      box-shadow: $blue-box-shadow;
+      border: solid 2px white;
+      width: 0.3vh;
+      height: 87vh;
+      // margin-top: 2vh;
+      z-index: 4;
+    }
   }
-}
-
-.IngredientArea {
-  position: relative;
-  // margin: 2vh 0 2vh 2vh;
-  padding-top: 5vh;
-  padding-bottom: 3vh;
-
-  min-width: 16vw;
-  height: 87vh;
-  display: flex;
-  flex-direction: column;
-  // border-radius: 10px 0px 0px 10px;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
-  overflow: hidden;
-  // box-shadow: $blue-box-shadow;
-  // border-right: solid 2px white;
-  background-color: $drunkBlueDark;
 }
 
 .handleIngredientTypeContainer {
@@ -167,25 +183,66 @@ button {
 }
 
 @media screen and (max-width: 700px) {
+  .ingredient {
+    .toptoptop {
+      .IngredientArea {
+        position: relative;
+        // left: -100%;
+        // visibility: hidden;
+        .sideIng {
+          visibility: initial;
+          // right: 0;
+          // right: calc(100vw - 20px);
+        }
+
+        // .middleIng {
+        //   position: absolute;
+        //   left: 0;
+        //   top: 45%;
+        //   background-color: red;
+        //   height: 20vh;
+        //   width: 5vw;
+        //   z-index: 5;
+        // }
+      }
+    }
+  }
+
   .hide {
     position: absolute;
-    left: -100vw;
+    visibility: hidden;
+    right: 100%;
+    width: 0%;
   }
   .show {
     position: absolute;
-    left: 0vw;
+    visibility: visible;
+    // left: 0vw;
     z-index: 3;
     // background-color: black;
-    width: 100vw;
+    width: 100%;
 
     .IngredientArea {
       height: 100vh;
+      .sideIng {
+        right: -40px;
+        z-index: 11;
+      }
 
       .IngredientList {
         align-items: center;
         justify-content: center;
       }
     }
+  }
+
+  .bottleimagesrc {
+    width: 70px;
+  }
+
+  .Selected,
+  .NotSelected {
+    font-size: 1rem;
   }
 
   .blurside {

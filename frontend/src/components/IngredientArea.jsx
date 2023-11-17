@@ -41,8 +41,47 @@ function IngredientCard({ setIngredients, ingredients, table }) {
       e.target.value
     ); /* permet de changer le type d'ingrédient affiché (soft ou spirits ou liquors) apres le click */
   }
+
+  let statusBtn = true;
+
+  function handleShowIng() {
+    const ingredientID = document.getElementById("ingredientID");
+    const cardAreaID = document.getElementById("cardAreaID");
+    // const carteContainerID = document.getElementById("carteContainerID");
+    // const sideBtn = document.getElementById("sideBtn");
+    statusBtn = !statusBtn;
+    // console.log(statusBtn);
+
+    if (!statusBtn) {
+      // carteContainerID.classList.remove("noblur");
+      // carteContainerID.classList.add("blurside");
+
+      cardAreaID.classList.remove("noblur");
+      cardAreaID.classList.add("blurside");
+
+      ingredientID.classList.remove("hide");
+      ingredientID.classList.add("show");
+
+      // sideBtn.classList.remove("sideIng");
+      // sideBtn.classList.add("middleIng");
+    } else {
+      // carteContainerID.classList.remove("blurside");
+      // carteContainerID.classList.add("noblur");
+
+      cardAreaID.classList.remove("blurside");
+      cardAreaID.classList.add("noblur");
+
+      ingredientID.classList.remove("show");
+      ingredientID.classList.add("hide");
+
+      // sideBtn.classList.remove("middleIng");
+      // sideBtn.classList.add("sideIng");
+    }
+  }
+
   return (
     <div className="toptoptop">
+      {/* ref={reftop} */}
       <div className="IngredientArea">
         <div className="handleIngredientTypeContainer">
           <div className="handleIngredientType">
@@ -122,6 +161,15 @@ function IngredientCard({ setIngredients, ingredients, table }) {
             })}
         </div>
         <div className="arrow" />
+        <div
+          id="sideBtn"
+          type="button"
+          // style={{ left: `${righttoptoptop}px` }}
+          // style={{ left: "50vw" }}
+          role="presentation"
+          className="sideIng"
+          onClick={handleShowIng}
+        />
       </div>
       <div className="BlueNeon" />
     </div>
