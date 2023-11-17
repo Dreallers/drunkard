@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-function CocktailCard({ cocktail, favoriteTable, setfavoriteTable, onClick }) {
+function CocktailCard({
+  cocktail,
+  favoriteTable,
+  setfavoriteTable,
+  handleonClick,
+}) {
   const [retourne, setRetourne] = useState(true);
   const [isFavorite, setisFavorite] = useState(false);
 
@@ -55,7 +60,7 @@ function CocktailCard({ cocktail, favoriteTable, setfavoriteTable, onClick }) {
     <div
       onClick={() => {
         retournerCarte();
-        onClick();
+        handleonClick();
       }}
       aria-hidden
       className={`carte ${retourne ? "retourne" : ""}`}
@@ -93,120 +98,115 @@ function CocktailCard({ cocktail, favoriteTable, setfavoriteTable, onClick }) {
             <div className="garen">
               <div className="blur">
                 <div className="tahmKench">
-                  <div className="tahmKench">
-                    <div className="lillia">
-                      <div className="name">
-                        <p> {cocktail.drinkName} </p>
-                      </div>
+                  <div className="lillia">
+                    <div className="name">
+                      <p> {cocktail.drinkName} </p>
                     </div>
-                    <button
-                      className="heart"
-                      type="button"
-                      onClick={handleIsFavorite}
-                    >
-                      {isFavorite ? (
-                        <img src="/coeurPlein.png" alt="coeur plein" />
-                      ) : (
-                        <img src="/coeurVide.png" alt="coeur vide" />
+                  </div>
+                  <button
+                    className="heart"
+                    type="button"
+                    onClick={handleIsFavorite}
+                  >
+                    {isFavorite ? (
+                      <img src="/coeurPlein.png" alt="coeur plein" />
+                    ) : (
+                      <img src="/coeurVide.png" alt="coeur vide" />
+                    )}
+                  </button>
+                  <div className="display">
+                    <p className="instruction"> {cocktail.drinkInstruction} </p>
+                    <div className="recette">
+                      {cocktail.drinkIngredient1 != null && (
+                        <div className="coupleIngMeas">
+                          <p>{cocktail.drinkIngredient1}</p>
+                          <p>{cocktail.drinkMeasure1}</p>
+                        </div>
                       )}
-                    </button>
-                    <div className="display">
-                      <p className="instruction">
-                        {" "}
-                        {cocktail.drinkInstruction}{" "}
-                      </p>
-                      <div className="recette">
-                        {cocktail.drinkIngredient1 != null && (
-                          <div className="coupleIngMeas">
-                            <p>{cocktail.drinkIngredient1}</p>
-                            <p>{cocktail.drinkMeasure1}</p>
-                          </div>
-                        )}
-                        {cocktail.drinkIngredient2 != null && (
-                          <div className="coupleIngMeas">
-                            <p>{cocktail.drinkIngredient2}</p>
-                            <p>{cocktail.drinkMeasure2}</p>
-                          </div>
-                        )}
-                        {cocktail.drinkIngredient3 != null && (
-                          <div className="coupleIngMeas">
-                            <p>{cocktail.drinkIngredient3}</p>
-                            <p>{cocktail.drinkMeasure3}</p>
-                          </div>
-                        )}
-                        {cocktail.drinkIngredient4 != null && (
-                          <div className="coupleIngMeas">
-                            <p>{cocktail.drinkIngredient4}</p>
-                            <p>{cocktail.drinkMeasure4}</p>
-                          </div>
-                        )}
-                        {cocktail.drinkIngredient5 != null && (
-                          <div className="coupleIngMeas">
-                            <p>{cocktail.drinkIngredient5}</p>
-                            <p>{cocktail.drinkMeasure5}</p>
-                          </div>
-                        )}
-                        {cocktail.drinkIngredient6 != null && (
-                          <div className="coupleIngMeas">
-                            <p>{cocktail.drinkIngredient6}</p>
-                            <p>{cocktail.drinkMeasure6}</p>
-                          </div>
-                        )}
-                        {cocktail.drinkIngredient7 != null && (
-                          <div className="coupleIngMeas">
-                            <p>{cocktail.drinkIngredient7}</p>
-                            <p>{cocktail.drinkMeasure7}</p>
-                          </div>
-                        )}
-                        {cocktail.drinkIngredient8 != null && (
-                          <div className="coupleIngMeas">
-                            <p>{cocktail.drinkIngredient8}</p>
-                            <p>{cocktail.drinkMeasure8}</p>
-                          </div>
-                        )}
-                        {cocktail.drinkIngredient9 != null && (
-                          <div className="coupleIngMeas">
-                            <p>{cocktail.drinkIngredient9}</p>
-                            <p>{cocktail.drinkMeasure9}</p>
-                          </div>
-                        )}
-                        {cocktail.drinkIngredient10 != null && (
-                          <div className="coupleIngMeas">
-                            <p>{cocktail.drinkIngredient10}</p>
-                            <p>{cocktail.drinkMeasure10}</p>
-                          </div>
-                        )}
-                        {cocktail.drinkIngredient11 != null && (
-                          <div className="coupleIngMeas">
-                            <p>{cocktail.drinkIngredient11}</p>
-                            <p>{cocktail.drinkMeasure11}</p>
-                          </div>
-                        )}
-                        {cocktail.drinkIngredient12 != null && (
-                          <div className="coupleIngMeas">
-                            <p>{cocktail.drinkIngredient12}</p>
-                            <p>{cocktail.drinkMeasure12}</p>
-                          </div>
-                        )}
-                        {cocktail.drinkIngredient13 != null && (
-                          <div className="coupleIngMeas">
-                            <p>{cocktail.drinkIngredient13}</p>
-                            <p>{cocktail.drinkMeasure13}</p>
-                          </div>
-                        )}
-                        {cocktail.drinkIngredient14 != null && (
-                          <div className="coupleIngMeas">
-                            <p>{cocktail.drinkIngredient14}</p>
-                            <p>{cocktail.drinkMeasure14}</p>
-                          </div>
-                        )}
-                        {cocktail.drinkIngredient15 != null && (
-                          <div className="coupleIngMeas">
-                            <p>{cocktail.drinkIngredient15}</p>
-                            <p>{cocktail.drinkMeasure15}</p>
-                          </div>
-                        )}
-                      </div>
+                      {cocktail.drinkIngredient2 != null && (
+                        <div className="coupleIngMeas">
+                          <p>{cocktail.drinkIngredient2}</p>
+                          <p>{cocktail.drinkMeasure2}</p>
+                        </div>
+                      )}
+                      {cocktail.drinkIngredient3 != null && (
+                        <div className="coupleIngMeas">
+                          <p>{cocktail.drinkIngredient3}</p>
+                          <p>{cocktail.drinkMeasure3}</p>
+                        </div>
+                      )}
+                      {cocktail.drinkIngredient4 != null && (
+                        <div className="coupleIngMeas">
+                          <p>{cocktail.drinkIngredient4}</p>
+                          <p>{cocktail.drinkMeasure4}</p>
+                        </div>
+                      )}
+                      {cocktail.drinkIngredient5 != null && (
+                        <div className="coupleIngMeas">
+                          <p>{cocktail.drinkIngredient5}</p>
+                          <p>{cocktail.drinkMeasure5}</p>
+                        </div>
+                      )}
+                      {cocktail.drinkIngredient6 != null && (
+                        <div className="coupleIngMeas">
+                          <p>{cocktail.drinkIngredient6}</p>
+                          <p>{cocktail.drinkMeasure6}</p>
+                        </div>
+                      )}
+                      {cocktail.drinkIngredient7 != null && (
+                        <div className="coupleIngMeas">
+                          <p>{cocktail.drinkIngredient7}</p>
+                          <p>{cocktail.drinkMeasure7}</p>
+                        </div>
+                      )}
+                      {cocktail.drinkIngredient8 != null && (
+                        <div className="coupleIngMeas">
+                          <p>{cocktail.drinkIngredient8}</p>
+                          <p>{cocktail.drinkMeasure8}</p>
+                        </div>
+                      )}
+                      {cocktail.drinkIngredient9 != null && (
+                        <div className="coupleIngMeas">
+                          <p>{cocktail.drinkIngredient9}</p>
+                          <p>{cocktail.drinkMeasure9}</p>
+                        </div>
+                      )}
+                      {cocktail.drinkIngredient10 != null && (
+                        <div className="coupleIngMeas">
+                          <p>{cocktail.drinkIngredient10}</p>
+                          <p>{cocktail.drinkMeasure10}</p>
+                        </div>
+                      )}
+                      {cocktail.drinkIngredient11 != null && (
+                        <div className="coupleIngMeas">
+                          <p>{cocktail.drinkIngredient11}</p>
+                          <p>{cocktail.drinkMeasure11}</p>
+                        </div>
+                      )}
+                      {cocktail.drinkIngredient12 != null && (
+                        <div className="coupleIngMeas">
+                          <p>{cocktail.drinkIngredient12}</p>
+                          <p>{cocktail.drinkMeasure12}</p>
+                        </div>
+                      )}
+                      {cocktail.drinkIngredient13 != null && (
+                        <div className="coupleIngMeas">
+                          <p>{cocktail.drinkIngredient13}</p>
+                          <p>{cocktail.drinkMeasure13}</p>
+                        </div>
+                      )}
+                      {cocktail.drinkIngredient14 != null && (
+                        <div className="coupleIngMeas">
+                          <p>{cocktail.drinkIngredient14}</p>
+                          <p>{cocktail.drinkMeasure14}</p>
+                        </div>
+                      )}
+                      {cocktail.drinkIngredient15 != null && (
+                        <div className="coupleIngMeas">
+                          <p>{cocktail.drinkIngredient15}</p>
+                          <p>{cocktail.drinkMeasure15}</p>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -221,7 +221,7 @@ function CocktailCard({ cocktail, favoriteTable, setfavoriteTable, onClick }) {
 
 CocktailCard.propTypes = {
   cocktail: PropTypes.shape({
-    drinkId: PropTypes.number,
+    drinkId: PropTypes.string,
     drinkName: PropTypes.string,
     drinkImage: PropTypes.string,
     drinkFavorite: PropTypes.bool,
@@ -259,12 +259,14 @@ CocktailCard.propTypes = {
     selected: PropTypes.bool,
     favorite: PropTypes.bool,
   }).isRequired,
-  favoriteTable: PropTypes.shape({
-    drinkId: PropTypes.number,
-    drinkName: PropTypes.string,
-  }).isRequired,
+  favoriteTable: PropTypes.arrayOf(
+    PropTypes.shape({
+      drinkId: PropTypes.string,
+      drinkName: PropTypes.string,
+    })
+  ).isRequired,
+  handleonClick: PropTypes.func.isRequired,
   setfavoriteTable: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
 };
 
 export default CocktailCard;

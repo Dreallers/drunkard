@@ -18,11 +18,13 @@ function Navbar() {
           <NavLink to="/mybar">Favorite</NavLink>
         </button>
         <button type="button">
-          <NavLink to="/home">
-            <div className="imageContainer">
-              <img src="/cocktail.png" alt="logo-cocktail-bar" />
-            </div>
-          </NavLink>
+          <div>
+            <NavLink to="/home">
+              <div className="imageContainer">
+                <img src="/cocktail.png" alt="logo-cocktail-bar" />
+              </div>
+            </NavLink>
+          </div>
         </button>
         <button
           type="button"

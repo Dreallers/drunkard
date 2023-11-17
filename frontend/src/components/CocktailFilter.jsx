@@ -199,14 +199,16 @@ function CocktailFilter({ ingredients }) {
 }
 
 CocktailFilter.propTypes = {
-  ingredients: PropTypes.shape({
-    id: PropTypes.number,
-    bottleName: PropTypes.string,
-    type: PropTypes.string,
-    image: PropTypes.string,
-    selected: PropTypes.bool,
-    favorite: PropTypes.bool,
-  }).isRequired,
+  ingredients: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      bottleName: PropTypes.string,
+      type: PropTypes.string,
+      image: PropTypes.string,
+      selected: PropTypes.bool,
+      favorite: PropTypes.bool,
+    })
+  ).isRequired,
 };
 
 export default CocktailFilter;
