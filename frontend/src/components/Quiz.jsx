@@ -55,7 +55,7 @@ function Quiz() {
     (_, i) => correctCocktail[`drinkIngredient${i + 1}`]
   ).filter(Boolean);
 
-  const handleCocktailClick = (clickedIndex) => {
+  function handleCocktailClick(clickedIndex) {
     setAttempts(attempts + 1);
 
     if (clickedIndex === correctCocktailIndex) {
@@ -98,7 +98,7 @@ function Quiz() {
         setQuizEnded(true);
       }
     }
-  };
+  }
 
   const handleNextButtonClick = () => {
     if (nextButtonClickCount + 1 < 5) {
@@ -129,7 +129,7 @@ function Quiz() {
       <CocktailCard
         cocktail={cocktail}
         startFlipped={cocktail.isFlipped || false}
-        onClick={() => handleCocktailClick(index)}
+        handleonClick={() => handleCocktailClick(index)}
         favoriteTable={favoriteTable}
         setfavoriteTable={setfavoriteTable}
       />

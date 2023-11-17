@@ -28,29 +28,85 @@
   margin-bottom: 2vh;
 }
 
-.toptoptop {
-  display: flex;
-  .BlueNeon {
-    box-shadow: $blue-box-shadow;
-    border: solid 2px white;
-    width: 0.3vh;
-    height: 87vh;
-    z-index: 4;
-  }
-}
+.ingredient {
+  // position: relative;
+  .toptoptop {
+    position: relative;
+    display: flex;
 
-.IngredientArea {
-  position: relative;
-  padding-top: 5vh;
-  padding-bottom: 3vh;
-  min-width: 16vw;
-  height: 87vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
-  overflow: hidden;
-  background-color: $drunkBlueDark;
+    .IngredientArea {
+      position: relative;
+      // margin: 2vh 0 2vh 2vh;
+      padding-top: 5vh;
+      padding-bottom: 3vh;
+
+      min-width: 16vw;
+      height: 87vh;
+      display: flex;
+      flex-direction: column;
+      // border-radius: 10px 0px 0px 10px;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      // overflow: hidden;
+      // box-shadow: $blue-box-shadow;
+      // border-right: solid 2px white;
+      background-color: $drunkBlueDark;
+
+      .sideIng {
+        visibility: hidden;
+        position: absolute;
+        top: 45%;
+        z-index: 10;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5em 0.6em 0.5em 0.6em;
+        font-size: 1em;
+        font-weight: bold;
+        border-radius: 15px;
+        color: #fff6fb;
+        text-shadow: -2px 2px 5px #fd3084;
+        background-color: transparent;
+        border: 2px solid #feb1de;
+        box-shadow:
+          0 0 0px 1px #f11271,
+          0 0 10px 2px #fd3084,
+          inset 0 0 0px 1px #f11271,
+          inset 0 0 10px 2px #fd3084;
+        transition: 100ms;
+
+        &:hover {
+          box-shadow:
+            0 0 0px 1px #f11271,
+            0 0 10px 2px #fd3084,
+            inset 0 0 0px 1px #f11271,
+            inset 0 0 30px 2px #fd3084;
+          text-shadow: 0 0 10px #fd3084;
+          transform: translateY(-5px);
+        }
+
+        &:active {
+          box-shadow:
+            0 0 0px 1px #f11271,
+            0 0 25px 2px #fd3084,
+            inset 0 0 0px 1px #f11271,
+            inset 0 0 30px 2px #fd3084;
+          transform: translateY(1px);
+        }
+      }
+    }
+
+    .BlueNeon {
+      box-shadow: $blue-box-shadow;
+      border: solid 2px white;
+      width: 0.3vh;
+      height: 87vh;
+      // margin-top: 2vh;
+      z-index: 4;
+    }
+  }
 }
 
 .handleIngredientTypeContainer {
@@ -161,24 +217,66 @@ button {
 }
 
 @media screen and (max-width: 700px) {
+  .ingredient {
+    .toptoptop {
+      .IngredientArea {
+        position: relative;
+        // left: -100%;
+        // visibility: hidden;
+        .sideIng {
+          visibility: initial;
+          // right: 0;
+          // right: calc(100vw - 20px);
+        }
+
+        // .middleIng {
+        //   position: absolute;
+        //   left: 0;
+        //   top: 45%;
+        //   background-color: red;
+        //   height: 20vh;
+        //   width: 5vw;
+        //   z-index: 5;
+        // }
+      }
+    }
+  }
+
   .hide {
     position: absolute;
-    left: -100vw;
+    visibility: hidden;
+    right: 100%;
+    width: 0%;
   }
   .show {
     position: absolute;
-    left: 0vw;
+    visibility: visible;
+    // left: 0vw;
     z-index: 3;
-    width: 100vw;
+    // background-color: black;
+    width: 100%;
 
     .IngredientArea {
       height: 100vh;
+      .sideIng {
+        right: -40px;
+        z-index: 11;
+      }
 
       .IngredientList {
         align-items: center;
         justify-content: center;
       }
     }
+  }
+
+  .bottleimagesrc {
+    width: 70px;
+  }
+
+  .Selected,
+  .NotSelected {
+    font-size: 1rem;
   }
 
   .blurside {

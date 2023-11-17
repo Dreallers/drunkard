@@ -1,68 +1,11 @@
 .globalBar {
   display: flex;
   position: relative;
-
-  .sideIng {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 700px) {
   .globalBar {
-    overflow: hidden;
+    // overflow: hidden;
     position: relative;
-
-    .sideIng {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 0.5em 0.6em 0.5em 0.6em;
-      font-size: 1em;
-      font-weight: bold;
-      border-radius: 15px;
-      color: #fff6fb;
-      text-shadow: -2px 2px 5px #fd3084;
-      background-color: transparent;
-      border: 2px solid #feb1de;
-      box-shadow:
-        0 0 0px 1px #f11271,
-        0 0 10px 2px #fd3084,
-        inset 0 0 0px 1px #f11271,
-        inset 0 0 10px 2px #fd3084;
-      transition: 100ms;
-      position: absolute;
-      left: 0%;
-      top: 45%;
-      &:hover {
-        box-shadow:
-          0 0 0px 1px #f11271,
-          0 0 10px 2px #fd3084,
-          inset 0 0 0px 1px #f11271,
-          inset 0 0 30px 2px #fd3084;
-        text-shadow: 0 0 10px #fd3084;
-        transform: translateY(-5px);
-      }
-
-      &:active {
-        box-shadow:
-          0 0 0px 1px #f11271,
-          0 0 25px 2px #fd3084,
-          inset 0 0 0px 1px #f11271,
-          inset 0 0 30px 2px #fd3084;
-        transform: translateY(1px);
-      }
-    }
-
-    .middleIng {
-      display: block;
-      position: absolute;
-      left: 50vw;
-      top: 45%;
-      background-color: red;
-      height: 20vh;
-      width: 5vw;
-      z-index: 5;
-    }
   }
 }

@@ -841,63 +841,57 @@ function Bar() {
     },
   ];
   const [ingredients, setIngredients] = useState(table);
-  let statusBtn = false;
+  // let statusBtn = true;
 
-  function handleShowIng() {
-    const ingredientID = document.getElementById("ingredientID");
-    const cardAreaID = document.getElementById("cardAreaID");
-    const carteContainerID = document.getElementById("carteContainerID");
-    const sideBtn = document.getElementById("sideBtn");
-    statusBtn = !statusBtn;
+  // function handleShowIng() {
+  //   const ingredientID = document.getElementById("ingredientID");
+  //   const cardAreaID = document.getElementById("cardAreaID");
+  //   // const carteContainerID = document.getElementById("carteContainerID");
+  //   const sideBtn = document.getElementById("sideBtn");
+  //   statusBtn = !statusBtn;
+  //   // console.log(statusBtn);
 
-    if (!statusBtn) {
-      carteContainerID.classList.remove("noblur");
-      carteContainerID.classList.add("blurside");
+  //   if (!statusBtn) {
+  //     // carteContainerID.classList.remove("noblur");
+  //     // carteContainerID.classList.add("blurside");
 
-      cardAreaID.classList.remove("noblur");
-      cardAreaID.classList.add("blurside");
+  //     cardAreaID.classList.remove("noblur");
+  //     cardAreaID.classList.add("blurside");
 
-      ingredientID.classList.remove("hide");
-      ingredientID.classList.add("show");
+  //     ingredientID.classList.remove("hide");
+  //     ingredientID.classList.add("show");
 
-      sideBtn.classList.remove("sideIng");
-      sideBtn.classList.add("middleIng");
-    } else {
-      carteContainerID.classList.remove("blurside");
-      carteContainerID.classList.add("noblur");
+  //     sideBtn.classList.remove("sideIng");
+  //     sideBtn.classList.add("middleIng");
+  //   } else {
+  //     // carteContainerID.classList.remove("blurside");
+  //     // carteContainerID.classList.add("noblur");
 
-      cardAreaID.classList.remove("blurside");
-      cardAreaID.classList.add("noblur");
+  //     cardAreaID.classList.remove("blurside");
+  //     cardAreaID.classList.add("noblur");
 
-      ingredientID.classList.remove("show");
-      ingredientID.classList.add("hide");
+  //     ingredientID.classList.remove("show");
+  //     ingredientID.classList.add("hide");
 
-      sideBtn.classList.remove("middleIng");
-      sideBtn.classList.add("sideIng");
-    }
-  }
+  //     sideBtn.classList.remove("middleIng");
+  //     sideBtn.classList.add("sideIng");
+  //   }
+  // }
+
+  // const ingredientID = document.getElementById("ingredientID");
+  // console.log("ingredientID", ingredientID);
+  // const rect = ingredientID.getBoundingClientRect();
+  // console.log(rect.top, rect.right, rect.bottom, rect.left);
 
   return (
     <div className="globalBar">
-      <div
+      {/* <div
         id="sideBtn"
         type="button"
         role="presentation"
         className="sideIng"
         onClick={handleShowIng}
-      >
-        <p>I</p>
-        <p>n</p>
-        <p>g</p>
-        <p>r</p>
-        <p>e</p>
-        <p>d</p>
-        <p>i</p>
-        <p>e</p>
-        <p>n</p>
-        <p>t</p>
-        <p>s</p>
-      </div>
+      /> */}
       <div id="ingredientID" className="ingredient hide">
         <IngredientCard
           setIngredients={setIngredients}
@@ -905,7 +899,7 @@ function Bar() {
           table={table}
         />
       </div>
-      <div className="cardArea">
+      <div id="cardAreaID" className="cardArea noblur">
         <CocktailFilter
           ingredients={ingredients}
           favoriteTable={favoriteTable}

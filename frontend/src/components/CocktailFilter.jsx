@@ -76,14 +76,27 @@ function CocktailFilter({ ingredients }) {
   const [coctailGenerated, setCoctailGenerated] = useState(false);
 
   const buttonRandomClickHandler = () => {
-    const filtredArray = cocktailTableFiltred.filter((cocktail) => {
-      return cocktail.drinkName
-        .toLowerCase()
-        .includes(cocktailsInput.toLowerCase());
-    });
-    const randomIndex = Math.floor(Math.random() * filtredArray.length);
+    if (location.pathname === "/mybar") {
+      const filtredArray = cocktailTableFiltred.filter((cocktail) => {
+        return (
+          cocktail.drinkName
+            .toLowerCase()
+            .includes(cocktailsInput.toLowerCase()) &&
+          favoriteTable.find((id) => id.drinkId === cocktail.drinkId)
+        );
+      });
+      const randomIndex2 = Math.floor(Math.random() * filtredArray.length);
+      setCoctailGenerated(filtredArray[randomIndex2]);
+    } else {
+      const filtredArray = cocktailTableFiltred.filter((cocktail) => {
+        return cocktail.drinkName
+          .toLowerCase()
+          .includes(cocktailsInput.toLowerCase());
+      });
+      const randomIndex = Math.floor(Math.random() * filtredArray.length);
 
-    setCoctailGenerated(filtredArray[randomIndex]);
+      setCoctailGenerated(filtredArray[randomIndex]);
+    }
   };
 
   return (
@@ -186,14 +199,16 @@ function CocktailFilter({ ingredients }) {
 }
 
 CocktailFilter.propTypes = {
-  ingredients: PropTypes.shape({
-    id: PropTypes.number,
-    bottleName: PropTypes.string,
-    type: PropTypes.string,
-    image: PropTypes.string,
-    selected: PropTypes.bool,
-    favorite: PropTypes.bool,
-  }).isRequired,
+  ingredients: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      bottleName: PropTypes.string,
+      type: PropTypes.string,
+      image: PropTypes.string,
+      selected: PropTypes.bool,
+      favorite: PropTypes.bool,
+    })
+  ).isRequired,
 };
 
 export default CocktailFilter;
