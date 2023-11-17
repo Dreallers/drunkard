@@ -25,7 +25,6 @@ function Quiz() {
     if (loadedCocktails?.length > 0 && !restartClicked) {
       const allCocktails = loadedCocktails.map((cocktail) => ({ ...cocktail }));
       const shuffledCocktails = allCocktails
-        .map((cocktail) => ({ ...cocktail }))
         .sort(() => Math.random() - 0.5)
         .slice(0, 6);
 
@@ -33,6 +32,14 @@ function Quiz() {
 
       setCorrectCocktailIndex(randomIndex);
       setSelectedCocktails(shuffledCocktails);
+
+      setSelectedCocktails((prevCocktails) =>
+        prevCocktails.map((cocktail) => ({
+          ...cocktail,
+          isFlipped: false,
+          isSelected: false,
+        }))
+      );
     }
 
     setRestartClicked(false);
@@ -65,19 +72,42 @@ function Quiz() {
     } else {
       setScoreMessage("Oops! Wrong guess. Try again!");
 
-      if (attempts === 2) {
+      if (attempts >= 2) {
         setScoreMessage(
           `Oops! Wrong guess. The cocktail is ${correctCocktail.drinkName}.`
         );
         setIsCorrect(true);
+        setSelectedCocktails((prevCocktails) =>
+          prevCocktails.map((cocktail, i) => ({
+            ...cocktail,
+            isSelected: i === correctCocktailIndex || i === clickedIndex,
+          }))
+        );
+
+        if (attempts === 3) {
+          setSelectedCocktails((prevCocktails) =>
+            prevCocktails.map((cocktail) => ({
+              ...cocktail,
+              isFlipped: true,
+            }))
+          );
+        }
+      }
+
+      if (attempts === 3) {
+        setQuizEnded(true);
       }
     }
   };
 
   const handleNextButtonClick = () => {
-    setNextButtonClickCount(nextButtonClickCount + 1);
-    setAttempts(0);
-    setQuizEnded(nextButtonClickCount + 1 === 5);
+    if (nextButtonClickCount + 1 < 5) {
+      setAttempts(0);
+      setNextButtonClickCount(nextButtonClickCount + 1);
+      setQuizEnded(false);
+    } else {
+      setQuizEnded(true);
+    }
   };
 
   const handleRestartClick = () => {
@@ -98,7 +128,7 @@ function Quiz() {
     >
       <CocktailCard
         cocktail={cocktail}
-        startFlipped={false}
+        startFlipped={cocktail.isFlipped || false}
         onClick={() => handleCocktailClick(index)}
         favoriteTable={favoriteTable}
         setfavoriteTable={setfavoriteTable}
@@ -111,12 +141,15 @@ function Quiz() {
       <div className="quiz">
         <div className="top">
           {quizEnded && <Confetti />}
-          <p className="title-quiz">{`Guess who I am? (${
-            nextButtonClickCount + 1
-          }/5)`}</p>
+          <p className="title-quiz">{`Guess who I am? (${Math.min(
+            nextButtonClickCount + 1,
+            5
+          )}/5)`}</p>
+
+          <ul className="ingredients-quiz">{renderedIngredients}</ul>
           {isCorrect && !quizEnded && (
             <button type="button" onClick={handleNextButtonClick}>
-              Next
+              {nextButtonClickCount + 1 < 5 ? "Next" : "Finish"}
             </button>
           )}
           {quizEnded && (
@@ -125,17 +158,18 @@ function Quiz() {
             </button>
           )}
         </div>
-        <ul className="ingredients-quiz">{renderedIngredients}</ul>
       </div>
       <div className="cards">{renderedCocktailCards}</div>
-      <div className="title-score">
-        <p>Score</p>
-      </div>
-      <div className="score-container">
-        <p>
-          Your score is {score} out of {5}
-        </p>
-        <p className="score-message">{scoreMessage}</p>
+      <div className="score">
+        <div className="title-score">
+          <p>Score</p>
+        </div>
+        <div className="score-container">
+          <p>
+            Your score is {score} out of {5}
+          </p>
+          <p className="score-message">{scoreMessage}</p>
+        </div>
       </div>
     </>
   );
