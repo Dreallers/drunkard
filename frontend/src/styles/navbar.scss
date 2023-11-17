@@ -24,18 +24,12 @@
     }
 
     display: flex;
-    // border-bottom: solid 2px white;
-    // border-radius: 100px;
     justify-content: space-around;
     align-items: center;
-    // margin: 2px;
-    // margin-top: 5px;
     background-color: $drunkBlueDark;
-    // box-shadow: $blue-box-shadow;
 
     .imageContainer {
       width: 70%;
-      // align-self: center;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -62,6 +56,5 @@
     border: solid 2px white;
     width: 100vw;
     height: 0.3;
-    // margin-top: 2vh;
   }
 }
