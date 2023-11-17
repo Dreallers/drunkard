@@ -160,14 +160,16 @@ function Quiz() {
         </div>
       </div>
       <div className="cards">{renderedCocktailCards}</div>
-      <div className="title-score">
-        <p>Score</p>
-      </div>
-      <div className="score-container">
-        <p>
-          Your score is {score} out of {5}
-        </p>
-        <p className="score-message">{scoreMessage}</p>
+      <div className="score">
+        <div className="title-score">
+          <p>Score</p>
+        </div>
+        <div className="score-container">
+          <p>
+            Your score is {score} out of {5}
+          </p>
+          <p className="score-message">{scoreMessage}</p>
+        </div>
       </div>
     </>
   );

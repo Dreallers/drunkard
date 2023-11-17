@@ -6,7 +6,9 @@
 }
 
 .quiz {
+  margin: 20px 30px 20px 30px;
   display: flex;
+  cursor: pointer;
 
   .title-quiz {
     border: solid white 2px;
@@ -55,37 +57,38 @@
   }
 }
 
-.title-score {
-  padding: 10px;
-  font-family: "munake";
-  font-size: 18px;
-  color: $drunkpolice;
-  text-align: center;
-  width: 10%;
-  position: absolute;
-  left: 64.9vw;
-  bottom: 34vw;
-  margin-left: 22vh;
-  background: rgba(16, 32, 50, 0.75);
-  border: 1px solid transparent;
-  border-radius: 20px;
-  box-shadow: 0 0 30px 10px #00aaf6;
-}
+.score {
+  .title-score {
+    padding: 10px;
+    font-family: "munake";
+    font-size: 18px;
+    color: $drunkpolice;
+    text-align: center;
+    width: 10%;
+    position: absolute;
+    top: 32vh;
+    right: 14.3vw;
+    background: rgba(16, 32, 50, 0.75);
+    border: 1px solid transparent;
+    border-radius: 20px;
+    box-shadow: 0 0 30px 10px #00aaf6;
+  }
 
-.score-container {
-  padding: 25px;
-  width: 300px;
-  height: 120px;
-  border: 1px solid;
-  border-radius: 50px;
-  background: rgba(16, 32, 50, 0.75);
-  box-shadow: 0 0 30px 10px #00aaf6;
-  position: absolute;
-  left: 70vw;
-  bottom: 25vw;
-  color: $drunkpolice;
-  font-size: 20px;
-  text-align: center;
+  .score-container {
+    padding: 25px;
+    width: 300px;
+    height: 120px;
+    border: 1px solid;
+    border-radius: 30px;
+    background: rgba(16, 32, 50, 0.75);
+    box-shadow: 0 0 30px 10px #00aaf6;
+    position: absolute;
+    right: 10vw;
+    top: 40vh;
+    color: $drunkpolice;
+    font-size: 20px;
+    text-align: center;
+  }
 }
 
 .cards {
@@ -103,15 +106,6 @@
     &:hover {
       transform: scale(1.05);
     }
-
-    // &.correct {
-    //   box-shadow:
-    //     0 0 8px $drunkgreen,
-    //     0 0 16px $drunkgreen,
-    //     0 0 20px $drunkgreen,
-    //     0 0 22px $drunkgreen,
-    //     0 0 24px $drunkgreen;
-    // }
   }
 }
 
@@ -127,5 +121,83 @@
     box-shadow: $blue-box-shadow;
     color: $drunkpolice;
     font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 480px) and (orientation: landscape) {
+  .quiz {
+    .title-quiz {
+      width: 100%;
+    }
+    .ingredients-quiz {
+      width: 100%;
+    }
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 0.1fr);
+    gap: 3vw;
+
+    .cocktailCard-wrapper {
+      scale: 0.4;
+      width: 180px;
+      height: 180px;
+      transition: transform 0.3s;
+    }
+  }
+
+  .score-container {
+    padding: 25px;
+    width: 200px;
+    height: 120px;
+  }
+}
+
+@media screen and (max-width: 880px) and (min-width: 480px) and (orientation: landscape) {
+  .cards {
+    padding-top: 8px;
+    display: grid;
+    grid-template-columns: repeat(2, 0.1fr);
+    gap: 1vw;
+
+    .cocktailCard-wrapper {
+      width: 200px;
+      height: 300px;
+    }
+    overflow-y: auto;
+    height: 50vh;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .score {
+    .title-score {
+      padding: 10px;
+      position: absolute;
+      top: 38vh;
+      right: 18vw;
+      background: rgba(16, 32, 50, 0.75);
+      border: 1px solid transparent;
+      border-radius: 20px;
+      box-shadow: 0 0 30px 10px #00aaf6;
+    }
+
+    .score-container {
+      padding: 25px;
+      width: 300px;
+      height: 120px;
+      border: 1px solid;
+      border-radius: 30px;
+      background: rgba(16, 32, 50, 0.75);
+      box-shadow: 0 0 30px 10px #00aaf6;
+      position: absolute;
+      right: 7vw;
+      top: 49vh;
+      color: $drunkpolice;
+      font-size: 20px;
+      text-align: center;
+    }
   }
 }
