@@ -260,7 +260,6 @@ CocktailCard.propTypes = {
     drinkId: PropTypes.number,
     drinkName: PropTypes.string,
   }).isRequired,
-  // favoriteTable: PropTypes.array.isRequired,
   setfavoriteTable: PropTypes.func.isRequired,
 };
 

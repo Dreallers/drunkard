@@ -169,7 +169,19 @@ function IngredientCard({ setIngredients, ingredients, table }) {
           role="presentation"
           className="sideIng"
           onClick={handleShowIng}
-        />
+        >
+          <p>I</p>
+          <p>n</p>
+          <p>g</p>
+          <p>r</p>
+          <p>e</p>
+          <p>d</p>
+          <p>i</p>
+          <p>e</p>
+          <p>n</p>
+          <p>t</p>
+          <p>s</p>
+        </div>
       </div>
       <div className="BlueNeon" />
     </div>
