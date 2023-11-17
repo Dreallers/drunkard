@@ -4,7 +4,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   overflow-y: auto;
-  height: 73vh;
+  height: 71vh;
   &::-webkit-scrollbar {
     display: none;
   }
@@ -193,5 +193,8 @@
   .searchbar {
     width: auto;
     margin-right: 20px;
+    ::placeholder {
+      font-size: 1.5rem;
+    }
   }
 }
