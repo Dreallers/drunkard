@@ -10,16 +10,6 @@
 }
 .cocktail-generated {
   display: flex;
+  justify-content: flex-start;
   align-items: flex-start;
-}
-
-.generated-btn {
-  width: 20px;
-  height: 20px;
-  opacity: 0.8;
-  border-radius: 100px;
-
-  :hover {
-    filter: drop-shadow(0 0 0.9rem $drunkgreen) contrast(2);
-  }
 }

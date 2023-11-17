@@ -50,16 +50,10 @@ $pink-box-shadow:
   0 0 20px $drunkPink,
   0 0 22px $drunkPink,
   0 0 24px $drunkPink,
-  // 0 0 26px $drunkPink,
-  // 0 0 30px $drunkPink,
-  // 0 0 32px $drunkPink,
-  // 0 0 34px $drunkPink,
   inset 0 0 8px $drunkPink,
   inset 0 0 16px $drunkPink,
   inset 0 0 20px $drunkPink,
   inset 0 0 22px $drunkPink;
-// inset 0 0 24px $drunkPink,
-// inset 0 0 26px $drunkPink;
 
 $green-box-shadow:
   0 0 8px $drunkgreen,
@@ -86,7 +80,6 @@ $green-text-shadow:
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  // background-size: 100%;
   height: 100vh;
   overflow: hidden;
 }

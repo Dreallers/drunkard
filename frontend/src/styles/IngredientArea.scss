@@ -35,27 +35,21 @@
     border: solid 2px white;
     width: 0.3vh;
     height: 87vh;
-    // margin-top: 2vh;
     z-index: 4;
   }
 }
 
 .IngredientArea {
   position: relative;
-  // margin: 2vh 0 2vh 2vh;
   padding-top: 5vh;
   padding-bottom: 3vh;
-
   min-width: 16vw;
   height: 87vh;
   display: flex;
   flex-direction: column;
-  // border-radius: 10px 0px 0px 10px;
   justify-content: flex-start;
   flex-wrap: nowrap;
   overflow: hidden;
-  // box-shadow: $blue-box-shadow;
-  // border-right: solid 2px white;
   background-color: $drunkBlueDark;
 }
 
@@ -175,7 +169,6 @@ button {
     position: absolute;
     left: 0vw;
     z-index: 3;
-    // background-color: black;
     width: 100vw;
 
     .IngredientArea {
