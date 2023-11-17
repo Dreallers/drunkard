@@ -4,128 +4,124 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
 
-.homePage {
-  width: 90vw;
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  font-family: "munake";
-  border: solid 1px white;
-  border-radius: 100px;
-  margin: 2px;
-  margin-top: 5px;
-  background-color: $drunkBlueDark;
-  box-shadow: $blue-box-shadow;
-}
-
-.welcome {
-  display: flex;
-  align-items: center;
-  padding-bottom: 1vh;
-  font-size: 4rem;
-  color: $drunkpolice;
-}
-
-.image {
-  width: 15vw;
-  padding-bottom: 5vh;
-}
-
-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.confirmation {
-  padding-bottom: 10vh;
-  font-size: 3rem;
-  color: $drunkpolice;
-}
-
-.age {
-  display: flex;
-  font-size: 2rem;
-}
-
-.minus18 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20px;
-  margin-right: 10vh;
-  border: solid 1px;
-  width: 7vh;
-  height: 7vh;
-  box-shadow: $green-box-shadow;
-  border: solid 1px white;
-  margin-bottom: 3vh;
-  font-family: "munake";
-  color: $drunkpolice;
-
-  a {
+  .homePage {
+    width: 90vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     font-family: "munake";
-    color: $drunkpolice;
+    border: solid 1px white;
+    border-radius: 100px;
+    margin: 2px;
+    margin-top: 5px;
+    background-color: $drunkBlueDark;
+    box-shadow: $blue-box-shadow;
+
+    .welcome {
+      display: flex;
+      align-items: center;
+      padding-bottom: 1vh;
+      font-size: 4rem;
+      color: $drunkpolice;
+
+      .neonMain {
+        padding: 0 2vh 0 2vh;
+        font-size: 8rem;
+        color: #ffd5ff;
+        font-family: "Monoton", cursive;
+        color: $drunkPink;
+        font-weight: 400;
+        letter-spacing: 8px;
+        text-shadow:
+          1px 0px 4px #ffd5ff,
+          2px 0px 4px #ffd5ff,
+          3px 0px 4px #ffd5ff,
+          2px 0px 3px #d42cca,
+          2px 3px 15px #d42cca,
+          2px 0px 15px,
+          5px 0px 125px,
+          20px 0vw 200px #d42cca,
+          40px 0vw 200px #d42cca;
+
+        .flicker-slow {
+          animation: flicker 3s linear infinite;
+          color: #ffd5ff;
+          font-family: "Monoton", cursive;
+          color: $drunkPink;
+        }
+
+        .flicker-fast {
+          animation: flicker 1s linear infinite;
+          color: $drunkpolice;
+          font-family: "Monoton", cursive;
+          color: $drunkPink;
+        }
+      }
+    }
+    .image {
+      width: 15vw;
+      padding-bottom: 5vh;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .confirmation {
+      padding-bottom: 10vh;
+      font-size: 3rem;
+      color: $drunkpolice;
+    }
+    .age {
+      display: flex;
+      font-size: 2rem;
+    }
   }
-}
-
-.plus18 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20px;
-  border: solid 1px;
-  width: 7vh;
-  height: 7vh;
-  box-shadow: $green-box-shadow;
-  border: solid 1px white;
-  margin-bottom: 3vh;
-
-  a {
-    text-decoration: none;
+  .minus18 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin-right: 10vh;
+    border: solid 1px;
+    width: 7vh;
+    height: 7vh;
+    box-shadow: $green-box-shadow;
+    border: solid 1px white;
+    margin-bottom: 3vh;
     font-family: "munake";
     color: $drunkpolice;
+    a {
+      text-decoration: none;
+      font-family: "munake";
+      color: $drunkpolice;
+    }
   }
-}
 
-.neonMain {
-  padding: 0 2vh 0 2vh;
-  font-size: 8rem;
-  color: #ffd5ff;
-  font-family: "Monoton", cursive;
-  color: $drunkPink;
-  font-weight: 400;
-  letter-spacing: 8px;
-  text-shadow:
-    1px 0px 4px #ffd5ff,
-    2px 0px 4px #ffd5ff,
-    3px 0px 4px #ffd5ff,
-    2px 0px 3px #d42cca,
-    2px 3px 15px #d42cca,
-    2px 0px 15px,
-    5px 0px 125px,
-    20px 0vw 200px #d42cca,
-    40px 0vw 200px #d42cca;
-}
+  .plus18 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    border: solid 1px;
+    width: 7vh;
+    height: 7vh;
+    box-shadow: $green-box-shadow;
+    border: solid 1px white;
+    margin-bottom: 3vh;
 
-.flicker-slow {
-  animation: flicker 3s linear infinite;
-  color: #ffd5ff;
-  font-family: "Monoton", cursive;
-  color: $drunkPink;
-}
-
-.flicker-fast {
-  animation: flicker 1s linear infinite;
-  color: $drunkpolice;
-  font-family: "Monoton", cursive;
-  color: $drunkPink;
+    a {
+      text-decoration: none;
+      font-family: "munake";
+      color: $drunkpolice;
+    }
+  }
 }
 
 @keyframes flicker {
@@ -146,5 +142,82 @@ img {
   65%,
   69.999% {
     opacity: 0.4;
+  }
+}
+
+@media screen and (min-width: 280px) and (max-width: 480px) {
+  .homePageContainer .homePage .welcome .neonMain {
+    font-size: 2.5rem;
+  }
+  .homePageContainer .homePage .image {
+    width: fit-content;
+  }
+  .homePageContainer .homePage .confirmation {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .homePageContainer .homePage .welcome .neonMain {
+    width: fit-content;
+    font-size: 5rem;
+  }
+  .homePageContainer .homePage .image {
+    width: fit-content;
+  }
+  .homePageContainer .homePage .confirmation {
+    font-size: 2rem;
+  }
+  .homePageContainer .homePage .age {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .homePageContainer .homePage .welcome .neonMain {
+    width: fit-content;
+    font-size: 6rem;
+  }
+  .homePageContainer .homePage .image {
+    width: fit-content;
+  }
+  .homePageContainer .homePage .confirmation {
+    font-size: 3rem;
+  }
+  .homePageContainer .homePage .age {
+    font-size: 3rem;
+  }
+  .homePageContainer .homePage .plus18 {
+    width: 8vh;
+    height: 8vh;
+  }
+  .homePageContainer .homePage .minus18 {
+    width: 8vh;
+    height: 8vh;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1200px) {
+  .homePageContainer .homePage .welcome .neonMain {
+    width: fit-content;
+    font-size: 7.5rem;
+  }
+  .homePageContainer .homePage .image {
+    width: fit-content;
+  }
+  .homePageContainer .homePage .confirmation {
+    font-size: 3.5rem;
+  }
+  .homePageContainer .homePage .age {
+    font-size: 2rem;
+    padding-bottom: 20px;
+  }
+  .homePageContainer .homePage .plus18 {
+    width: 9vh;
+    height: 9vh;
+  }
+  .homePageContainer .homePage .minus18 {
+    width: 9vh;
+    height: 9vh;
   }
 }

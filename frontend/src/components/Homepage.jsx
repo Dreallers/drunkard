@@ -14,7 +14,7 @@ function Homepage() {
           <img src="/cocktail.png" alt="logo-cocktail-bar" />
         </div>
 
-        <div className="confirmation">Please confirm your age : </div>
+        <div className="confirmation">Please confirm your age :</div>
         <div className="age">
           <div className="minus18">
             <a href="https://www.wildcodeschool.com/fr-fr/campus/nantes">-18</a>
