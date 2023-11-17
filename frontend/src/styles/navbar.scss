@@ -10,7 +10,7 @@
   flex-direction: column;
 
   .navbar {
-    height: 7vh;
+    height: 9vh;
     a {
       text-decoration: none;
       font-family: "munake";
@@ -30,6 +30,7 @@
 
     .imageContainer {
       width: 70%;
+      margin-left: 18px;
       display: flex;
       justify-content: center;
       align-items: center;

@@ -8,8 +8,19 @@
   position: relative;
   top: 25px;
 }
+
 .cocktail-generated {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+}
+
+@media screen and (max-width: 480px) {
+  .cocktail-generated {
+    margin-left: 60px;
+  }
+
+  .random {
+    margin-left: 150px;
+  }
 }
