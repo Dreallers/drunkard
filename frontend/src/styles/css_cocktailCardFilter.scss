@@ -18,7 +18,7 @@
 }
 
 .carte {
-  width: 100%;
+  width: fit-content;
   height: 100%;
 }
 
@@ -176,6 +176,16 @@
     input::placeholder {
       color: rgb(189, 184, 184);
     }
+  }
+}
+.generated-btn img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.8;
+  border-radius: 100px;
+
+  :hover {
+    filter: drop-shadow(0 0 0.9rem $drunkgreen) contrast(2);
   }
 }
 
