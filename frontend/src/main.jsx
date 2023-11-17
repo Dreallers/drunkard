@@ -22,7 +22,7 @@ const router = createBrowserRouter([
         const activeLetter = String.fromCharCode(i); /* on récupère la lettre */
         results.push(
           axios.get(
-            `https:www.thecocktaildb.com/api/json/v1/1/search.php?f=${activeLetter}`
+            `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${activeLetter}`
           )
         ); /* on interroge l'API sur cette lettre */
       }
